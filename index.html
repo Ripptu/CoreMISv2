@@ -68,7 +68,7 @@
       }
     </script>
     <style>
-      /* === FINAL CINEMATIC SCROLL CSS === */
+      /* === SMOOTH SCROLL CSS === */
       html, body {
         height: 100%;
         width: 100%;
@@ -91,11 +91,7 @@
         position: relative;
         width: 100%;
         min-height: 100vh;
-        /* Hardware acceleration optimization for 120Hz */
         will-change: transform;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        transform: translate3d(0,0,0);
         overflow: visible; 
       }
 
@@ -152,25 +148,20 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
 
-    <!-- ULTRA-CINEMATIC SCROLL INIT -->
+    <!-- STANDARD SMOOTH SCROLL INIT -->
     <script>
       window.addEventListener("load", () => {
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-        // 120Hz Optimization: Disable lag smoothing to prevent jitter/jumps during heavy frames.
-        // This forces the animation to be perfectly strictly tied to the time, keeping it fluid.
-        gsap.ticker.lagSmoothing(0);
-
         const smoother = ScrollSmoother.create({
           wrapper: "#smooth-wrapper",
           content: "#smooth-content",
-          // 2.5 is the sweet spot for 120Hz displays. 
-          // 3.5 feels too unresponsive/heavy on high refresh rates. 
-          // 2.5 maintains weight but adds responsiveness.
-          smooth: 2.5,            
+          // 1.0 is the gold standard for "Modern Smooth". 
+          // It removes the heavy drag of cinematic (2.5+) but keeps the fluid elegance.
+          smooth: 1,            
           effects: true,          
-          normalizeScroll: true,  // Critical for 120Hz smoothness (js-driven scroll)
-          ignoreMobileResize: true, // Prevents jitter on mobile bar changes
+          normalizeScroll: true,
+          ignoreMobileResize: true,
           smoothTouch: 0.1        
         });
 
@@ -182,13 +173,12 @@
           } else {
             const el = document.getElementById(targetId);
             if (el) {
-              // Scroll to element with a slight offset for header
               smoother.scrollTo(el, true, "top 100px");
             }
           }
         });
 
-        console.log("GSAP ScrollSmoother: 120Hz Cinematic Mode Active (Smooth: 2.5)");
+        console.log("GSAP ScrollSmoother: Standard Smooth Mode Active (Smooth: 1.0)");
       });
     </script>
   </body>
