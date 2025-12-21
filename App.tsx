@@ -13,14 +13,12 @@ import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
 import { ExitBar } from './components/ExitBar';
-import { Header } from './components/Header';
 
 const App: React.FC = () => {
   const [legalPage, setLegalPage] = useState<'impressum' | 'datenschutz' | null>(null);
 
   return (
     <div className="min-h-screen bg-background selection:bg-accent-orange/30 selection:text-primary w-full relative">
-      <Header />
       <main className="relative">
         {/* LIGHT SECTION */}
         <Hero />

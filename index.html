@@ -84,15 +84,18 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        z-index: 1; /* Ensure wrapper is below fixed UI elements if any, though header is z-50 */
+        z-index: 1;
       }
 
       #smooth-content {
         position: relative;
         width: 100%;
         min-height: 100vh;
+        /* Hardware acceleration optimization for 120Hz */
         will-change: transform;
-        /* Ensure content doesn't get cut off */
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translate3d(0,0,0);
         overflow: visible; 
       }
 
@@ -154,13 +157,21 @@
       window.addEventListener("load", () => {
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+        // 120Hz Optimization: Disable lag smoothing to prevent jitter/jumps during heavy frames.
+        // This forces the animation to be perfectly strictly tied to the time, keeping it fluid.
+        gsap.ticker.lagSmoothing(0);
+
         const smoother = ScrollSmoother.create({
           wrapper: "#smooth-wrapper",
           content: "#smooth-content",
-          smooth: 3.5,            // Maximum heaviness for cinematic feel
-          effects: true,          // Enable parallax/speed effects
-          normalizeScroll: true,  // Important for mobile/touch consistency
-          smoothTouch: 0.1        // Slight smoothing on touch as requested
+          // 2.5 is the sweet spot for 120Hz displays. 
+          // 3.5 feels too unresponsive/heavy on high refresh rates. 
+          // 2.5 maintains weight but adds responsiveness.
+          smooth: 2.5,            
+          effects: true,          
+          normalizeScroll: true,  // Critical for 120Hz smoothness (js-driven scroll)
+          ignoreMobileResize: true, // Prevents jitter on mobile bar changes
+          smoothTouch: 0.1        
         });
 
         // Bridge for React Component Navigation
@@ -177,7 +188,7 @@
           }
         });
 
-        console.log("GSAP ScrollSmoother: Cinematic Mode Active (Smooth: 3.5)");
+        console.log("GSAP ScrollSmoother: 120Hz Cinematic Mode Active (Smooth: 2.5)");
       });
     </script>
   </body>
