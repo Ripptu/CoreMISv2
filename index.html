@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>CoreMIS - Professionelle Finanzsteuerung</title>
+    <meta name="description" content="Zahlen. Klar. Im Griff. MIS für den Mittelstand." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Fraunces', 'serif'],
+            },
+            colors: {
+              background: '#FDFBF7',
+              darkbg: '#0F1115',
+              surface: '#FFFFFF',
+              primary: '#1A1A1A',
+              secondary: '#52525B',  
+              accent: {
+                orange: '#EA580C',
+                light: '#FFEDD5',
+              },
+              border: '#E2E8F0',
+            },
+            backgroundImage: {
+              'gradient-orange': 'linear-gradient(135deg, #EA580C 0%, #C2410C 100%)',
+              'gradient-dark': 'linear-gradient(180deg, #0F1115 0%, #18181B 100%)',
+              'glass-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)',
+            },
+            boxShadow: {
+              'glow': '0 0 40px -10px rgba(234, 88, 12, 0.25)',
+              'premium': '0 20px 40px -10px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.05)',
+              'inner-light': 'inset 0 1px 0 rgba(255,255,255,0.8)',
+            },
+            animation: {
+              shimmer: 'shimmer 2s linear infinite',
+              'dash-flow': 'dashFlow 2s linear infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '-1000px 0' },
+                '100%': { backgroundPosition: '1000px 0' },
+              },
+              dashFlow: {
+                '0%': { strokeDashoffset: '1000' },
+                '100%': { strokeDashoffset: '0' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* === FINAL CINEMATIC SCROLL CSS === */
+      html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden !important; /* Forces GSAP to handle scroll */
+        margin: 0;
+        padding: 0;
+        background-color: #FDFBF7;
+      }
+
+      #smooth-wrapper {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1; /* Ensure wrapper is below fixed UI elements if any, though header is z-50 */
+      }
+
+      #smooth-content {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        will-change: transform;
+        /* Ensure content doesn't get cut off */
+        overflow: visible; 
+      }
+
+      /* UI Styles */
+      h1, h2, h3 { font-feature-settings: "cv02", "cv05", "ss01"; letter-spacing: -0.02em; }
+      .text-glow { text-shadow: 0 0 30px rgba(234, 88, 12, 0.3); }
+      
+      /* Interactive States */
+      a, button, div[role="button"] {
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 200ms;
+      }
+
+      input[type=range] { -webkit-appearance: none; background: transparent; }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
+        background: #EA580C; cursor: pointer; margin-top: -8px;
+        box-shadow: 0 0 0 4px #FFFFFF, 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.1s;
+      }
+      input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(234,88,12,0.1), 0 4px 10px rgba(0,0,0,0.1); }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%; height: 4px; cursor: pointer; background: #E2E8F0; border-radius: 2px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.3.1",
+    "recharts": "https://esm.sh/recharts@2.12.7?deps=react@18.3.1,react-dom@18.3.1",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8?deps=react@18.3.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <!-- GSAP STRUCTURE -->
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <div id="root"></div>
+      </div>
+    </div>
+
+    <script type="module" src="index.tsx"></script>
+    
+    <!-- GSAP CORE & PLUGINS -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
+
+    <!-- ULTRA-CINEMATIC SCROLL INIT -->
+    <script>
+      window.addEventListener("load", () => {
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+        const smoother = ScrollSmoother.create({
+          wrapper: "#smooth-wrapper",
+          content: "#smooth-content",
+          smooth: 3.5,            // Maximum heaviness for cinematic feel
+          effects: true,          // Enable parallax/speed effects
+          normalizeScroll: true,  // Important for mobile/touch consistency
+          smoothTouch: 0.1        // Slight smoothing on touch as requested
+        });
+
+        // Bridge for React Component Navigation
+        window.addEventListener('smooth-scroll-to', (e) => {
+          const targetId = e.detail.target;
+          if (targetId === 'top') {
+            smoother.scrollTo(0, true);
+          } else {
+            const el = document.getElementById(targetId);
+            if (el) {
+              // Scroll to element with a slight offset for header
+              smoother.scrollTo(el, true, "top 100px");
+            }
+          }
+        });
+
+        console.log("GSAP ScrollSmoother: Cinematic Mode Active (Smooth: 3.5)");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+import React from 'react';
+import { RevealOnScroll } from './RevealOnScroll';
+
+export const Impact: React.FC = () => {
+  return (
+    <section className="py-16 md:py-24 bg-background border-b border-border">
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-12">
+          
+          <RevealOnScroll delay={0}>
+            <div className="border-l-2 border-accent-orange pl-6">
+              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">4-6</div>
+              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Wochen bis Go Live</div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={100}>
+            <div className="border-l-2 border-slate-200 pl-6">
+              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">80%</div>
+              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Weniger Excel-Aufwand</div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={200}>
+            <div className="border-l-2 border-slate-200 pl-6">
+              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">100%</div>
+              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Datensicherheit</div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={300}>
+            <div className="border-l-2 border-slate-200 pl-6">
+              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">360°</div>
+              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Finanzblick</div>
+            </div>
+          </RevealOnScroll>
+
+        </div>
+      </div>
+    </section>
+  );
+};
