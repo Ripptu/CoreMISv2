@@ -10,7 +10,8 @@ export const LicenseCalculator: React.FC = () => {
   const calculations = useMemo(() => {
     // 1. Annual Base Fee (9'600 CHF/Year, which is 800/Month)
     // Covers 1 Entity, up to 50 Mio Revenue.
-    const baseAnnual = 9600;
+    const baseMonthly = 800;
+    const baseAnnual = baseMonthly * 12;
 
     // 2. Entity Fee (500 CHF/Year per additional entity)
     const additionalEntitiesCount = Math.max(0, entities - 1);
@@ -40,6 +41,7 @@ export const LicenseCalculator: React.FC = () => {
     const finalMonthly = finalAnnual / 12;
 
     return {
+      baseMonthly,
       baseAnnual,
       entityFeeAnnual,
       revenueFeeAnnual,
@@ -85,8 +87,8 @@ export const LicenseCalculator: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 size={16} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-primary block text-sm">Basis-Lizenz (CHF 9'600 / Jahr)</strong>
-                    <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.</span>
+                    <strong className="text-primary block text-sm">Basisfee (CHF 800 / Monat)</strong>
+                    <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.<br/>Abrechnung jährlich (CHF 9'600).</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -194,7 +196,7 @@ export const LicenseCalculator: React.FC = () => {
                   {/* Result Box - Compact */}
                   <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
                     <div className="flex justify-between text-xs text-secondary">
-                       <span>Basisfee (Listenpreis)</span>
+                       <span>Basisfee (CHF 800/Mt x 12)</span>
                        <span>{formatCHF(calculations.baseAnnual)}</span>
                     </div>
                     {(calculations.entityFeeAnnual > 0 || calculations.revenueFeeAnnual > 0) && (
@@ -209,7 +211,7 @@ export const LicenseCalculator: React.FC = () => {
                     </div>
 
                     <div className="flex justify-between text-xs text-green-600 font-medium pt-1">
-                       <span>Vorauszahlungsrabatt ({calculations.discountPercent * 100}%)</span>
+                       <span>Vorauszahlung (-{calculations.discountPercent * 100}%)</span>
                        <span>- {formatCHF(calculations.discountAmountAnnual)}</span>
                     </div>
                     
