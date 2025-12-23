@@ -12,11 +12,11 @@ export const CTA: React.FC = () => {
            <Power size={48} className="text-white opacity-90 w-10 h-10 md:w-12 md:h-12" strokeWidth={1.5} />
         </div>
 
-        <h2 className="text-5xl md:text-8xl font-serif text-white mb-6 leading-none">
-          Turn CoreMIS <span className="italic text-slate-500">on.</span>
+        <h2 className="text-5xl md:text-8xl font-bold text-white mb-6 leading-none">
+          Turn CoreMIS <span className="text-slate-500">on.</span>
         </h2>
         
-        <p className="text-2xl md:text-4xl font-serif text-slate-400 italic mb-10 md:mb-12">
+        <p className="text-2xl md:text-4xl font-medium text-slate-400 mb-10 md:mb-12">
           Wake up to revenue.
         </p>
         

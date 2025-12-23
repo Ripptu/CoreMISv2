@@ -20,7 +20,7 @@ const industries = [
     icon: <ShoppingBag size={20} />,
     title: 'Warenkorb & Lagerumschlag',
     kpis: [
-      { label: 'CAC (Cust. Acquisition Cost)', value: '€ 14.20' },
+      { label: 'CAC (Cust. Acquisition Cost)', value: 'CHF 14.20' },
       { label: 'Lagerreichweite', value: '24 Tage' },
       { label: 'Retourenquote', value: '12.5%' }
     ],
@@ -34,7 +34,7 @@ const industries = [
     kpis: [
       { label: 'Billable Utilization', value: '82%' },
       { label: 'Projekt-Marge Ø', value: '22%' },
-      { label: 'Offene Forderungen', value: '€ 120k' }
+      { label: 'Offene Forderungen', value: 'CHF 120k' }
     ],
     desc: 'Tracken Sie Projektbudgets gegen erfasste Stunden. Erkennen Sie Over-Servicing bevor das Projekt unprofitabel wird.'
   }

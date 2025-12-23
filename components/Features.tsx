@@ -47,9 +47,9 @@ export const Features: React.FC = () => {
         <RevealOnScroll>
           <div className="text-center mb-16">
             <div className="text-accent-orange text-xs font-bold tracking-[0.2em] uppercase mb-4">The Growth Narrative</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Vom ersten Klick <br/>
-              bis <span className="italic text-accent-orange">für immer.</span>
+              bis <span className="text-accent-orange">für immer.</span>
             </h2>
             <p className="text-white/60 max-w-lg mx-auto font-medium">
               CoreMIS ist nicht nur ein Dashboard. Es ist eine Engine, die mit Ihrem Kundenstamm wächst.
@@ -59,13 +59,6 @@ export const Features: React.FC = () => {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-6 auto-rows-[minmax(250px,auto)] gap-4 md:gap-6">
-          
-          {/* 
-             DESIGN UPDATES:
-             1. Avoid Pure Black: Using bg-[#18181B] (Zinc 900) instead of black.
-             2. Interactive States: Added 'group-hover:border-white/20' and 'hover:shadow-glow'.
-             3. Opacity: Text is white/60 or white/40, not hex gray.
-          */}
 
           {/* Item 1: Large Wide (Transparenz) */}
           <TiltCard className="md:col-span-4 rounded-3xl bg-[#121212] border border-white/5 overflow-hidden relative group hover:border-white/20 hover:shadow-glow transition-all duration-500 shadow-xl">
@@ -75,7 +68,7 @@ export const Features: React.FC = () => {
                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 flex items-center justify-center text-accent-orange group-hover:scale-110 group-hover:bg-accent-orange group-hover:text-white transition-all duration-300">
                      <Search className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <span className="text-white/10 font-serif text-3xl md:text-4xl italic group-hover:text-white/30 transition-colors">01</span>
+                   <span className="text-white/10 font-bold text-3xl md:text-4xl group-hover:text-white/30 transition-colors">01</span>
                  </div>
                  <div className="mt-8 max-w-md">
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Transparenz Engine</h3>
@@ -97,7 +90,7 @@ export const Features: React.FC = () => {
                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 flex items-center justify-center text-accent-orange group-hover:scale-110 group-hover:bg-accent-orange group-hover:text-white transition-all duration-300">
                      <SlidersHorizontal className="w-5 h-5 md:w-6 md:h-6" />
                    </div>
-                   <span className="text-white/10 font-serif text-3xl md:text-4xl italic group-hover:text-white/30 transition-colors">03</span>
+                   <span className="text-white/10 font-bold text-3xl md:text-4xl group-hover:text-white/30 transition-colors">03</span>
                  </div>
                  
                  {/* Visual Representation of Support/Chat */}
@@ -124,7 +117,7 @@ export const Features: React.FC = () => {
           <TiltCard className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#1A1A1A] to-black border border-white/5 overflow-hidden relative group shadow-xl hover:border-white/20 hover:shadow-glow transition-all">
              <RevealOnScroll delay={300} width="100%">
                <div className="p-6 md:p-8 h-full min-h-[180px] flex flex-col items-center justify-center text-center">
-                 <div className="text-4xl md:text-5xl font-serif text-white mb-2 group-hover:scale-110 transition-transform duration-500">
+                 <div className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-500">
                     4<span className="text-accent-orange">x</span>
                  </div>
                  <p className="text-white/40 text-xs uppercase tracking-widest font-bold">Schnelleres Reporting</p>
@@ -154,7 +147,7 @@ export const Features: React.FC = () => {
                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 flex items-center justify-center text-accent-orange group-hover:scale-110 group-hover:bg-accent-orange group-hover:text-white transition-all duration-300">
                        <Zap className="w-5 h-5 md:w-6 md:h-6" />
                      </div>
-                     <span className="text-white/10 font-serif text-3xl md:text-4xl italic group-hover:text-white/30 transition-colors">02</span>
+                     <span className="text-white/10 font-bold text-3xl md:text-4xl group-hover:text-white/30 transition-colors">02</span>
                    </div>
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Sofortige Aktivierung</h3>
                    <p className="text-white/50 text-sm leading-relaxed font-medium">

@@ -6,10 +6,10 @@
     <title>CoreMIS - Professionelle Finanzsteuerung</title>
     <meta name="description" content="Zahlen. Klar. Im Griff. MIS für den Mittelstand." />
     
-    <!-- Fonts -->
+    <!-- Fonts: Inter for everything to keep it Swiss/Clean -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,48 +19,31 @@
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
-              serif: ['Fraunces', 'serif'],
+              serif: ['Inter', 'sans-serif'], // Forced override to prevent accidental serifs
             },
             colors: {
-              background: '#FDFBF7',
-              darkbg: '#0F1115',
-              surface: '#FFFFFF',
-              primary: '#1A1A1A',
-              secondary: '#52525B',  
+              background: '#FFFFFF', // Pure White
+              surface: '#F8FAFC',    // Very light grey for cards
+              primary: '#2B343A',    // Dark Anthrazit text
+              secondary: '#64748B',  // Muted Slate text
               accent: {
-                orange: '#EA580C',
-                light: '#FFEDD5',
+                orange: '#E15400',   // CoreMIS Orange
+                hover: '#C2410C',
               },
               border: '#E2E8F0',
             },
-            backgroundImage: {
-              'gradient-orange': 'linear-gradient(135deg, #EA580C 0%, #C2410C 100%)',
-              'gradient-dark': 'linear-gradient(180deg, #0F1115 0%, #18181B 100%)',
-              'glass-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)',
-            },
             boxShadow: {
-              'glow': '0 0 40px -10px rgba(234, 88, 12, 0.25)',
-              'premium': '0 20px 40px -10px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.05)',
-              'inner-light': 'inset 0 1px 0 rgba(255,255,255,0.8)',
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'hover': '0 10px 40px -5px rgba(0, 0, 0, 0.1)',
+              'orange': '0 10px 30px -5px rgba(225, 84, 0, 0.3)',
             },
             animation: {
-              shimmer: 'shimmer 2s linear infinite',
-              'dash-flow': 'dashFlow 2s linear infinite',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite',
+              'fade-up': 'fadeUp 0.8s ease-out forwards',
             },
             keyframes: {
-              shimmer: {
-                '0%': { backgroundPosition: '-1000px 0' },
-                '100%': { backgroundPosition: '1000px 0' },
-              },
-              dashFlow: {
-                '0%': { strokeDashoffset: '1000' },
-                '100%': { strokeDashoffset: '0' },
-              },
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' },
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
               }
             }
           }
@@ -72,18 +55,14 @@
       html, body {
         height: 100%;
         width: 100%;
-        overflow: hidden !important; /* Forces GSAP to handle scroll */
         margin: 0;
         padding: 0;
-        background-color: #FDFBF7;
+        background-color: #FFFFFF;
+        color: #2B343A;
       }
 
       #smooth-wrapper {
-        position: fixed;
-        inset: 0;
         width: 100%;
-        height: 100%;
-        overflow: hidden;
         z-index: 1;
       }
 
@@ -95,25 +74,32 @@
         overflow: visible; 
       }
 
-      /* UI Styles */
-      h1, h2, h3 { font-feature-settings: "cv02", "cv05", "ss01"; letter-spacing: -0.02em; }
-      .text-glow { text-shadow: 0 0 30px rgba(234, 88, 12, 0.3); }
-      
-      /* Interactive States */
-      a, button, div[role="button"] {
-        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 200ms;
+      /* Clean Typography Defaults */
+      h1, h2, h3, h4, h5, h6 { 
+        letter-spacing: -0.025em; 
+        font-weight: 700;
+      }
+
+      /* Button Base */
+      .btn-core {
+        background-color: #E15400;
+        color: white;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .btn-core:hover {
+        background-color: #C2410C;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(225, 84, 0, 0.2);
       }
 
       input[type=range] { -webkit-appearance: none; background: transparent; }
       input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
-        background: #EA580C; cursor: pointer; margin-top: -8px;
-        box-shadow: 0 0 0 4px #FFFFFF, 0 4px 10px rgba(0,0,0,0.1);
+        -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%;
+        background: #E15400; cursor: pointer; margin-top: -6px;
+        box-shadow: 0 0 0 2px #FFFFFF, 0 2px 4px rgba(0,0,0,0.1);
         transition: transform 0.1s;
       }
-      input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(234,88,12,0.1), 0 4px 10px rgba(0,0,0,0.1); }
+      input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
       input[type=range]::-webkit-slider-runnable-track {
         width: 100%; height: 4px; cursor: pointer; background: #E2E8F0; border-radius: 2px;
       }
@@ -148,37 +134,67 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
 
-    <!-- STANDARD SMOOTH SCROLL INIT -->
+    <!-- STANDARD SMOOTH SCROLL INIT (Desktop Only) -->
     <script>
       window.addEventListener("load", () => {
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+        
+        // Detect if it is a primary touch device (Mobile/Tablet)
+        const isTouch = ScrollTrigger.isTouch === 1;
+        let smoother;
 
-        const smoother = ScrollSmoother.create({
-          wrapper: "#smooth-wrapper",
-          content: "#smooth-content",
-          // 1.0 is the gold standard for "Modern Smooth". 
-          // It removes the heavy drag of cinematic (2.5+) but keeps the fluid elegance.
-          smooth: 1,            
-          effects: true,          
-          normalizeScroll: true,
-          ignoreMobileResize: true,
-          smoothTouch: 0.1        
-        });
+        if (!isTouch) {
+            // == DESKTOP MODE ==
+            document.body.style.overflow = "hidden";
+            
+            const wrapper = document.getElementById("smooth-wrapper");
+            wrapper.style.position = "fixed";
+            wrapper.style.inset = "0";
+            wrapper.style.height = "100%";
+            wrapper.style.overflow = "hidden";
+
+            smoother = ScrollSmoother.create({
+              wrapper: "#smooth-wrapper",
+              content: "#smooth-content",
+              smooth: 1, // Standard Smooth
+              effects: true,          
+              normalizeScroll: true,
+              ignoreMobileResize: true,
+              smoothTouch: false 
+            });
+        }
 
         // Bridge for React Component Navigation
         window.addEventListener('smooth-scroll-to', (e) => {
           const targetId = e.detail.target;
-          if (targetId === 'top') {
-            smoother.scrollTo(0, true);
+          
+          if (smoother) {
+             if (targetId === 'top') {
+               smoother.scrollTo(0, true);
+             } else {
+               const el = document.getElementById(targetId);
+               if (el) smoother.scrollTo(el, true, "top 100px");
+             }
           } else {
-            const el = document.getElementById(targetId);
-            if (el) {
-              smoother.scrollTo(el, true, "top 100px");
-            }
+             if (targetId === 'top') {
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+             } else {
+                 const el = document.getElementById(targetId);
+                 if (el) {
+                     const offset = 100;
+                     const bodyRect = document.body.getBoundingClientRect().top;
+                     const elementRect = el.getBoundingClientRect().top;
+                     const elementPosition = elementRect - bodyRect;
+                     const offsetPosition = elementPosition - offset;
+                     
+                     window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth"
+                     });
+                 }
+             }
           }
         });
-
-        console.log("GSAP ScrollSmoother: Standard Smooth Mode Active (Smooth: 1.0)");
       });
     </script>
   </body>

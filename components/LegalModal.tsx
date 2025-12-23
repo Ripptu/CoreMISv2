@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 
 interface LegalModalProps {
@@ -7,9 +7,15 @@ interface LegalModalProps {
 }
 
 export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (page) {
       document.body.style.overflow = 'hidden';
+      // Reset scroll position to top when modal opens/changes
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollTop = 0;
+      }
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -26,10 +32,13 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
         onClick={onClose}
       ></div>
-      <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto relative z-10 shadow-2xl animate-in fade-in zoom-in-95 duration-300">
+      <div 
+        ref={scrollContainerRef}
+        className="bg-white rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto relative z-10 shadow-2xl animate-in fade-in zoom-in-95 duration-300"
+      >
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors"
+          className="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors z-20"
         >
           <X size={20} />
         </button>

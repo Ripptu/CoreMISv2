@@ -9,7 +9,7 @@ export const ROICalculator: React.FC = () => {
   // Basic State
   const [excelFiles, setExcelFiles] = useState(15);
   const [hoursPerMonth, setHoursPerMonth] = useState(21);
-  const [hourlyRate, setHourlyRate] = useState(118);
+  const [hourlyRate, setHourlyRate] = useState(125); // Slightly adjusted for Swiss context
 
   // Advanced State
   const [errorRate, setErrorRate] = useState(5); // % Risk of error
@@ -54,6 +54,9 @@ export const ROICalculator: React.FC = () => {
   const handleInteractionStart = () => setIsFocused(true);
   const handleInteractionEnd = () => setIsFocused(false);
 
+  // Helper for Swiss Currency Formatting
+  const formatCHF = (val: number) => new Intl.NumberFormat('de-CH', { style: 'currency', currency: 'CHF', maximumFractionDigits: 0 }).format(val);
+
   return (
     <section className="py-20 md:py-32 bg-background relative">
       
@@ -93,7 +96,7 @@ export const ROICalculator: React.FC = () => {
                <div className="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 p-6 md:p-8 border-l-4 border-l-accent-orange relative overflow-hidden group">
                   <div className="relative z-10">
                     <div className="text-4xl md:text-6xl font-serif font-medium text-accent-orange mb-2 tracking-tight">
-                      {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(calculations.total)}
+                      {formatCHF(calculations.total)}
                     </div>
                     <div className="text-sm font-medium text-secondary mb-4">
                        {isAdvanced ? 'Total Cost of Ownership (pro Jahr)' : 'Verschwendetes Budget pro Jahr (Personalkosten + Wartung)'}
@@ -103,21 +106,21 @@ export const ROICalculator: React.FC = () => {
                     <div className="text-[10px] text-slate-400 space-y-1 border-t border-slate-100 pt-3">
                        <div className="flex justify-between">
                          <span>Manuelle Arbeit:</span>
-                         <span>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(calculations.breakdown.direct)}</span>
+                         <span>{formatCHF(calculations.breakdown.direct)}</span>
                        </div>
                        <div className="flex justify-between">
                          <span>Wartung Excel-Quellen:</span>
-                         <span>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(calculations.breakdown.maintenance)}</span>
+                         <span>{formatCHF(calculations.breakdown.maintenance)}</span>
                        </div>
                        {isAdvanced && (
                          <>
                            <div className="flex justify-between text-amber-600/70">
                              <span>Fehlerkorrektur (Rework):</span>
-                             <span>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(calculations.breakdown.error || 0)}</span>
+                             <span>{formatCHF(calculations.breakdown.error || 0)}</span>
                            </div>
                            <div className="flex justify-between text-blue-600/70">
                              <span>Verzögerungskosten:</span>
-                             <span>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(calculations.breakdown.opportunity || 0)}</span>
+                             <span>{formatCHF(calculations.breakdown.opportunity || 0)}</span>
                            </div>
                          </>
                        )}
@@ -192,10 +195,10 @@ export const ROICalculator: React.FC = () => {
                  <div className="space-y-2 group">
                    <div className="flex justify-between items-end mb-4">
                      <label className="font-medium text-primary text-sm md:text-base">Stundensatz Controller (Intern)</label>
-                     <span className="font-mono bg-slate-50 border border-slate-100 px-3 py-1 rounded text-sm min-w-[3rem] text-center">{hourlyRate} €</span>
+                     <span className="font-mono bg-slate-50 border border-slate-100 px-3 py-1 rounded text-sm min-w-[3rem] text-center">CHF {hourlyRate}</span>
                    </div>
                    <input 
-                      type="range" min="40" max="200" value={hourlyRate} onChange={(e) => setHourlyRate(Number(e.target.value))}
+                      type="range" min="80" max="300" value={hourlyRate} onChange={(e) => setHourlyRate(Number(e.target.value))}
                       className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200"
                    />
                  </div>

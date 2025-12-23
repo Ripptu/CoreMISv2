@@ -49,9 +49,9 @@ export const ProductValue: React.FC = () => {
         {/* Centered Headline Section */}
         <RevealOnScroll>
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-            <h2 className="text-4xl md:text-7xl font-serif text-white mb-6 leading-tight">
+            <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
               Daten einmal verbinden. <br/>
-              <span className="italic text-accent-orange text-glow">Für immer steuern.</span>
+              <span className="text-accent-orange text-glow">Für immer steuern.</span>
             </h2>
             <p className="text-slate-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto">
               CoreMIS liefert das hybride Modell zwischen Excel-Flexibilität und SAP-Struktur. 
@@ -94,7 +94,7 @@ export const ProductValue: React.FC = () => {
 
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
               <div className="transition-opacity duration-300 animate-in fade-in slide-in-from-left-4">
-                <h3 className="text-2xl md:text-4xl font-serif mb-4 md:mb-6 leading-tight min-h-0">
+                <h3 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 leading-tight min-h-0">
                   {activeContent.title}
                 </h3>
                 <p className="text-orange-100 text-base md:text-lg mb-6 md:mb-8 leading-relaxed min-h-0">

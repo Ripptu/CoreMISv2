@@ -9,28 +9,28 @@ export const Impact: React.FC = () => {
           
           <RevealOnScroll delay={0}>
             <div className="border-l-2 border-accent-orange pl-6">
-              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">4-6</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">3-4</div>
               <div className="text-sm font-medium text-secondary uppercase tracking-wider">Wochen bis Go Live</div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={100}>
             <div className="border-l-2 border-slate-200 pl-6">
-              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">80%</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">85%</div>
               <div className="text-sm font-medium text-secondary uppercase tracking-wider">Weniger Excel-Aufwand</div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={200}>
             <div className="border-l-2 border-slate-200 pl-6">
-              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">100%</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
               <div className="text-sm font-medium text-secondary uppercase tracking-wider">Datensicherheit</div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={300}>
             <div className="border-l-2 border-slate-200 pl-6">
-              <div className="text-4xl md:text-5xl font-serif font-medium text-primary mb-2">360°</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">360°</div>
               <div className="text-sm font-medium text-secondary uppercase tracking-wider">Finanzblick</div>
             </div>
           </RevealOnScroll>
