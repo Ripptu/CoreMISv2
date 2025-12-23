@@ -10,6 +10,7 @@ export const LicenseCalculator: React.FC = () => {
   const calculations = useMemo(() => {
     // 1. Annual Base Fee (9'600 CHF/Year, which is 800/Month)
     // Covers 1 Entity, up to 50 Mio Revenue.
+    // "Basis ist ohne Rabatt" -> This part is fixed and not subject to the percentage discount.
     const baseMonthly = 800;
     const baseAnnual = baseMonthly * 12;
 
@@ -22,19 +23,21 @@ export const LicenseCalculator: React.FC = () => {
     const revenueSteps = Math.ceil(revenueOverhead / 50);
     const revenueFeeAnnual = revenueSteps * 1000;
 
-    // Total List Price (Annual)
-    const totalListAnnual = baseAnnual + entityFeeAnnual + revenueFeeAnnual;
-
-    // 4. Discount based on Term (Vorauszahlung)
+    // 4. Discount Logic
+    // Discount based on Term (Vorauszahlung)
     let discountPercent = 0;
     if (term === 12) discountPercent = 0.10; // 10%
     if (term === 24) discountPercent = 0.20; // 20%
     if (term === 36) discountPercent = 0.30; // 30%
 
-    // Discount applies to the Total Annual List Price
-    const discountAmountAnnual = totalListAnnual * discountPercent;
+    // Discount applies ONLY to Add-ons (Entity & Revenue Fees), NOT to the Base Fee.
+    const addonsAnnual = entityFeeAnnual + revenueFeeAnnual;
+    const discountAmountAnnual = addonsAnnual * discountPercent;
     
-    // Final Annual Price
+    // Total List Price (Annual) - For display
+    const totalListAnnual = baseAnnual + addonsAnnual;
+
+    // Final Annual Price = Base + (Addons - Discount)
     const finalAnnual = totalListAnnual - discountAmountAnnual;
     
     // Monthly Equivalent
@@ -45,6 +48,7 @@ export const LicenseCalculator: React.FC = () => {
       baseAnnual,
       entityFeeAnnual,
       revenueFeeAnnual,
+      addonsAnnual,
       totalListAnnual,
       discountPercent,
       discountAmountAnnual,
@@ -88,7 +92,7 @@ export const LicenseCalculator: React.FC = () => {
                   <CheckCircle2 size={16} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-primary block text-sm">Basisfee (CHF 800 / Monat)</strong>
-                    <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.<br/>Abrechnung jährlich (CHF 9'600).</span>
+                    <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.<br/>Abrechnung jährlich (CHF 9'600, ohne Rabatt).</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -170,7 +174,7 @@ export const LicenseCalculator: React.FC = () => {
 
                   {/* Term Buttons - Compact Grid */}
                   <div className="space-y-2">
-                    <label className="font-bold text-primary text-xs uppercase tracking-wider text-slate-400">Laufzeit & Rabatt</label>
+                    <label className="font-bold text-primary text-xs uppercase tracking-wider text-slate-400">Laufzeit & Rabatt (auf Add-ons)</label>
                     <div className="grid grid-cols-3 gap-2">
                       {[12, 24, 36].map((t) => {
                          const discountMap = { 12: '10%', 24: '20%', 36: '30%' };
@@ -199,10 +203,10 @@ export const LicenseCalculator: React.FC = () => {
                        <span>Basisfee (CHF 800/Mt x 12)</span>
                        <span>{formatCHF(calculations.baseAnnual)}</span>
                     </div>
-                    {(calculations.entityFeeAnnual > 0 || calculations.revenueFeeAnnual > 0) && (
+                    {(calculations.addonsAnnual > 0) && (
                        <div className="flex justify-between text-xs text-secondary">
                           <span>Add-ons (pro Jahr)</span>
-                          <span>+ {formatCHF(calculations.entityFeeAnnual + calculations.revenueFeeAnnual)}</span>
+                          <span>+ {formatCHF(calculations.addonsAnnual)}</span>
                        </div>
                     )}
                      <div className="flex justify-between text-xs font-medium text-primary border-t border-slate-200 pt-1 mt-1">
@@ -210,10 +214,12 @@ export const LicenseCalculator: React.FC = () => {
                        <span>{formatCHF(calculations.totalListAnnual)}</span>
                     </div>
 
-                    <div className="flex justify-between text-xs text-green-600 font-medium pt-1">
-                       <span>Vorauszahlung (-{calculations.discountPercent * 100}%)</span>
-                       <span>- {formatCHF(calculations.discountAmountAnnual)}</span>
-                    </div>
+                    {calculations.discountAmountAnnual > 0 && (
+                      <div className="flex justify-between text-xs text-green-600 font-medium pt-1">
+                        <span>Rabatt auf Add-ons (-{calculations.discountPercent * 100}%)</span>
+                        <span>- {formatCHF(calculations.discountAmountAnnual)}</span>
+                      </div>
+                    )}
                     
                     <div className="h-px bg-slate-200 my-1"></div>
 
