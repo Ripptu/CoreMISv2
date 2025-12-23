@@ -20,11 +20,8 @@ export const Header: React.FC = () => {
   };
 
   const handleContactClick = () => {
-     // Scroll to footer/contact area or open mail
-     const event = new CustomEvent('smooth-scroll-to', { detail: { target: 'footer' } }); // Assuming footer is at bottom
+     const event = new CustomEvent('smooth-scroll-to', { detail: { target: 'footer' } });
      window.dispatchEvent(event);
-     // Fallback if footer ID isn't explicit, just scroll bottom
-     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   };
 
   return (
@@ -37,9 +34,9 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         
-        {/* Left: Empty or Desktop Nav (Logo removed as requested) */}
+        {/* Left: Nav (Logo Removed) */}
         <div className="flex items-center gap-8">
-           {/* Desktop Nav shifted to left or kept here */}
+           {/* Desktop Nav - Moved slightly left since logo is gone */}
            <div className="hidden md:flex items-center gap-8">
             <button 
               onClick={() => scrollToSection('loesungen')}
@@ -69,7 +66,6 @@ export const Header: React.FC = () => {
 
         {/* Mobile Toggle */}
         <div className="flex items-center gap-4 md:hidden ml-auto">
-            {/* Mobile Contact Icon Button (optional, but good for UX if logo is gone) */}
             <button onClick={handleContactClick} className="text-primary hover:text-accent-orange">
                <Mail size={20} />
             </button>
