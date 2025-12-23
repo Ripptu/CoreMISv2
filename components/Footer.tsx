@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUp, Mail, Linkedin, Twitter } from 'lucide-react';
+import { ArrowUp, Mail, Linkedin, Twitter, ArrowRight, ShieldCheck, Activity } from 'lucide-react';
+import { RevealOnScroll } from './RevealOnScroll';
 
 interface FooterProps {
   onOpenLegal: (page: 'impressum' | 'datenschutz' | 'agb') => void;
@@ -17,104 +18,158 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
   };
 
   return (
-    <footer id="kontakt" className="bg-white border-t border-border">
+    <footer id="kontakt" className="bg-[#0B0F19] text-white pt-32 pb-12 relative overflow-hidden border-t border-white/5">
       
-      {/* Newsletter Strip */}
-      <div className="bg-primary py-12 px-6">
-        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-           <div className="text-white">
-             <h3 className="text-xl font-bold mb-1">Immer informiert bleiben.</h3>
-             <p className="text-slate-400 text-sm">Release-Updates & CFO Insights direkt in Ihr Postfach.</p>
-           </div>
-           <div className="flex w-full md:w-auto gap-2">
-             <input 
-               type="email" 
-               placeholder="Ihre E-Mail Adresse" 
-               className="px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-accent-orange w-full md:w-80"
-             />
-             <button className="bg-accent-orange hover:bg-accent-hover text-white px-6 py-3 rounded-lg font-bold transition-colors">
-               Anmelden
-             </button>
-           </div>
-        </div>
+      {/* 1. DECORATIVE BACKGROUND TYPOGRAPHY */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 pointer-events-none select-none z-0">
+        <span className="text-[18vw] font-bold text-white/[0.02] leading-none font-serif tracking-tighter whitespace-nowrap">
+          COREMIS
+        </span>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 py-16">
+      {/* 2. GLOW EFFECTS */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-orange/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div className="max-w-[1280px] mx-auto px-6 relative z-10">
         
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
-           
-           {/* Brand & Logo */}
-           <div className="col-span-1">
-             <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 relative">
-                   <img 
-                     src="https://i.postimg.cc/c1F6x2bJ/6aeba13c-44fb-40da-a15c-6a534a48ab66.png" 
-                     alt="CoreMIS Logo" 
-                     className="w-full h-full object-contain"
-                   />
-                </div>
-                <span className="font-bold text-2xl text-primary">CoreMIS</span>
-             </div>
-             <p className="text-sm text-secondary leading-relaxed mb-6">
-               Die intelligente Finanzsteuerung für den Mittelstand. Pragmatisch, sicher, skalierbar.
-             </p>
-             <div className="flex gap-4">
-                <button className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-secondary hover:text-accent-orange hover:bg-orange-50 transition-colors">
-                  <Linkedin size={18} />
-                </button>
-                <button className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-secondary hover:text-accent-orange hover:bg-orange-50 transition-colors">
-                  <Twitter size={18} />
-                </button>
-                <button className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-secondary hover:text-accent-orange hover:bg-orange-50 transition-colors">
-                  <Mail size={18} />
-                </button>
-             </div>
-           </div>
+        {/* TOP SECTION: CTA & NEWSLETTER */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-24 border-b border-white/10 pb-16">
+          <RevealOnScroll>
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Finanzsteuerung. <br/>
+                <span className="text-accent-orange font-serif italic">Neu gedacht.</span>
+              </h2>
+              <p className="text-slate-400 text-lg max-w-md">
+                Keine Excel-Tapeten mehr. Holen Sie sich die Klarheit, die Ihr Unternehmen verdient. Starten Sie noch heute.
+              </p>
+            </div>
+          </RevealOnScroll>
 
-           {/* Navigation Links (Matching Navbar) */}
-           <div className="col-span-1 md:col-span-2">
-             <h4 className="font-bold text-primary mb-6">Navigation</h4>
-             <div className="grid grid-cols-2 gap-4">
-                <ul className="space-y-3 text-sm text-secondary">
-                  <li><button onClick={() => handleNav('top')} className="hover:text-accent-orange transition-colors">Home</button></li>
-                  <li><button onClick={() => handleNav('loesungen')} className="hover:text-accent-orange transition-colors">Lösungen</button></li>
-                  <li><button onClick={() => handleNav('funktionsweise')} className="hover:text-accent-orange transition-colors">Funktionsweise</button></li>
-                  <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">ROI Rechner</button></li>
-                </ul>
-                <ul className="space-y-3 text-sm text-secondary">
-                  <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Preise & Pakete</button></li>
-                  <li><button onClick={() => handleNav('sicherheit')} className="hover:text-accent-orange transition-colors">Sicherheit</button></li>
-                  <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">FAQ</button></li>
-                </ul>
-             </div>
-           </div>
-
-           {/* Legal */}
-           <div>
-             <h4 className="font-bold text-primary mb-6">Rechtliches</h4>
-             <ul className="space-y-3 text-sm text-secondary">
-               <li><button onClick={() => onOpenLegal('impressum')} className="hover:text-accent-orange transition-colors">Impressum</button></li>
-               <li><button onClick={() => onOpenLegal('datenschutz')} className="hover:text-accent-orange transition-colors">Datenschutz</button></li>
-               <li><button onClick={() => onOpenLegal('agb')} className="hover:text-accent-orange transition-colors">AGB (EULA)</button></li>
-             </ul>
-           </div>
+          <RevealOnScroll delay={100}>
+            <div className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
+               <h3 className="text-xl font-bold mb-2">CFO Insights Newsletter</h3>
+               <p className="text-slate-400 text-sm mb-6">Updates zu Finance-Tech, Benchmarks & Features.</p>
+               
+               <div className="flex flex-col sm:flex-row gap-3">
+                 <input 
+                   type="email" 
+                   placeholder="ihre@email.com" 
+                   className="flex-1 bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-accent-orange/50 transition-all"
+                 />
+                 <button className="bg-accent-orange hover:bg-accent-hover text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-glow hover:scale-105 flex items-center justify-center gap-2 group">
+                   Anmelden <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                 </button>
+               </div>
+            </div>
+          </RevealOnScroll>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm text-secondary font-medium flex items-center gap-2">
-            © {new Date().getFullYear()} CoreMIS GmbH. 
-            <span className="flex items-center gap-1 ml-4 text-xs bg-surface px-2 py-1 rounded border border-border">
-               Swiss Quality Standards <div className="w-3 h-3 bg-red-600 rounded-sm relative flex items-center justify-center text-white text-[8px] font-bold">+</div>
-            </span>
-          </div>
+        {/* MIDDLE SECTION: NAVIGATION GRID */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 md:gap-8 mb-20">
+           
+           {/* Column 1: Brand (4 cols) */}
+           <div className="col-span-2 lg:col-span-4">
+             <RevealOnScroll delay={200}>
+               <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-gradient-to-br from-white/10 to-transparent border border-white/10 rounded-lg flex items-center justify-center">
+                     <span className="font-bold text-accent-orange text-xl">C</span>
+                  </div>
+                  <span className="font-bold text-2xl tracking-tight">CoreMIS</span>
+               </div>
+               <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">
+                 Die intelligente Finanzsteuerung für den Mittelstand. Entwickelt in der Schweiz für höchste Ansprüche an Präzision und Sicherheit.
+               </p>
+               
+               {/* Socials */}
+               <div className="flex gap-4">
+                  {[Linkedin, Twitter, Mail].map((Icon, i) => (
+                    <button key={i} className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-orange hover:border-accent-orange transition-all duration-300">
+                      <Icon size={18} />
+                    </button>
+                  ))}
+               </div>
+             </RevealOnScroll>
+           </div>
+
+           {/* Column 2: Product (2 cols) */}
+           <div className="col-span-1 lg:col-span-2">
+             <RevealOnScroll delay={300}>
+               <h4 className="font-bold text-white mb-6">Produkt</h4>
+               <ul className="space-y-4 text-sm text-slate-400">
+                 <li><button onClick={() => handleNav('loesungen')} className="hover:text-accent-orange transition-colors">Lösungen</button></li>
+                 <li><button onClick={() => handleNav('funktionsweise')} className="hover:text-accent-orange transition-colors">Funktionsweise</button></li>
+                 <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Preise & Pakete</button></li>
+                 <li><button onClick={() => handleNav('sicherheit')} className="hover:text-accent-orange transition-colors">Sicherheit</button></li>
+               </ul>
+             </RevealOnScroll>
+           </div>
+
+           {/* Column 3: Resources (2 cols) */}
+           <div className="col-span-1 lg:col-span-2">
+             <RevealOnScroll delay={400}>
+               <h4 className="font-bold text-white mb-6">Ressourcen</h4>
+               <ul className="space-y-4 text-sm text-slate-400">
+                 <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">ROI Rechner</button></li>
+                 <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">Häufige Fragen</button></li>
+                 <li><button className="hover:text-accent-orange transition-colors flex items-center gap-2">API Docs <span className="text-[9px] bg-white/10 px-1.5 py-0.5 rounded text-white">Soon</span></button></li>
+                 <li><button className="hover:text-accent-orange transition-colors">Changelog</button></li>
+               </ul>
+             </RevealOnScroll>
+           </div>
+
+           {/* Column 4: Legal & Status (4 cols) */}
+           <div className="col-span-2 lg:col-span-4 lg:pl-12">
+             <RevealOnScroll delay={500}>
+               <div className="bg-[#131825] rounded-2xl p-6 border border-white/5">
+                 <div className="flex items-center gap-2 mb-4">
+                    <div className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </div>
+                    <span className="text-xs font-bold text-emerald-500 uppercase tracking-wider">All Systems Operational</span>
+                 </div>
+                 
+                 <div className="space-y-3 text-sm text-slate-400 mb-6">
+                   <button onClick={() => onOpenLegal('datenschutz')} className="block hover:text-white transition-colors">Datenschutz (DPA)</button>
+                   <button onClick={() => onOpenLegal('agb')} className="block hover:text-white transition-colors">AGB & EULA</button>
+                   <button onClick={() => onOpenLegal('impressum')} className="block hover:text-white transition-colors">Impressum</button>
+                 </div>
+
+                 <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                    <ShieldCheck size={16} className="text-slate-500" />
+                    <span className="text-xs text-slate-500">ISO 27001 Certified Data Center</span>
+                 </div>
+               </div>
+             </RevealOnScroll>
+           </div>
+
+        </div>
+
+        {/* BOTTOM BAR */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/10 pt-8">
           
-          <button 
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-sm font-bold text-primary hover:text-accent-orange transition-colors"
-          >
-            Nach oben <ArrowUp size={16} />
-          </button>
+          <div className="text-sm text-slate-500 font-medium">
+            © {new Date().getFullYear()} CoreMIS GmbH.
+          </div>
+
+          <div className="flex items-center gap-6">
+             {/* Swiss Made Badge */}
+             <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded border border-white/5 hover:bg-white/10 transition-colors cursor-default">
+                <span className="text-red-500 text-lg font-bold leading-none">+</span>
+                <span className="text-xs font-bold text-slate-300 tracking-wider uppercase">Swiss Quality</span>
+             </div>
+
+             <button 
+                onClick={scrollToTop}
+                className="w-10 h-10 rounded-full bg-accent-orange text-white flex items-center justify-center hover:bg-accent-hover hover:-translate-y-1 transition-all shadow-glow"
+                aria-label="Nach oben"
+             >
+                <ArrowUp size={20} strokeWidth={2.5} />
+             </button>
+          </div>
+
         </div>
 
       </div>
