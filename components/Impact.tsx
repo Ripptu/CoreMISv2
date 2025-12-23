@@ -9,29 +9,29 @@ export const Impact: React.FC = () => {
           
           <RevealOnScroll delay={0}>
             <div className="border-l-2 border-accent-orange pl-6">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">3-4</div>
-              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Wochen bis Go Live</div>
+              <div className="text-5xl md:text-6xl font-serif text-primary mb-3">4-6</div>
+              <div className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">Wochen bis Go Live</div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={100}>
             <div className="border-l-2 border-slate-200 pl-6">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">85%</div>
-              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Weniger Excel-Aufwand</div>
+              <div className="text-5xl md:text-6xl font-serif text-primary mb-3">80%</div>
+              <div className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">Weniger Excel-Aufwand</div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={200}>
             <div className="border-l-2 border-slate-200 pl-6">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
-              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Datensicherheit</div>
+              <div className="text-5xl md:text-6xl font-serif text-primary mb-3">100%</div>
+              <div className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">Datensicherheit</div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={300}>
             <div className="border-l-2 border-slate-200 pl-6">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">360°</div>
-              <div className="text-sm font-medium text-secondary uppercase tracking-wider">Finanzblick</div>
+              <div className="text-5xl md:text-6xl font-serif text-primary mb-3">360°</div>
+              <div className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">Finanzblick</div>
             </div>
           </RevealOnScroll>
 

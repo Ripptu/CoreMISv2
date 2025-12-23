@@ -1,6 +1,7 @@
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
 import { CheckCircle2, Clock, TrendingDown, Unlock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const PositioningGraph: React.FC = () => {
   return (
@@ -99,7 +100,17 @@ export const PositioningGraph: React.FC = () => {
 
                   {/* Axis Labels */}
                   <text x="380" y="390" textAnchor="end" className="text-[10px] fill-secondary font-bold uppercase tracking-wider">Komplexität / Kosten</text>
-                  <text x="25" y="20" textAnchor="end" className="text-[10px] fill-secondary font-bold uppercase tracking-wider" style={{writingMode: 'vertical-rl', textOrientation: 'mixed'}}>Funktionsumfang / Value</text>
+                  
+                  {/* Rotated Axis Label - Positioned ALONG the axis (centered vertically) */}
+                  <text 
+                    transform="rotate(-90)" 
+                    x="-190" 
+                    y="25" 
+                    textAnchor="middle" 
+                    className="text-[10px] fill-secondary font-bold uppercase tracking-wider"
+                  >
+                    Funktionsumfang / Value
+                  </text>
 
                   {/* Competitor: Enterprise (Top Right) */}
                   <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
@@ -124,10 +135,29 @@ export const PositioningGraph: React.FC = () => {
 
                   {/* CoreMIS - Sweet Spot (Top Left) */}
                   <g className="cursor-pointer group">
-                    {/* Pulse Effect */}
-                    <circle cx="100" cy="80" r="40" className="fill-accent-orange/10 animate-ping opacity-75" />
-                    <circle cx="100" cy="80" r="20" className="fill-accent-orange/20 group-hover:fill-accent-orange/30 transition-colors" />
-                    <circle cx="100" cy="80" r="10" className="fill-accent-orange shadow-lg" />
+                    {/* Animated Ripples using framer-motion for smooth, beautiful effect */}
+                    <motion.circle 
+                      cx="100" cy="80" r="10" 
+                      className="fill-accent-orange/30"
+                      initial={{ opacity: 0, r: 10 }}
+                      animate={{ opacity: [0, 0.5, 0], r: [10, 50] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+                    />
+                    <motion.circle 
+                      cx="100" cy="80" r="10" 
+                      className="fill-accent-orange/20"
+                      initial={{ opacity: 0, r: 10 }}
+                      animate={{ opacity: [0, 0.4, 0], r: [10, 70] }}
+                      transition={{ duration: 3, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
+                    />
+                    
+                    {/* Core Pulse */}
+                    <motion.circle 
+                      cx="100" cy="80" r="12" 
+                      className="fill-accent-orange shadow-lg" 
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
                     
                     <text x="100" y="115" textAnchor="middle" className="text-sm font-bold fill-primary">CoreMIS</text>
                     <text x="100" y="130" textAnchor="middle" className="text-[9px] font-medium fill-accent-orange uppercase tracking-wide">The Sweet Spot</text>

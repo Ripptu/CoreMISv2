@@ -20,7 +20,7 @@ export const DataJourney: React.FC = () => {
     <section ref={containerRef} className="py-24 md:py-32 bg-white border-y border-border overflow-hidden relative">
       <div className="max-w-[1280px] mx-auto px-6 relative">
         <RevealOnScroll>
-          <h2 className="text-3xl font-serif font-medium text-center mb-20 md:mb-24">Die CoreMIS Data Journey</h2>
+          <h2 className="text-3xl font-serif font-medium text-center mb-20 md:mb-24">Die CoreMIS Journey</h2>
         </RevealOnScroll>
         
         <div className="relative max-w-4xl mx-auto">

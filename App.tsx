@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Hero } from './components/Hero';
 import { ProblemSolution } from './components/ProblemSolution';
 import { PositioningGraph } from './components/PositioningGraph';
+import { DataJourney } from './components/DataJourney';
 import { Personas } from './components/Personas';
 import { PricingPackages } from './components/PricingPackages';
+import { LicenseCalculator } from './components/LicenseCalculator';
 import { ROICalculator } from './components/ROICalculator';
 import { SecuritySection } from './components/SecuritySection';
 import { FAQ } from './components/FAQ';
@@ -21,9 +23,11 @@ const App: React.FC = () => {
         <Hero />
         <ProblemSolution />
         <PositioningGraph />
+        <DataJourney />
         <Personas />
         <ROICalculator />
         <PricingPackages />
+        <LicenseCalculator />
         <SecuritySection />
         <FAQ />
         <Footer onOpenLegal={setLegalPage} />
