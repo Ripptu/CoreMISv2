@@ -8,18 +8,17 @@ export const LicenseCalculator: React.FC = () => {
   const [term, setTerm] = useState<12 | 24 | 36>(12);
 
   const calculations = useMemo(() => {
-    // 1. Annual Base Fee (9'600 CHF/Month)
-    const baseMonthly = 9600;
-    const baseAnnual = baseMonthly * 12;
+    // 1. Base Fee (Monthly) - Updated to 800 CHF as requested
+    const baseMonthly = 800;
 
-    // 2. Entity Fee (500 CHF/Year per additional entity)
+    // 2. Entity Fee (Monthly) - 40 CHF per additional entity
     const additionalEntitiesCount = Math.max(0, entities - 1);
-    const entityFeeAnnual = additionalEntitiesCount * 500;
+    const entityFeeMonthly = additionalEntitiesCount * 40;
 
-    // 3. Revenue Fee (1'000 CHF/Year per additional 50 Mio started)
+    // 3. Revenue Fee (Monthly) - 80 CHF per additional 50 Mio
     const revenueOverhead = Math.max(0, revenue - 50);
     const revenueSteps = Math.ceil(revenueOverhead / 50);
-    const revenueFeeAnnual = revenueSteps * 1000;
+    const revenueFeeMonthly = revenueSteps * 80;
 
     // 4. Discount Logic
     let discountPercent = 0;
@@ -28,28 +27,23 @@ export const LicenseCalculator: React.FC = () => {
     if (term === 36) discountPercent = 0.20; // 20%
 
     // Discount applies ONLY to Add-ons (Entity & Revenue Fees), NOT to the Base Fee.
-    const addonsAnnual = entityFeeAnnual + revenueFeeAnnual;
-    const discountAmountAnnual = addonsAnnual * discountPercent;
+    const addonsMonthly = entityFeeMonthly + revenueFeeMonthly;
+    const discountAmountMonthly = addonsMonthly * discountPercent;
     
-    // Total List Price (Annual) - For display
-    const totalListAnnual = baseAnnual + addonsAnnual;
+    // Total List Price (Monthly)
+    const totalListMonthly = baseMonthly + addonsMonthly;
 
-    // Final Annual Price = Base + (Addons - Discount)
-    const finalAnnual = totalListAnnual - discountAmountAnnual;
+    // Final Price (Monthly)
+    const finalMonthly = totalListMonthly - discountAmountMonthly;
     
-    // Monthly Equivalent
-    const finalMonthly = finalAnnual / 12;
-
     return {
       baseMonthly,
-      baseAnnual,
-      entityFeeAnnual,
-      revenueFeeAnnual,
-      addonsAnnual,
-      totalListAnnual,
+      entityFeeMonthly,
+      revenueFeeMonthly,
+      addonsMonthly,
+      totalListMonthly,
       discountPercent,
-      discountAmountAnnual,
-      finalAnnual,
+      discountAmountMonthly,
       finalMonthly,
     };
   }, [entities, revenue, term]);
@@ -63,12 +57,11 @@ export const LicenseCalculator: React.FC = () => {
 
   return (
     <section className="py-16 md:py-20 bg-surface border-t border-border relative">
-      {/* Smaller Container Width for Compact Look */}
       <div className="max-w-[1024px] mx-auto px-6">
         
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
           
-          {/* LEFT SIDE: Context (Compact) */}
+          {/* LEFT SIDE: Context */}
           <div className="pt-2">
             <RevealOnScroll>
               <div className="mb-6">
@@ -76,42 +69,51 @@ export const LicenseCalculator: React.FC = () => {
                    <Calculator size={14} /> SaaS Kalkulator
                  </div>
                  <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3 leading-tight">
-                   Individuelles <span className="text-accent-orange">Lizenzmodell.</span>
+                   Lizenzmodell.
                  </h2>
-                 <p className="text-sm text-secondary leading-relaxed max-w-sm">
+                 <p className="text-base text-secondary leading-relaxed max-w-sm">
                    Unser Preismodell passt sich an. Zahlen Sie nur für die Komplexität, die Sie tatsächlich managen.
                  </p>
               </div>
 
-              {/* Compact Specs Box */}
-              <div className="bg-white rounded-xl p-4 border border-border shadow-sm space-y-3 mb-6">
+              {/* Added Title above the block */}
+              <h4 className="text-accent-orange font-bold text-sm uppercase tracking-widest mb-3">
+                Kalkulator auf Monatspreise aufbauen
+              </h4>
+
+              {/* Specs Box - Increased Fonts */}
+              <div className="bg-white rounded-xl p-6 border border-border shadow-sm space-y-5 mb-8">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 size={16} className="text-accent-orange shrink-0 mt-0.5" />
+                  <CheckCircle2 size={20} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-primary block text-sm">Basisfee (CHF 9'600 / Monat)</strong>
-                    <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.<br/>Abrechnung jährlich ({formatCHF(calculations.baseAnnual)}, ohne Rabatt).</span>
+                    {/* Increased to text-base */}
+                    <strong className="text-primary block text-base mb-1">Basisfee (CHF 800 / Monat)</strong>
+                    {/* Increased to text-sm */}
+                    <span className="text-sm text-secondary leading-snug block">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.<br/>Abrechnung monatlich.</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 size={16} className="text-accent-orange shrink-0 mt-0.5" />
+                  <CheckCircle2 size={20} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-primary block text-sm">Fair Scaling (pro Jahr)</strong>
-                    <span className="text-[11px] text-secondary">+ CHF 500 / weitere Gesellschaft<br/>+ CHF 1'000 / weitere 50 Mio. Umsatz</span>
+                    {/* Increased to text-base */}
+                    <strong className="text-primary block text-base mb-1">Fair Scaling</strong>
+                    {/* Increased to text-sm */}
+                    <span className="text-sm text-secondary leading-snug block">+ CHF 40 / weitere Gesellschaft<br/>+ CHF 80 / weitere 50 Mio. Umsatz</span>
                   </div>
                 </div>
               </div>
 
-              {/* Compact Service Rates */}
-              <div className="border-t border-slate-200 pt-4">
-                <h4 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Service Rates</h4>
-                <div className="space-y-1">
-                  <div className="flex justify-between text-sm">
+              {/* Service Rates - Increased Fonts */}
+              <div className="border-t border-slate-200 pt-5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Service Rates</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-base">
                     <span className="text-primary">Beratung & Schulung</span>
-                    <span className="font-mono text-accent-orange font-bold text-xs">CHF 200 / h</span>
+                    <span className="font-bold text-accent-orange tracking-tight">CHF 200 / h</span>
                   </div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-base">
                     <span className="text-primary">Entwicklung</span>
-                    <span className="font-mono text-accent-orange font-bold text-xs">CHF 160 / h</span>
+                    <span className="font-bold text-accent-orange tracking-tight">CHF 160 / h</span>
                   </div>
                 </div>
               </div>
@@ -119,60 +121,62 @@ export const LicenseCalculator: React.FC = () => {
             </RevealOnScroll>
           </div>
 
-          {/* RIGHT SIDE: Compact Interactive Calculator */}
+          {/* RIGHT SIDE: Interactive Calculator */}
           <div>
             <RevealOnScroll delay={100}>
               <div className="bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden">
                 
-                {/* Header - Compact */}
-                <div className="bg-primary text-white p-4 flex justify-between items-center">
+                {/* Header */}
+                <div className="bg-primary text-white p-5 flex justify-between items-center">
                   <div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Konfiguration</div>
-                    <div className="font-serif text-lg italic">Ihr Preismodell</div>
+                    <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Konfiguration</div>
+                    <div className="font-serif text-xl italic">Ihr Preis</div>
                   </div>
-                  <CalendarCheck size={20} className="text-accent-orange opacity-80" />
+                  <CalendarCheck size={24} className="text-accent-orange opacity-80" />
                 </div>
 
-                <div className="p-5 space-y-6">
+                <div className="p-6 space-y-8">
                   
                   {/* Slider 1: Entities */}
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                      <div className="flex justify-between items-center">
-                        <label className="font-bold text-primary text-sm flex items-center gap-2">
-                           <Building2 size={16} className="text-accent-orange" /> Gesellschaften
+                        {/* Label increased to text-base */}
+                        <label className="font-bold text-primary text-base flex items-center gap-2">
+                           <Building2 size={18} className="text-accent-orange" /> Gesellschaften
                         </label>
-                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-2 py-0.5 rounded text-sm font-bold min-w-[2.5rem] text-center">
+                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-3 py-1 rounded text-base font-bold min-w-[3rem] text-center">
                           {entities}
                         </span>
                      </div>
                      <input 
                         type="range" min="1" max="50" step="1" 
                         value={entities} onChange={(e) => setEntities(Number(e.target.value))}
-                        className="w-full h-1.5 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange"
+                        className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange"
                      />
                   </div>
 
                   {/* Slider 2: Revenue */}
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                      <div className="flex justify-between items-center">
-                        <label className="font-bold text-primary text-sm flex items-center gap-2">
-                          <Banknote size={16} className="text-accent-orange" /> Jahresumsatz
+                        {/* Label increased to text-base */}
+                        <label className="font-bold text-primary text-base flex items-center gap-2">
+                          <Banknote size={18} className="text-accent-orange" /> Jahresumsatz
                         </label>
-                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-2 py-0.5 rounded text-sm font-bold min-w-[2.5rem] text-center">
+                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-3 py-1 rounded text-base font-bold min-w-[3.5rem] text-center">
                           {revenue} M
                         </span>
                      </div>
                      <input 
                         type="range" min="10" max="500" step="10"
                         value={revenue} onChange={(e) => setRevenue(Number(e.target.value))}
-                        className="w-full h-1.5 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange"
+                        className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange"
                      />
                   </div>
 
-                  {/* Term Buttons - Compact Grid */}
-                  <div className="space-y-2">
-                    <label className="font-bold text-primary text-xs uppercase tracking-wider text-slate-400">Laufzeit & Rabatt (auf Add-ons)</label>
-                    <div className="grid grid-cols-3 gap-2">
+                  {/* Vorauszahlungsrabatt Options */}
+                  <div className="space-y-3">
+                    <label className="font-bold text-primary text-xs uppercase tracking-wider text-accent-orange">Vorauszahlungsrabatt</label>
+                    <div className="grid grid-cols-3 gap-3">
                       {[12, 24, 36].map((t) => {
                          const discountMap = { 12: '0%', 24: '10%', 36: '20%' };
                          const isActive = term === t;
@@ -183,14 +187,14 @@ export const LicenseCalculator: React.FC = () => {
                            <button
                              key={t}
                              onClick={() => setTerm(t as any)}
-                             className={`py-2 rounded-lg border text-xs transition-all flex flex-col items-center justify-center ${
+                             className={`py-3 rounded-lg border text-sm transition-all flex flex-col items-center justify-center ${
                                isActive 
                                  ? 'border-accent-orange bg-orange-50 text-primary font-bold' 
                                  : 'border-slate-100 bg-white text-secondary hover:border-slate-300'
                              }`}
                            >
                              <span>{t} Mon.</span>
-                             <span className={`text-[10px] ${isActive && hasDiscount ? 'text-accent-orange' : 'text-slate-400'}`}>
+                             <span className={`text-xs ${isActive && hasDiscount ? 'text-accent-orange' : 'text-slate-400'}`}>
                                {hasDiscount ? `-${label}` : 'Standard'}
                              </span>
                            </button>
@@ -199,40 +203,37 @@ export const LicenseCalculator: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Result Box - Compact */}
-                  <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
-                    <div className="flex justify-between text-xs text-secondary">
-                       <span>Basisfee (CHF 9'600/Mt x 12)</span>
-                       <span>{formatCHF(calculations.baseAnnual)}</span>
+                  {/* Result Box - Increased Fonts */}
+                  <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 space-y-3">
+                    <div className="flex justify-between text-sm text-secondary">
+                       <span>Basisfee</span>
+                       <span>{formatCHF(calculations.baseMonthly)}</span>
                     </div>
-                    {(calculations.addonsAnnual > 0) && (
-                       <div className="flex justify-between text-xs text-secondary">
-                          <span>Add-ons (pro Jahr)</span>
-                          <span>+ {formatCHF(calculations.addonsAnnual)}</span>
+                    {(calculations.addonsMonthly > 0) && (
+                       <div className="flex justify-between text-sm text-secondary">
+                          <span>Add-ons</span>
+                          <span>+ {formatCHF(calculations.addonsMonthly)}</span>
                        </div>
                     )}
-                     <div className="flex justify-between text-xs font-medium text-primary border-t border-slate-200 pt-1 mt-1">
-                       <span>Total Listenpreis (Jahr)</span>
-                       <span>{formatCHF(calculations.totalListAnnual)}</span>
+                     <div className="flex justify-between text-sm font-medium text-primary border-t border-slate-200 pt-2 mt-2">
+                       <span>Total Listenpreis</span>
+                       <span>{formatCHF(calculations.totalListMonthly)}</span>
                     </div>
 
-                    {calculations.discountAmountAnnual > 0 && (
-                      <div className="flex justify-between text-xs text-green-600 font-medium pt-1">
+                    {calculations.discountAmountMonthly > 0 && (
+                      <div className="flex justify-between text-sm text-green-600 font-medium pt-1">
                         <span>Rabatt auf Add-ons (-{calculations.discountPercent * 100}%)</span>
-                        <span>- {formatCHF(calculations.discountAmountAnnual)}</span>
+                        <span>- {formatCHF(calculations.discountAmountMonthly)}</span>
                       </div>
                     )}
                     
-                    <div className="h-px bg-slate-200 my-1"></div>
+                    <div className="h-px bg-slate-200 my-2"></div>
 
-                    <div className="flex justify-between items-end">
-                       <span className="font-bold text-sm text-primary">Ø Monatlich</span>
+                    <div className="flex justify-between items-end pt-1">
+                       <span className="font-bold text-lg text-primary mb-1">Monatlich</span>
                        <div className="text-right">
-                          <span className="block font-bold text-2xl text-accent-orange leading-none">
+                          <span className="block font-bold text-4xl text-accent-orange leading-none">
                             {formatCHF(calculations.finalMonthly)}
-                          </span>
-                          <span className="text-[10px] text-slate-400 mt-0.5 block">
-                            Rechnung: {formatCHF(calculations.finalAnnual)} / Jahr
                           </span>
                        </div>
                     </div>

@@ -11,6 +11,7 @@ import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { LegalPage } from './components/LegalPage';
+import { ScrollToTop } from './components/ScrollToTop';
 
 const App: React.FC = () => {
   const [legalPage, setLegalPage] = useState<'impressum' | 'datenschutz' | 'agb' | null>(null);
@@ -51,6 +52,7 @@ const App: React.FC = () => {
         )}
       </main>
       
+      <ScrollToTop />
       <Footer onOpenLegal={setLegalPage} />
     </div>
   );

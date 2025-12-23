@@ -17,10 +17,10 @@ export const Hero: React.FC = () => {
               <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold text-primary leading-[1.05] tracking-tight mb-8">
                 CoreMIS: <br/>
                 <span className="font-sans text-primary">MIS-Power für </span>
-                <span className="relative inline-block z-10 font-handwriting italic font-normal text-primary">
+                <span className="relative inline-block z-10 font-serif font-normal text-primary px-1">
                    KMU.
-                   {/* Orange Stroke behind KMU */}
-                   <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
+                   {/* Handwritten Marker Style Stroke */}
+                   <span className="absolute bottom-3 left-0 w-full h-[0.35em] bg-accent-orange/80 -z-10 -rotate-1 rounded-sm mix-blend-multiply"></span>
                 </span>
               </h1>
               
@@ -28,14 +28,11 @@ export const Hero: React.FC = () => {
                 Automatisiertes Budgeting, Forecasting und Reporting – ohne Excel-Chaos und ohne Overkill-Ansätze – in wenigen Wochen eingeführt.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full">
-                <button className="btn-core px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 text-lg group w-full sm:w-auto shadow-orange hover:shadow-hover">
-                  CoreMIS starten
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 rounded-lg font-semibold border border-border text-primary hover:bg-white bg-white/50 backdrop-blur-sm transition-colors flex items-center justify-center gap-2 w-full sm:w-auto">
-                  <Play size={18} /> Demo ansehen
-                </button>
+              {/* CLAIM instead of buttons */}
+              <div className="flex flex-col sm:flex-row gap-2 justify-center md:justify-start w-full items-center">
+                 <div className="text-2xl md:text-3xl font-serif font-bold text-primary tracking-tight">
+                    Zahlen <span className="text-accent-orange mx-1">•</span> Klar <span className="text-accent-orange mx-1">•</span> Im Griff
+                 </div>
               </div>
             </RevealOnScroll>
           </div>

@@ -82,10 +82,10 @@ export const ROICalculator: React.FC = () => {
 
                <h2 className="text-4xl md:text-6xl font-serif text-primary mb-6 leading-[1.1]">
                  Was kostet Sie manuelles <br/>
-                 <span className="relative inline-block px-2 z-10">
+                 <span className="relative inline-block px-1 z-10 mt-1">
                    <span className="font-serif italic font-bold relative z-10">Reporting?</span>
-                   {/* Thick Orange Stroke matching Header style */}
-                   <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
+                   {/* Marker Style */}
+                   <span className="absolute bottom-3 left-0 w-full h-[0.35em] bg-accent-orange/80 -z-10 -rotate-1 rounded-sm mix-blend-multiply"></span>
                  </span>
                </h2>
 

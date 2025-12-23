@@ -19,10 +19,14 @@ export const PositioningGraph: React.FC = () => {
                </div>
                <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6 leading-[1.1]">
                  Professionelle Finanzsteuerung – <br />
-                 <span className="text-secondary/80">schneller. pragmatischer. günstiger.</span>
+                 <span className="relative inline-block px-1 z-10 mt-2">
+                   <span className="font-serif italic font-bold relative z-10 text-primary">schneller & pragmatischer.</span>
+                   {/* Marker Style */}
+                   <span className="absolute bottom-2 left-0 w-full h-[0.35em] bg-accent-orange/80 -z-10 -rotate-1 rounded-sm mix-blend-multiply"></span>
+                 </span>
                </h2>
                
-               <p className="text-lg text-primary font-medium border-l-4 border-accent-orange pl-4 py-1">
+               <p className="text-lg text-primary font-medium border-l-4 border-accent-orange pl-4 py-1 mt-6">
                  CoreMIS liefert in kurzer Zeit CFO-Expertise zum fairen Preis.
                </p>
             </div>
@@ -45,69 +49,69 @@ export const PositioningGraph: React.FC = () => {
                     </marker>
                   </defs>
 
-                  {/* Axis Labels */}
-                  <text x="380" y="390" textAnchor="end" className="text-[10px] fill-secondary font-bold uppercase tracking-wider">Komplexität / Kosten</text>
+                  {/* Axis Labels - BIGGER & ALIGNED */}
+                  <text x="380" y="395" textAnchor="end" className="text-sm fill-secondary font-bold uppercase tracking-wider">Komplexität / Kosten</text>
                   
-                  {/* Rotated Axis Label - Positioned ALONG the axis (centered vertically) */}
+                  {/* Rotated Axis Label */}
                   <text 
                     transform="rotate(-90)" 
-                    x="-190" 
-                    y="25" 
-                    textAnchor="middle" 
-                    className="text-[10px] fill-secondary font-bold uppercase tracking-wider"
+                    x="-20" 
+                    y="15" 
+                    textAnchor="end" 
+                    className="text-sm fill-secondary font-bold uppercase tracking-wider"
                   >
                     Funktionsumfang / Value
                   </text>
 
                   {/* Competitor: Enterprise (Top Right) */}
                   <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
-                    <circle cx="340" cy="60" r="12" className="fill-slate-300" />
-                    <text x="340" y="90" textAnchor="middle" className="text-[10px] font-bold fill-slate-500">Enterprise Software</text>
-                    <text x="340" y="102" textAnchor="middle" className="text-[8px] fill-slate-400">(Teuer & Träge)</text>
+                    <circle cx="340" cy="60" r="14" className="fill-slate-300" />
+                    <text x="340" y="95" textAnchor="middle" className="text-xs font-bold fill-slate-500">Enterprise Software</text>
+                    <text x="340" y="110" textAnchor="middle" className="text-[10px] fill-slate-400">(Teuer & Träge)</text>
                   </g>
 
                   {/* Competitor: Excel (Bottom Right) */}
                   <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
-                    <circle cx="320" cy="340" r="12" className="fill-slate-300" />
-                    <text x="320" y="320" textAnchor="middle" className="text-[10px] font-bold fill-slate-500">Excel (Manuell)</text>
-                    <text x="320" y="332" textAnchor="middle" className="text-[8px] fill-slate-400">(Fehleranfällig)</text>
+                    <circle cx="320" cy="340" r="14" className="fill-slate-300" />
+                    <text x="320" y="320" textAnchor="middle" className="text-xs font-bold fill-slate-500">Excel (Manuell)</text>
+                    <text x="320" y="335" textAnchor="middle" className="text-[10px] fill-slate-400">(Fehleranfällig)</text>
                   </g>
 
                   {/* Competitor: Simple Tools (Bottom Left) */}
                   <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
-                    <circle cx="100" cy="300" r="12" className="fill-slate-300" />
-                    <text x="100" y="330" textAnchor="middle" className="text-[10px] font-bold fill-slate-500">Reine Reporting Tools</text>
-                    <text x="100" y="342" textAnchor="middle" className="text-[8px] fill-slate-400">(Zu oberflächlich)</text>
+                    <circle cx="100" cy="300" r="14" className="fill-slate-300" />
+                    <text x="100" y="330" textAnchor="middle" className="text-xs font-bold fill-slate-500">Reine Reporting Tools</text>
+                    <text x="100" y="345" textAnchor="middle" className="text-[10px] fill-slate-400">(Zu oberflächlich)</text>
                   </g>
 
                   {/* CoreMIS - Sweet Spot (Top Left) */}
                   <g className="cursor-pointer group">
                     {/* Animated Ripples */}
                     <motion.circle 
-                      cx="100" cy="80" r="10" 
+                      cx="100" cy="80" r="12" 
                       className="fill-accent-orange/30"
                       initial={{ opacity: 0, r: 10 }}
-                      animate={{ opacity: [0, 0.5, 0], r: [10, 50] }}
+                      animate={{ opacity: [0, 0.5, 0], r: [10, 60] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
                     />
                     <motion.circle 
-                      cx="100" cy="80" r="10" 
+                      cx="100" cy="80" r="12" 
                       className="fill-accent-orange/20"
                       initial={{ opacity: 0, r: 10 }}
-                      animate={{ opacity: [0, 0.4, 0], r: [10, 70] }}
+                      animate={{ opacity: [0, 0.4, 0], r: [10, 80] }}
                       transition={{ duration: 3, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
                     />
                     
                     {/* Core Pulse */}
                     <motion.circle 
-                      cx="100" cy="80" r="12" 
+                      cx="100" cy="80" r="14" 
                       className="fill-accent-orange shadow-lg" 
                       animate={{ scale: [1, 1.1, 1] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     />
                     
-                    <text x="100" y="115" textAnchor="middle" className="text-sm font-bold fill-primary">CoreMIS</text>
-                    <text x="100" y="130" textAnchor="middle" className="text-[9px] font-medium fill-accent-orange uppercase tracking-wide">The Sweet Spot</text>
+                    <text x="100" y="120" textAnchor="middle" className="text-base font-bold fill-primary">CoreMIS</text>
+                    <text x="100" y="138" textAnchor="middle" className="text-[10px] font-medium fill-accent-orange uppercase tracking-wide">The Sweet Spot</text>
                   </g>
 
                   {/* Grid Lines (Subtle) */}
