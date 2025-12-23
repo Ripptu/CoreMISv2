@@ -1,72 +1,141 @@
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
+import { CheckCircle2, Clock, TrendingDown, Unlock } from 'lucide-react';
 
 export const PositioningGraph: React.FC = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-white overflow-hidden border-t border-border">
       <div className="max-w-[1280px] mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
+          {/* Text Content based on Slides */}
           <RevealOnScroll>
             <div>
-               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-                 Der <span className="text-accent-orange">Sweet Spot</span> der Finanzsteuerung.
+               <div className="text-accent-orange font-bold tracking-widest uppercase text-xs mb-6">
+                  Der Sweet Spot
+               </div>
+               <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6 leading-[1.1]">
+                 Professionelle Finanzsteuerung – <br />
+                 <span className="text-secondary/80">schneller. pragmatischer. günstiger.</span>
                </h2>
-               <p className="text-secondary text-lg leading-relaxed mb-8">
-                 Traditionelle BI-Tools sind mächtig, aber teuer und komplex. Excel ist flexibel, aber fehleranfällig. 
-                 <br/><br/>
-                 CoreMIS vereint das Beste aus beiden Welten: <strong>Die Power einer Datenbank mit der Einfachheit, die Sie brauchen.</strong>
+               
+               <p className="text-lg text-primary font-medium mb-10 border-l-4 border-accent-orange pl-4 py-1">
+                 CoreMIS liefert in kurzer Zeit CFO-Expertise zum fairen Preis.
                </p>
-               <ul className="space-y-4">
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-accent-orange"></div>
-                    <span className="text-primary font-medium">Schneller als Enterprise-Software</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-accent-orange"></div>
-                    <span className="text-primary font-medium">Sicherer als Excel</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-accent-orange"></div>
-                    <span className="text-primary font-medium">Fokussierter als generische BI</span>
-                  </li>
-               </ul>
+
+               <div className="space-y-8">
+                  {/* Item 1 */}
+                  <div className="flex gap-4 group">
+                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                       <CheckCircle2 size={18} />
+                    </div>
+                    <div>
+                       <h4 className="font-bold text-primary text-lg">Belastbare Zahlen statt Interpretationen.</h4>
+                       <p className="text-sm text-secondary leading-relaxed mt-1">
+                         Bruttoumsatz, EBITDA, EBIT bis zum Unternehmensergebnis – klar, standardisiert und entscheidungsrelevant für Management und Kapitalgeber.
+                       </p>
+                    </div>
+                  </div>
+                  
+                  {/* Item 2 */}
+                  <div className="flex gap-4 group">
+                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                       <Clock size={18} />
+                    </div>
+                    <div>
+                       <h4 className="font-bold text-primary text-lg">Einführung in Wochen statt Monaten.</h4>
+                       <p className="text-sm text-secondary leading-relaxed mt-1">
+                         <strong>Fast Track:</strong> 3-4 Wochen. <strong>Professional:</strong> 6-8 Wochen. <br/>
+                         Schnell produktiv und sofort nutzbar, ohne jahrelange IT-Projekte.
+                       </p>
+                    </div>
+                  </div>
+
+                  {/* Item 3 */}
+                  <div className="flex gap-4 group">
+                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                       <TrendingDown size={18} />
+                    </div>
+                    <div>
+                       <h4 className="font-bold text-primary text-lg">Bruchteil der Kosten grosser MIS-Systeme.</h4>
+                       <p className="text-sm text-secondary leading-relaxed mt-1">
+                         Mehr Funktionsumfang als Excel und PowerBI – aber deutlich schlanker und günstiger als komplexe Enterprise-Lösungen.
+                       </p>
+                    </div>
+                  </div>
+
+                   {/* Item 4 */}
+                  <div className="flex gap-4 group">
+                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                       <Unlock size={18} />
+                    </div>
+                    <div>
+                       <h4 className="font-bold text-primary text-lg">Fair, pragmatisch & ohne Bindung.</h4>
+                       <p className="text-sm text-secondary leading-relaxed mt-1">
+                         SaaS-Modell, monatlich kündbar, transparente Preise – keine Komplexität, kein Lock-in.
+                       </p>
+                    </div>
+                  </div>
+               </div>
             </div>
           </RevealOnScroll>
 
+          {/* Graph Area */}
           <RevealOnScroll delay={200}>
-            <div className="relative aspect-square md:aspect-[4/3] bg-surface rounded-2xl border border-border p-8 flex items-center justify-center">
+            <div className="relative aspect-square md:aspect-[4/3] bg-surface rounded-[32px] border border-border p-8 md:p-12 flex items-center justify-center shadow-inner">
                
                {/* Coordinate System SVG */}
-               <svg viewBox="0 0 400 400" className="w-full h-full text-slate-300">
-                  {/* Axes */}
+               <svg viewBox="0 0 400 400" className="w-full h-full text-slate-300 overflow-visible">
+                  {/* Axes Lines */}
                   <line x1="40" y1="360" x2="380" y2="360" stroke="currentColor" strokeWidth="2" markerEnd="url(#arrow)" />
                   <line x1="40" y1="360" x2="40" y2="20" stroke="currentColor" strokeWidth="2" markerEnd="url(#arrow)" />
                   
-                  {/* Labels */}
+                  {/* Axis Arrows Definitions */}
+                  <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                      <path d="M0,0 L0,6 L9,3 z" fill="currentColor" />
+                    </marker>
+                  </defs>
+
+                  {/* Axis Labels */}
                   <text x="380" y="390" textAnchor="end" className="text-[10px] fill-secondary font-bold uppercase tracking-wider">Komplexität / Kosten</text>
-                  <text x="30" y="15" textAnchor="start" className="text-[10px] fill-secondary font-bold uppercase tracking-wider" style={{writingMode: 'vertical-rl'}}>Funktionsumfang / Value</text>
+                  <text x="25" y="20" textAnchor="end" className="text-[10px] fill-secondary font-bold uppercase tracking-wider" style={{writingMode: 'vertical-rl', textOrientation: 'mixed'}}>Funktionsumfang / Value</text>
 
-                  {/* Competitors (Dots) */}
-                  <circle cx="340" cy="60" r="8" className="fill-slate-400 opacity-50" />
-                  <text x="340" y="85" textAnchor="middle" className="text-[10px] fill-slate-500">SAP / Oracle</text>
-
-                  <circle cx="320" cy="340" r="8" className="fill-slate-400 opacity-50" />
-                  <text x="320" y="325" textAnchor="middle" className="text-[10px] fill-slate-500">Excel (Manuell)</text>
-
-                  <circle cx="120" cy="300" r="8" className="fill-slate-400 opacity-50" />
-                  <text x="120" y="325" textAnchor="middle" className="text-[10px] fill-slate-500">Einfache Tools</text>
-
-                  {/* CoreMIS - Sweet Spot (Top Left: High Value, Low Complexity) */}
-                  <g className="animate-[pulse_3s_infinite]">
-                    <circle cx="100" cy="80" r="16" className="fill-accent-orange/20" />
-                    <circle cx="100" cy="80" r="8" className="fill-accent-orange" />
+                  {/* Competitor: Enterprise (Top Right) */}
+                  <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
+                    <circle cx="340" cy="60" r="12" className="fill-slate-300" />
+                    <text x="340" y="90" textAnchor="middle" className="text-[10px] font-bold fill-slate-500">Enterprise Software</text>
+                    <text x="340" y="102" textAnchor="middle" className="text-[8px] fill-slate-400">(Teuer & Träge)</text>
                   </g>
-                  <text x="100" y="120" textAnchor="middle" className="text-sm font-bold fill-primary">CoreMIS</text>
+
+                  {/* Competitor: Excel (Bottom Right) */}
+                  <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
+                    <circle cx="320" cy="340" r="12" className="fill-slate-300" />
+                    <text x="320" y="320" textAnchor="middle" className="text-[10px] font-bold fill-slate-500">Excel (Manuell)</text>
+                    <text x="320" y="332" textAnchor="middle" className="text-[8px] fill-slate-400">(Fehleranfällig)</text>
+                  </g>
+
+                  {/* Competitor: Simple Tools (Bottom Left) */}
+                  <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
+                    <circle cx="100" cy="300" r="12" className="fill-slate-300" />
+                    <text x="100" y="330" textAnchor="middle" className="text-[10px] font-bold fill-slate-500">Reine Reporting Tools</text>
+                    <text x="100" y="342" textAnchor="middle" className="text-[8px] fill-slate-400">(Zu oberflächlich)</text>
+                  </g>
+
+                  {/* CoreMIS - Sweet Spot (Top Left) */}
+                  <g className="cursor-pointer group">
+                    {/* Pulse Effect */}
+                    <circle cx="100" cy="80" r="40" className="fill-accent-orange/10 animate-ping opacity-75" />
+                    <circle cx="100" cy="80" r="20" className="fill-accent-orange/20 group-hover:fill-accent-orange/30 transition-colors" />
+                    <circle cx="100" cy="80" r="10" className="fill-accent-orange shadow-lg" />
+                    
+                    <text x="100" y="115" textAnchor="middle" className="text-sm font-bold fill-primary">CoreMIS</text>
+                    <text x="100" y="130" textAnchor="middle" className="text-[9px] font-medium fill-accent-orange uppercase tracking-wide">The Sweet Spot</text>
+                  </g>
 
                   {/* Grid Lines (Subtle) */}
-                  <path d="M40 280 H380 M40 200 H380 M40 120 H380" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
-                  <path d="M120 360 V20 M200 360 V20 M280 360 V20" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+                  <path d="M40 280 H380 M40 200 H380 M40 120 H380" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.1" />
+                  <path d="M120 360 V20 M200 360 V20 M280 360 V20" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.1" />
                </svg>
 
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
-import { Users, TrendingUp, PieChart, CheckCircle2, ShieldCheck, Activity } from 'lucide-react';
+import { TrendingUp, PieChart, CheckCircle2, Activity } from 'lucide-react';
 
 export const Personas: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ export const Personas: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-6">
         <RevealOnScroll>
            <h2 className="text-3xl md:text-5xl font-bold text-center text-primary mb-4">
-             Ein Tool. Drei Perspektiven.
+             Ein Tool. Zwei Perspektiven.
            </h2>
            <p className="text-center text-secondary text-lg mb-20 max-w-2xl mx-auto">
              Jeder Stakeholder braucht einen anderen Blick auf die Zahlen. CoreMIS liefert genau das.
@@ -182,76 +182,6 @@ export const Personas: React.FC = () => {
                     </div>
                      {/* Background Blob */}
                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-blue-500/20 to-transparent blur-3xl -z-10"></div>
-                  </RevealOnScroll>
-               </div>
-            </div>
-          </div>
-
-          {/* Persona 3: Owner */}
-          <div className="group">
-            <div className="flex flex-col md:flex-row gap-16 items-center">
-               <div className="md:w-1/2 order-2 md:order-1">
-                  <RevealOnScroll>
-                    <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full font-bold uppercase tracking-widest text-[10px] mb-6 border border-emerald-100">
-                      <Users size={14} /> Für den Inhaber
-                    </div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-primary mb-6 leading-tight">
-                      Unabhängigkeit und <br/> Werterhalt.
-                    </h3>
-                    <div className="relative pl-6 mb-8">
-                       <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500 rounded-full"></div>
-                       <blockquote className="text-xl md:text-2xl font-serif italic text-primary leading-relaxed">
-                         "Das Unternehmen muss auch ohne mich steuerbar sein. CoreMIS schafft die nötige Struktur."
-                       </blockquote>
-                    </div>
-                    
-                    <ul className="space-y-4">
-                      {['Skalierbare Prozesse (Exit-Ready)', 'Erhöhung des Unternehmenswerts', 'Minimierung von Klumpenrisiken'].map((item, i) => (
-                        <li key={i} className="flex items-center gap-3 text-secondary font-medium group-hover:text-primary transition-colors">
-                           <CheckCircle2 size={20} className="text-emerald-500" /> {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </RevealOnScroll>
-               </div>
-
-               {/* Visual: Owner Stability/Radar Card */}
-               <div className="md:w-1/2 w-full order-1 md:order-2 relative perspective-1000">
-                  <RevealOnScroll delay={200}>
-                    <div className="relative z-10 bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 transform transition-transform duration-700 hover:rotate-y-2 hover:scale-[1.02]">
-                       
-                       <div className="text-center mb-8">
-                          <ShieldCheck size={48} className="text-emerald-500 mx-auto mb-4" />
-                          <div className="text-2xl font-bold text-primary">Unternehmenswert</div>
-                          <div className="text-sm text-secondary">Risiko-Analyse & Governance</div>
-                       </div>
-
-                       {/* Simulated Radar / Scanning Effect */}
-                       <div className="relative w-full aspect-[2/1] overflow-hidden bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center mb-6">
-                          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_49%,#e2e8f0_50%,transparent_51%)]"></div>
-                          <div className="absolute inset-0 bg-[linear-gradient(0deg,transparent_49%,#e2e8f0_50%,transparent_51%)]"></div>
-                          
-                          {/* Expanding Circles */}
-                          <div className="absolute w-24 h-24 border border-emerald-200 rounded-full animate-ping opacity-20"></div>
-                          <div className="absolute w-40 h-40 border border-emerald-200 rounded-full animate-ping opacity-10 animation-delay-500"></div>
-                          
-                          <div className="relative z-10 bg-white px-4 py-2 rounded-lg shadow-md border border-slate-100 flex items-center gap-2">
-                             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                             <span className="font-bold text-primary text-sm">System Healthy</span>
-                          </div>
-                       </div>
-
-                       <div className="flex justify-between items-center bg-emerald-50 rounded-xl p-4 border border-emerald-100">
-                          <div>
-                            <div className="text-xs font-bold text-emerald-800 uppercase">Transparenz Score</div>
-                            <div className="text-sm text-emerald-600">Audit-Ready</div>
-                          </div>
-                          <div className="text-3xl font-bold text-emerald-600">100%</div>
-                       </div>
-
-                    </div>
-                    {/* Background Blob */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-emerald-100/50 to-transparent blur-3xl -z-10"></div>
                   </RevealOnScroll>
                </div>
             </div>

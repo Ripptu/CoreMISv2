@@ -1,55 +1,53 @@
 import React from 'react';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, CalendarCheck } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 const packages = [
   {
-    title: 'Fast Track',
-    price: 'CHF 99',
-    period: 'monatlich',
-    desc: 'Für kleine Teams, die sofort Klarheit brauchen.',
-    duration: 'Go-Live in 1 Woche',
+    title: 'Einführungspaket "Fast Track"',
+    subtitle: 'Für KMU mit einer Gesellschaft, die schnell Ergebnisse wollen.',
+    price: 'CHF 9\'600.–',
+    priceType: 'Fixpreis',
     features: [
-      'Standard BWA-Mapping',
-      'DATEV Connect Online',
-      '1 User Lizenz',
-      'Tägliche Aktualisierung',
-      'E-Mail Support'
+      'Setup CoreMIS als SaaS und Userverwaltung',
+      'Abbilden von Budget • Actuals • Forecast für die Gesellschaft',
+      'Basis-MIS',
+      'Schulung für Key User (CFO/Controller/Leiter RW)',
+      'Go-Live Support (1 Monatsabschluss)'
     ],
-    cta: 'Jetzt starten',
+    timeframe: 'in 3-4 Wochen',
     highlight: false
   },
   {
-    title: 'Professional',
-    price: 'CHF 299',
-    period: 'monatlich',
-    desc: 'Der Standard für wachsende Unternehmen.',
-    duration: 'Go-Live in 3-4 Wochen',
+    title: 'Einführungspaket "Professional"',
+    subtitle: 'Für KMU mit mehreren Gesellschaften und erhöhter Komplexität.',
+    price: 'CHF 19\'200.–',
+    priceType: 'Fixpreis',
     features: [
-      'Individuelles Konten-Mapping',
-      'Bis zu 3 Gesellschaften (Konsolidiert)',
-      '5 User Lizenzen',
-      'Liquiditäts-Forecast',
-      'Prio Support & Onboarding'
+      'Setup CoreMIS als SaaS und Userverwaltung',
+      'Abbilden von Budget • Actuals • Forecast für bis zu drei Gesellschaften',
+      'Basis-MIS + Personal- und Capex-Planung',
+      'Schulungen für Key User und Management (VR/C-Level)',
+      'Go-Live Support (2 Monatsabschlüsse)'
     ],
-    cta: 'Anfragen',
+    timeframe: 'in 6-8 Wochen',
     highlight: true,
-    badge: 'Meistgewählt'
+    badge: 'Bestseller'
   },
   {
-    title: 'Enterprise',
-    price: 'Individuell',
-    period: '',
-    desc: 'Für komplexe Gruppenstrukturen.',
-    duration: 'Custom Setup',
+    title: 'Einführungspaket "Enterprise"',
+    subtitle: 'Für KMU mit Holdingstruktur und internationalem Setup.',
+    price: 'Kostendach',
+    priceType: 'nach gemeinsamen Lieferergebnissen',
     features: [
-      'Unlimitierte Gesellschaften',
-      'Holding-Strukturen & Währungen',
-      'Dedizierter Account Manager',
-      'Custom Reports & API Access',
-      'SLA Garantie'
+      'Setup CoreMIS als SaaS und Userverwaltung',
+      'Abbilden von Budget • Actuals • Forecast für alle Gesellschaften',
+      'Schnittstellen zu ERP/FiBu-Systemen (optional)',
+      'Personal- und Capex-Planung',
+      'Onsite-Workshops und individuelle Schulungen',
+      'Go-Live Support gemäss Anforderung'
     ],
-    cta: 'Kontakt aufnehmen',
+    timeframe: 'in 10-12 Wochen',
     highlight: false
   }
 ];
@@ -62,21 +60,18 @@ export const PricingPackages: React.FC = () => {
         <RevealOnScroll>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-primary mb-4">
-              Fixpreise. <br/>Keine Setup-Falle.
+              Pakete und Preise
             </h2>
-            <p className="text-secondary text-lg">
-              Transparente SaaS-Gebühren statt teurer Berater-Tagessätze. Monatlich kündbar.
-            </p>
           </div>
         </RevealOnScroll>
 
-        <div className="grid md:grid-cols-3 gap-8 items-start">
+        <div className="grid md:grid-cols-3 gap-8 items-stretch mb-16">
           {packages.map((pkg, idx) => (
             <RevealOnScroll key={idx} delay={idx * 150}>
               <div 
-                className={`relative bg-white rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-2 flex flex-col h-full ${
+                className={`relative bg-white rounded-2xl p-8 border transition-all duration-300 flex flex-col h-full ${
                   pkg.highlight 
-                    ? 'border-accent-orange shadow-orange ring-1 ring-accent-orange/20' 
+                    ? 'border-accent-orange shadow-orange ring-1 ring-accent-orange/20 z-10 scale-105 md:scale-105' 
                     : 'border-border shadow-soft hover:shadow-hover'
                 }`}
               >
@@ -86,13 +81,14 @@ export const PricingPackages: React.FC = () => {
                   </div>
                 )}
 
-                <div className="mb-8">
-                  <h3 className="text-xl font-bold text-primary mb-2">{pkg.title}</h3>
-                  <div className="flex items-baseline gap-1 mb-2">
-                    <span className="text-4xl font-bold text-primary">{pkg.price}</span>
-                    <span className="text-sm text-secondary">{pkg.period}</span>
+                <div className="mb-6">
+                  <h3 className={`font-bold text-primary mb-3 leading-tight ${pkg.highlight ? 'text-xl' : 'text-lg'}`}>{pkg.title}</h3>
+                  <p className="text-sm text-secondary leading-relaxed min-h-[40px] mb-6">{pkg.subtitle}</p>
+                  
+                  <div className="bg-surface rounded-xl p-4 mb-2">
+                    <div className="text-xs font-bold uppercase text-secondary mb-1">{pkg.priceType}</div>
+                    <div className="text-3xl font-bold text-primary tracking-tight">{pkg.price}</div>
                   </div>
-                  <p className="text-sm text-secondary leading-relaxed h-10">{pkg.desc}</p>
                 </div>
 
                 <div className="flex-grow space-y-4 mb-8">
@@ -106,16 +102,18 @@ export const PricingPackages: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="mt-auto border-t border-border pt-6">
-                   <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 text-center">
-                     {pkg.duration}
+                <div className="mt-auto pt-6 border-t border-border">
+                   <div className="flex items-center justify-center gap-2 text-accent-orange font-bold text-sm mb-4 bg-orange-50 py-2 rounded-lg">
+                     <CalendarCheck size={16} />
+                     CFO-Transparenz {pkg.timeframe}
                    </div>
+                   
                    <button className={`w-full py-3 rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2 ${
                      pkg.highlight 
-                       ? 'bg-accent-orange text-white hover:bg-accent-hover' 
-                       : 'bg-surface text-primary hover:bg-border'
+                       ? 'bg-accent-orange text-white hover:bg-accent-hover shadow-lg shadow-orange-500/30' 
+                       : 'bg-primary text-white hover:bg-black'
                    }`}>
-                     {pkg.cta} <ArrowRight size={16} />
+                     Jetzt anfragen <ArrowRight size={16} />
                    </button>
                 </div>
 
@@ -123,6 +121,19 @@ export const PricingPackages: React.FC = () => {
             </RevealOnScroll>
           ))}
         </div>
+
+        {/* Footer Text from Slide */}
+        <RevealOnScroll delay={400}>
+          <div className="text-center max-w-3xl mx-auto border-t border-border pt-12">
+            <h3 className="text-2xl font-bold text-primary mb-2">
+              Keine langfristigen Verträge.
+            </h3>
+            <p className="text-xl text-secondary">
+              Monatlich kündbar. Keine Setup-Falle.
+            </p>
+          </div>
+        </RevealOnScroll>
+
       </div>
     </section>
   );
