@@ -8,10 +8,8 @@ export const LicenseCalculator: React.FC = () => {
   const [term, setTerm] = useState<12 | 24 | 36>(12);
 
   const calculations = useMemo(() => {
-    // 1. Annual Base Fee (9'600 CHF/Year, which is 800/Month)
-    // Covers 1 Entity, up to 50 Mio Revenue.
-    // "Basis ist ohne Rabatt" -> This part is fixed and not subject to the percentage discount.
-    const baseMonthly = 800;
+    // 1. Annual Base Fee (9'600 CHF/Month)
+    const baseMonthly = 9600;
     const baseAnnual = baseMonthly * 12;
 
     // 2. Entity Fee (500 CHF/Year per additional entity)
@@ -24,11 +22,10 @@ export const LicenseCalculator: React.FC = () => {
     const revenueFeeAnnual = revenueSteps * 1000;
 
     // 4. Discount Logic
-    // Discount based on Term (Vorauszahlung)
     let discountPercent = 0;
-    if (term === 12) discountPercent = 0.10; // 10%
-    if (term === 24) discountPercent = 0.20; // 20%
-    if (term === 36) discountPercent = 0.30; // 30%
+    if (term === 12) discountPercent = 0;    // 0%
+    if (term === 24) discountPercent = 0.10; // 10%
+    if (term === 36) discountPercent = 0.20; // 20%
 
     // Discount applies ONLY to Add-ons (Entity & Revenue Fees), NOT to the Base Fee.
     const addonsAnnual = entityFeeAnnual + revenueFeeAnnual;
@@ -91,8 +88,8 @@ export const LicenseCalculator: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 size={16} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-primary block text-sm">Basisfee (CHF 800 / Monat)</strong>
-                    <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.<br/>Abrechnung jährlich (CHF 9'600, ohne Rabatt).</span>
+                    <strong className="text-primary block text-sm">Basisfee (CHF 9'600 / Monat)</strong>
+                    <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.<br/>Abrechnung jährlich ({formatCHF(calculations.baseAnnual)}, ohne Rabatt).</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -177,8 +174,11 @@ export const LicenseCalculator: React.FC = () => {
                     <label className="font-bold text-primary text-xs uppercase tracking-wider text-slate-400">Laufzeit & Rabatt (auf Add-ons)</label>
                     <div className="grid grid-cols-3 gap-2">
                       {[12, 24, 36].map((t) => {
-                         const discountMap = { 12: '10%', 24: '20%', 36: '30%' };
+                         const discountMap = { 12: '0%', 24: '10%', 36: '20%' };
                          const isActive = term === t;
+                         const label = discountMap[t as 12|24|36];
+                         const hasDiscount = label !== '0%';
+                         
                          return (
                            <button
                              key={t}
@@ -190,7 +190,9 @@ export const LicenseCalculator: React.FC = () => {
                              }`}
                            >
                              <span>{t} Mon.</span>
-                             <span className={`text-[10px] ${isActive ? 'text-accent-orange' : 'text-slate-400'}`}>-{discountMap[t as 12|24|36]}</span>
+                             <span className={`text-[10px] ${isActive && hasDiscount ? 'text-accent-orange' : 'text-slate-400'}`}>
+                               {hasDiscount ? `-${label}` : 'Standard'}
+                             </span>
                            </button>
                          )
                       })}
@@ -200,7 +202,7 @@ export const LicenseCalculator: React.FC = () => {
                   {/* Result Box - Compact */}
                   <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
                     <div className="flex justify-between text-xs text-secondary">
-                       <span>Basisfee (CHF 800/Mt x 12)</span>
+                       <span>Basisfee (CHF 9'600/Mt x 12)</span>
                        <span>{formatCHF(calculations.baseAnnual)}</span>
                     </div>
                     {(calculations.addonsAnnual > 0) && (
