@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Mail } from 'lucide-react';
+import { Menu, X, Mail, ArrowLeft } from 'lucide-react';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onNavigateHome?: (target?: string) => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onNavigateHome }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -13,15 +17,18 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const event = new CustomEvent('smooth-scroll-to', { detail: { target: id } });
-    window.dispatchEvent(event);
+  const handleNavigation = (id: string) => {
     setIsMobileMenuOpen(false);
+    if (onNavigateHome) {
+      onNavigateHome(id);
+    } else {
+      // Fallback for single page if prop not passed (though it should be)
+      window.dispatchEvent(new CustomEvent('smooth-scroll-to', { detail: { target: id } }));
+    }
   };
 
   const handleContactClick = () => {
-     const event = new CustomEvent('smooth-scroll-to', { detail: { target: 'footer' } });
-     window.dispatchEvent(event);
+     handleNavigation('footer');
   };
 
   return (
@@ -34,21 +41,30 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         
-        {/* Left: Nav (Logo Removed) */}
+        {/* Left: Nav */}
         <div className="flex items-center gap-8">
-           {/* Desktop Nav - Moved slightly left since logo is gone */}
+           {/* If we are on a subpage (onNavigateHome is passed), clicking CoreMIS could go home. 
+               Currently visual logo is hidden, but let's add a "Back to Home" if needed or just keep menu. */}
+           
            <div className="hidden md:flex items-center gap-8">
             <button 
-              onClick={() => scrollToSection('loesungen')}
+              onClick={() => handleNavigation('loesungen')}
               className="text-sm font-medium text-secondary hover:text-accent-orange transition-colors"
             >
               Lösungen
             </button>
             <button 
-              onClick={() => scrollToSection('preise')}
+              onClick={() => handleNavigation('preise')}
               className="text-sm font-medium text-secondary hover:text-accent-orange transition-colors"
             >
               Preise
+            </button>
+            {/* Added explicit Home button for better UX on legal pages */}
+            <button 
+               onClick={() => onNavigateHome?.()}
+               className="text-sm font-medium text-secondary hover:text-accent-orange transition-colors"
+            >
+               Home
             </button>
           </div>
         </div>
@@ -83,13 +99,19 @@ export const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-white border-b border-border p-6 flex flex-col gap-4 md:hidden shadow-xl animate-in fade-in slide-in-from-top-4">
           <button 
-            onClick={() => scrollToSection('loesungen')} 
+            onClick={() => handleNavigation('top')} 
+            className="text-left text-base font-medium text-primary py-2 border-b border-surface"
+          >
+            Startseite
+          </button>
+          <button 
+            onClick={() => handleNavigation('loesungen')} 
             className="text-left text-base font-medium text-primary py-2 border-b border-surface"
           >
             Lösungen
           </button>
           <button 
-            onClick={() => scrollToSection('preise')} 
+            onClick={() => handleNavigation('preise')} 
             className="text-left text-base font-medium text-primary py-2 border-b border-surface"
           >
             Preise

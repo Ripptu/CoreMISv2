@@ -7,9 +7,11 @@ export const PositioningGraph: React.FC = () => {
   return (
     <section className="py-24 bg-white overflow-hidden border-t border-border">
       <div className="max-w-[1280px] mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        
+        {/* Top Row: Title & Graph */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16">
           
-          {/* Text Content based on Slides */}
+          {/* Left: Title Text */}
           <RevealOnScroll>
             <div>
                <div className="text-accent-orange font-bold tracking-widest uppercase text-xs mb-6">
@@ -20,68 +22,13 @@ export const PositioningGraph: React.FC = () => {
                  <span className="text-secondary/80">schneller. pragmatischer. günstiger.</span>
                </h2>
                
-               <p className="text-lg text-primary font-medium mb-10 border-l-4 border-accent-orange pl-4 py-1">
+               <p className="text-lg text-primary font-medium border-l-4 border-accent-orange pl-4 py-1">
                  CoreMIS liefert in kurzer Zeit CFO-Expertise zum fairen Preis.
                </p>
-
-               <div className="space-y-8">
-                  {/* Item 1 */}
-                  <div className="flex gap-4 group">
-                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
-                       <CheckCircle2 size={18} />
-                    </div>
-                    <div>
-                       <h4 className="font-bold text-primary text-lg">Belastbare Zahlen statt Interpretationen.</h4>
-                       <p className="text-sm text-secondary leading-relaxed mt-1">
-                         Bruttoumsatz, EBITDA, EBIT bis zum Unternehmensergebnis – klar, standardisiert und entscheidungsrelevant für Management und Kapitalgeber.
-                       </p>
-                    </div>
-                  </div>
-                  
-                  {/* Item 2 */}
-                  <div className="flex gap-4 group">
-                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
-                       <Clock size={18} />
-                    </div>
-                    <div>
-                       <h4 className="font-bold text-primary text-lg">Einführung in Wochen statt Monaten.</h4>
-                       <p className="text-sm text-secondary leading-relaxed mt-1">
-                         <strong>Fast Track:</strong> 3-4 Wochen. <strong>Professional:</strong> 6-8 Wochen. <br/>
-                         Schnell produktiv und sofort nutzbar, ohne jahrelange IT-Projekte.
-                       </p>
-                    </div>
-                  </div>
-
-                  {/* Item 3 */}
-                  <div className="flex gap-4 group">
-                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
-                       <TrendingDown size={18} />
-                    </div>
-                    <div>
-                       <h4 className="font-bold text-primary text-lg">Bruchteil der Kosten grosser MIS-Systeme.</h4>
-                       <p className="text-sm text-secondary leading-relaxed mt-1">
-                         Mehr Funktionsumfang als Excel und PowerBI – aber deutlich schlanker und günstiger als komplexe Enterprise-Lösungen.
-                       </p>
-                    </div>
-                  </div>
-
-                   {/* Item 4 */}
-                  <div className="flex gap-4 group">
-                    <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
-                       <Unlock size={18} />
-                    </div>
-                    <div>
-                       <h4 className="font-bold text-primary text-lg">Fair, pragmatisch & ohne Bindung.</h4>
-                       <p className="text-sm text-secondary leading-relaxed mt-1">
-                         SaaS-Modell, monatlich kündbar, transparente Preise – keine Komplexität, kein Lock-in.
-                       </p>
-                    </div>
-                  </div>
-               </div>
             </div>
           </RevealOnScroll>
 
-          {/* Graph Area */}
+          {/* Right: Graph Area */}
           <RevealOnScroll delay={200}>
             <div className="relative aspect-square md:aspect-[4/3] bg-surface rounded-[32px] border border-border p-8 md:p-12 flex items-center justify-center shadow-inner">
                
@@ -135,7 +82,7 @@ export const PositioningGraph: React.FC = () => {
 
                   {/* CoreMIS - Sweet Spot (Top Left) */}
                   <g className="cursor-pointer group">
-                    {/* Animated Ripples using framer-motion for smooth, beautiful effect */}
+                    {/* Animated Ripples */}
                     <motion.circle 
                       cx="100" cy="80" r="10" 
                       className="fill-accent-orange/30"
@@ -170,8 +117,66 @@ export const PositioningGraph: React.FC = () => {
 
             </div>
           </RevealOnScroll>
-
         </div>
+
+        {/* Bottom Row: 4 Points Split in 2 Columns */}
+        <RevealOnScroll delay={300}>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
+              {/* Item 1 */}
+              <div className="flex gap-4 group">
+                <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                   <CheckCircle2 size={18} />
+                </div>
+                <div>
+                   <h4 className="font-bold text-primary text-lg">Belastbare Zahlen statt Interpretationen.</h4>
+                   <p className="text-sm text-secondary leading-relaxed mt-1">
+                     Bruttoumsatz, EBITDA, EBIT bis zum Unternehmensergebnis – klar, standardisiert und entscheidungsrelevant für Management und Kapitalgeber.
+                   </p>
+                </div>
+              </div>
+              
+              {/* Item 2 */}
+              <div className="flex gap-4 group">
+                <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                   <Clock size={18} />
+                </div>
+                <div>
+                   <h4 className="font-bold text-primary text-lg">Einführung in Wochen statt Monaten.</h4>
+                   <p className="text-sm text-secondary leading-relaxed mt-1">
+                     <strong>Fast Track:</strong> 3-4 Wochen. <strong>Professional:</strong> 6-8 Wochen. <br/>
+                     Schnell produktiv und sofort nutzbar, ohne jahrelange IT-Projekte.
+                   </p>
+                </div>
+              </div>
+
+              {/* Item 3 */}
+              <div className="flex gap-4 group">
+                <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                   <TrendingDown size={18} />
+                </div>
+                <div>
+                   <h4 className="font-bold text-primary text-lg">Bruchteil der Kosten grosser MIS-Systeme.</h4>
+                   <p className="text-sm text-secondary leading-relaxed mt-1">
+                     Mehr Funktionsumfang als Excel und PowerBI – aber deutlich schlanker und günstiger als komplexe Enterprise-Lösungen.
+                   </p>
+                </div>
+              </div>
+
+               {/* Item 4 */}
+              <div className="flex gap-4 group">
+                <div className="mt-1 w-10 h-10 rounded-full bg-surface border border-slate-100 flex items-center justify-center text-accent-orange shrink-0 group-hover:bg-accent-orange group-hover:text-white transition-colors">
+                   <Unlock size={18} />
+                </div>
+                <div>
+                   <h4 className="font-bold text-primary text-lg">Fair, pragmatisch & ohne Bindung.</h4>
+                   <p className="text-sm text-secondary leading-relaxed mt-1">
+                     SaaS-Modell, monatlich kündbar, transparente Preise – keine Komplexität, kein Lock-in.
+                   </p>
+                </div>
+              </div>
+          </div>
+        </RevealOnScroll>
+
       </div>
     </section>
   );

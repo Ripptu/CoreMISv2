@@ -14,26 +14,18 @@ export const Hero: React.FC = () => {
           {/* 1. Text Content (Left) */}
           <div className="flex-1 text-center md:text-left z-10">
             <RevealOnScroll>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary leading-[0.95] tracking-tight mb-8">
-                Zahlen. <br/>
-                Klar. <br/>
-                <span className="relative inline-block z-10 px-2 font-handwriting italic font-normal">
-                   Im Griff.
-                   {/* Thick Orange Stroke behind 'Im Griff' */}
-                   <span className="absolute bottom-3 left-0 w-full h-[0.35em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
+              <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold text-primary leading-[1.05] tracking-tight mb-8">
+                CoreMIS: <br/>
+                <span className="font-sans text-primary">MIS-Power für </span>
+                <span className="relative inline-block z-10 font-handwriting italic font-normal text-primary">
+                   KMU.
+                   {/* Orange Stroke behind KMU */}
+                   <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
                 </span>
               </h1>
               
-              <div className="mb-10 relative inline-block">
-                {/* Cleaned up subtitle, removed previous stroke logic from here */}
-                <span className="font-handwriting italic text-4xl md:text-5xl text-primary relative z-10 font-bold">
-                  MIS-Power für Ihr KMU.
-                </span>
-              </div>
-
-              <p className="text-lg md:text-xl text-secondary leading-relaxed mb-10 max-w-xl mx-auto md:mx-0">
-                Die Finanzsteuerung für den modernen Mittelstand. 
-                Keine Excel-Tapeten mehr. Treffen Sie Entscheidungen basierend auf Echtzeit-Daten.
+              <p className="text-lg md:text-xl text-secondary leading-relaxed mb-10 max-w-xl mx-auto md:mx-0 font-medium">
+                Automatisiertes Budgeting, Forecasting und Reporting – ohne Excel-Chaos und ohne Overkill-Ansätze – in wenigen Wochen eingeführt.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full">

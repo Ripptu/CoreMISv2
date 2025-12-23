@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUp, Mail, Linkedin, Twitter, Shield, Flag } from 'lucide-react';
 
 interface FooterProps {
-  onOpenLegal: (page: 'impressum' | 'datenschutz') => void;
+  onOpenLegal: (page: 'impressum' | 'datenschutz' | 'agb') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
              <ul className="space-y-3 text-sm text-secondary">
                <li><button onClick={() => onOpenLegal('impressum')} className="hover:text-accent-orange transition-colors">Impressum</button></li>
                <li><button onClick={() => onOpenLegal('datenschutz')} className="hover:text-accent-orange transition-colors">Datenschutz</button></li>
-               <li><button className="hover:text-accent-orange transition-colors">AGB</button></li>
+               <li><button onClick={() => onOpenLegal('agb')} className="hover:text-accent-orange transition-colors">AGB (EULA)</button></li>
              </ul>
            </div>
         </div>
