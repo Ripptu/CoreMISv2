@@ -3,47 +3,51 @@ import { Calculator, Building2, Banknote, CalendarCheck, CheckCircle2 } from 'lu
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const LicenseCalculator: React.FC = () => {
-  const [entities, setEntities] = useState(18); // Default from screenshot example
-  const [revenue, setRevenue] = useState(300); // Default from screenshot example (Mio)
+  const [entities, setEntities] = useState(18); // Default from screenshot
+  const [revenue, setRevenue] = useState(300); // Default from screenshot (Mio)
   const [term, setTerm] = useState<12 | 24 | 36>(12);
 
   const calculations = useMemo(() => {
-    // 1. Basisfee (Includes 1 Entity, up to 50 Mio Revenue)
-    const baseFee = 800;
+    // 1. Annual Base Fee (9'600 CHF/Year, which is 800/Month)
+    // Covers 1 Entity, up to 50 Mio Revenue.
+    const baseAnnual = 9600;
 
-    // 2. Additional Entities (500 per additional entity)
+    // 2. Entity Fee (500 CHF/Year per additional entity)
     const additionalEntitiesCount = Math.max(0, entities - 1);
-    const entityFee = additionalEntitiesCount * 500;
+    const entityFeeAnnual = additionalEntitiesCount * 500;
 
-    // 3. Additional Revenue (1000 per additional 50 Mio started)
+    // 3. Revenue Fee (1'000 CHF/Year per additional 50 Mio started)
     const revenueOverhead = Math.max(0, revenue - 50);
     const revenueSteps = Math.ceil(revenueOverhead / 50);
-    const revenueFee = revenueSteps * 1000;
+    const revenueFeeAnnual = revenueSteps * 1000;
 
-    // Subtotal Monthly
-    const subtotalMonthly = baseFee + entityFee + revenueFee;
+    // Total List Price (Annual)
+    const totalListAnnual = baseAnnual + entityFeeAnnual + revenueFeeAnnual;
 
-    // 4. Discount (Vorauszahlung)
+    // 4. Discount based on Term (Vorauszahlung)
     let discountPercent = 0;
     if (term === 12) discountPercent = 0.10; // 10%
     if (term === 24) discountPercent = 0.20; // 20%
     if (term === 36) discountPercent = 0.30; // 30%
 
-    const discountAmount = subtotalMonthly * discountPercent;
-    const finalMonthly = subtotalMonthly - discountAmount;
+    // Discount applies to the Total Annual List Price
+    const discountAmountAnnual = totalListAnnual * discountPercent;
     
-    const totalContractValue = finalMonthly * term;
+    // Final Annual Price
+    const finalAnnual = totalListAnnual - discountAmountAnnual;
+    
+    // Monthly Equivalent
+    const finalMonthly = finalAnnual / 12;
 
     return {
-      baseFee,
-      entityFee,
-      revenueFee,
-      revenueSteps,
-      subtotalMonthly,
+      baseAnnual,
+      entityFeeAnnual,
+      revenueFeeAnnual,
+      totalListAnnual,
       discountPercent,
-      discountAmount,
+      discountAmountAnnual,
+      finalAnnual,
       finalMonthly,
-      totalContractValue
     };
   }, [entities, revenue, term]);
 
@@ -81,15 +85,15 @@ export const LicenseCalculator: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 size={16} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-primary block text-sm">Basis-Lizenz (CHF 800)</strong>
+                    <strong className="text-primary block text-sm">Basis-Lizenz (CHF 9'600 / Jahr)</strong>
                     <span className="text-[11px] text-secondary">Inkludiert 1 Gesellschaft & bis 50 Mio. Umsatz.</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 size={16} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-primary block text-sm">Fair Scaling</strong>
-                    <span className="text-[11px] text-secondary">+ CHF 500 / Gesellschaft<br/>+ CHF 1'000 / 50 Mio. Umsatz</span>
+                    <strong className="text-primary block text-sm">Fair Scaling (pro Jahr)</strong>
+                    <span className="text-[11px] text-secondary">+ CHF 500 / weitere Gesellschaft<br/>+ CHF 1'000 / weitere 50 Mio. Umsatz</span>
                   </div>
                 </div>
               </div>
@@ -190,30 +194,35 @@ export const LicenseCalculator: React.FC = () => {
                   {/* Result Box - Compact */}
                   <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
                     <div className="flex justify-between text-xs text-secondary">
-                       <span>Basis</span>
-                       <span>{formatCHF(calculations.baseFee)}</span>
+                       <span>Basisfee (Listenpreis)</span>
+                       <span>{formatCHF(calculations.baseAnnual)}</span>
                     </div>
-                    {(calculations.entityFee > 0 || calculations.revenueFee > 0) && (
+                    {(calculations.entityFeeAnnual > 0 || calculations.revenueFeeAnnual > 0) && (
                        <div className="flex justify-between text-xs text-secondary">
-                          <span>Add-ons (Entities / Umsatz)</span>
-                          <span>+ {formatCHF(calculations.entityFee + calculations.revenueFee)}</span>
+                          <span>Add-ons (pro Jahr)</span>
+                          <span>+ {formatCHF(calculations.entityFeeAnnual + calculations.revenueFeeAnnual)}</span>
                        </div>
                     )}
-                    <div className="flex justify-between text-xs text-green-600 font-medium">
-                       <span>Vorauszahlungsrabatt</span>
-                       <span>- {formatCHF(calculations.discountAmount)}</span>
+                     <div className="flex justify-between text-xs font-medium text-primary border-t border-slate-200 pt-1 mt-1">
+                       <span>Total Listenpreis (Jahr)</span>
+                       <span>{formatCHF(calculations.totalListAnnual)}</span>
+                    </div>
+
+                    <div className="flex justify-between text-xs text-green-600 font-medium pt-1">
+                       <span>Vorauszahlungsrabatt ({calculations.discountPercent * 100}%)</span>
+                       <span>- {formatCHF(calculations.discountAmountAnnual)}</span>
                     </div>
                     
                     <div className="h-px bg-slate-200 my-1"></div>
 
                     <div className="flex justify-between items-end">
-                       <span className="font-bold text-sm text-primary">Monatlich</span>
+                       <span className="font-bold text-sm text-primary">Ø Monatlich</span>
                        <div className="text-right">
                           <span className="block font-bold text-2xl text-accent-orange leading-none">
                             {formatCHF(calculations.finalMonthly)}
                           </span>
                           <span className="text-[10px] text-slate-400 mt-0.5 block">
-                            Total {formatCHF(calculations.totalContractValue)} / Jahr
+                            Rechnung: {formatCHF(calculations.finalAnnual)} / Jahr
                           </span>
                        </div>
                     </div>
