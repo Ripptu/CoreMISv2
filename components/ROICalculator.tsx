@@ -58,7 +58,7 @@ export const ROICalculator: React.FC = () => {
   const formatCHF = (val: number) => new Intl.NumberFormat('de-CH', { style: 'currency', currency: 'CHF', maximumFractionDigits: 0 }).format(val);
 
   return (
-    <section className="py-20 md:py-32 bg-background relative">
+    <section id="roi" className="py-20 md:py-32 bg-background relative">
       
       {/* FOCUS MODE OVERLAY */}
       <div 

@@ -16,7 +16,7 @@ const features = [
   {
     icon: <Target size={32} />,
     title: 'Integrierte Planung.',
-    desc: 'Budgets • Forecasts • Actuals – top-down und bottom-up, inklusive Personal- und Capex-Planung.',
+    desc: 'Budgets • Actuals • Forecasts – top-down und bottom-up, inklusive Personal- und Capex-Planung.',
   },
   {
     icon: <Zap size={32} />,
@@ -32,7 +32,7 @@ const features = [
 
 export const ProblemSolution: React.FC = () => {
   return (
-    <section className="py-20 md:py-24 bg-surface border-y border-border overflow-hidden">
+    <section id="loesungen" className="py-20 md:py-24 bg-surface border-y border-border overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6">
         <RevealOnScroll>
           <div className="text-center mb-16 max-w-4xl mx-auto">

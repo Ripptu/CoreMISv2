@@ -40,7 +40,7 @@ const TiltCard: React.FC<{ children: React.ReactNode; className?: string }> = ({
 
 export const SecuritySection: React.FC = () => {
   return (
-    <section className="py-24 md:py-32 bg-[#050A10] text-white relative overflow-hidden border-t border-white/5">
+    <section id="sicherheit" className="py-24 md:py-32 bg-[#050A10] text-white relative overflow-hidden border-t border-white/5">
       
       {/* Cool Background Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] pointer-events-none"></div>

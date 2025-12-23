@@ -17,7 +17,7 @@ export const DataJourney: React.FC = () => {
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-white border-y border-border overflow-hidden relative">
+    <section id="funktionsweise" ref={containerRef} className="py-24 md:py-32 bg-white border-y border-border overflow-hidden relative">
       <div className="max-w-[1280px] mx-auto px-6 relative">
         <RevealOnScroll>
           <h2 className="text-3xl font-serif font-medium text-center mb-20 md:mb-24">Die CoreMIS Journey</h2>

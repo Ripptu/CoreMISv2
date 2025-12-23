@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Mail, ArrowLeft } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 
 interface HeaderProps {
   onNavigateHome?: (target?: string) => void;
@@ -22,14 +22,18 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateHome }) => {
     if (onNavigateHome) {
       onNavigateHome(id);
     } else {
-      // Fallback for single page if prop not passed (though it should be)
       window.dispatchEvent(new CustomEvent('smooth-scroll-to', { detail: { target: id } }));
     }
   };
 
-  const handleContactClick = () => {
-     handleNavigation('footer');
-  };
+  const navItems = [
+    { label: 'Lösungen', id: 'loesungen' },
+    { label: 'Funktionsweise', id: 'funktionsweise' },
+    { label: 'ROI', id: 'roi' },
+    { label: 'Preise', id: 'preise' },
+    { label: 'Sicherheit', id: 'sicherheit' },
+    { label: 'FAQ', id: 'faq' },
+  ];
 
   return (
     <header 
@@ -41,38 +45,25 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateHome }) => {
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         
-        {/* Left: Nav */}
+        {/* Left: Desktop Nav (Logo removed) */}
         <div className="flex items-center gap-8">
-           {/* If we are on a subpage (onNavigateHome is passed), clicking CoreMIS could go home. 
-               Currently visual logo is hidden, but let's add a "Back to Home" if needed or just keep menu. */}
-           
-           <div className="hidden md:flex items-center gap-8">
-            <button 
-              onClick={() => handleNavigation('loesungen')}
-              className="text-sm font-medium text-secondary hover:text-accent-orange transition-colors"
-            >
-              Lösungen
-            </button>
-            <button 
-              onClick={() => handleNavigation('preise')}
-              className="text-sm font-medium text-secondary hover:text-accent-orange transition-colors"
-            >
-              Preise
-            </button>
-            {/* Added explicit Home button for better UX on legal pages */}
-            <button 
-               onClick={() => onNavigateHome?.()}
-               className="text-sm font-medium text-secondary hover:text-accent-orange transition-colors"
-            >
-               Home
-            </button>
-          </div>
+           <nav className="hidden lg:flex items-center gap-6">
+            {navItems.map((item) => (
+              <button 
+                key={item.id}
+                onClick={() => handleNavigation(item.id)}
+                className="text-sm font-medium text-secondary hover:text-accent-orange transition-colors"
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
         </div>
 
         {/* Right: Contact Button */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <button 
-            onClick={handleContactClick}
+            onClick={() => handleNavigation('kontakt')}
             className="bg-primary hover:bg-black text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
           >
             Kontakt
@@ -81,8 +72,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateHome }) => {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden ml-auto">
-            <button onClick={handleContactClick} className="text-primary hover:text-accent-orange">
+        <div className="flex items-center gap-4 lg:hidden ml-auto">
+            <button onClick={() => handleNavigation('kontakt')} className="text-primary hover:text-accent-orange">
                <Mail size={20} />
             </button>
 
@@ -97,27 +88,24 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateHome }) => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white border-b border-border p-6 flex flex-col gap-4 md:hidden shadow-xl animate-in fade-in slide-in-from-top-4">
+        <div className="absolute top-full left-0 right-0 bg-white border-b border-border p-6 flex flex-col gap-4 lg:hidden shadow-xl animate-in fade-in slide-in-from-top-4 max-h-[80vh] overflow-y-auto">
           <button 
             onClick={() => handleNavigation('top')} 
             className="text-left text-base font-medium text-primary py-2 border-b border-surface"
           >
             Startseite
           </button>
+          {navItems.map((item) => (
+             <button 
+                key={item.id}
+                onClick={() => handleNavigation(item.id)} 
+                className="text-left text-base font-medium text-primary py-2 border-b border-surface"
+              >
+                {item.label}
+              </button>
+          ))}
           <button 
-            onClick={() => handleNavigation('loesungen')} 
-            className="text-left text-base font-medium text-primary py-2 border-b border-surface"
-          >
-            Lösungen
-          </button>
-          <button 
-            onClick={() => handleNavigation('preise')} 
-            className="text-left text-base font-medium text-primary py-2 border-b border-surface"
-          >
-            Preise
-          </button>
-          <button 
-            onClick={handleContactClick}
+            onClick={() => handleNavigation('kontakt')}
             className="bg-primary text-white w-full py-3 rounded-lg text-sm font-bold mt-2 flex justify-center items-center gap-2"
           >
             Kontakt <Mail size={16} />

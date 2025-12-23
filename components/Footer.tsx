@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Linkedin, Twitter, Shield, Flag } from 'lucide-react';
+import { ArrowUp, Mail, Linkedin, Twitter } from 'lucide-react';
 
 interface FooterProps {
   onOpenLegal: (page: 'impressum' | 'datenschutz' | 'agb') => void;
@@ -12,8 +12,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
     window.dispatchEvent(event);
   };
 
+  const handleNav = (target: string) => {
+    window.dispatchEvent(new CustomEvent('smooth-scroll-to', { detail: { target: target } }));
+  };
+
   return (
-    <footer className="bg-white border-t border-border">
+    <footer id="kontakt" className="bg-white border-t border-border">
       
       {/* Newsletter Strip */}
       <div className="bg-primary py-12 px-6">
@@ -39,13 +43,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
         
         <div className="grid md:grid-cols-4 gap-12 mb-16">
            
-           {/* Brand */}
+           {/* Brand & Logo */}
            <div className="col-span-1">
-             <div className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center">
-                   <div className="w-2 h-2 bg-accent-orange rounded-full"></div>
+             <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 relative">
+                   <img 
+                     src="https://i.postimg.cc/c1F6x2bJ/6aeba13c-44fb-40da-a15c-6a534a48ab66.png" 
+                     alt="CoreMIS Logo" 
+                     className="w-full h-full object-contain"
+                   />
                 </div>
-                <span className="font-bold text-xl text-primary">CoreMIS</span>
+                <span className="font-bold text-2xl text-primary">CoreMIS</span>
              </div>
              <p className="text-sm text-secondary leading-relaxed mb-6">
                Die intelligente Finanzsteuerung für den Mittelstand. Pragmatisch, sicher, skalierbar.
@@ -57,30 +65,31 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                 <button className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-secondary hover:text-accent-orange hover:bg-orange-50 transition-colors">
                   <Twitter size={18} />
                 </button>
+                <button className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-secondary hover:text-accent-orange hover:bg-orange-50 transition-colors">
+                  <Mail size={18} />
+                </button>
              </div>
            </div>
 
-           {/* Links */}
-           <div>
-             <h4 className="font-bold text-primary mb-6">Produkt</h4>
-             <ul className="space-y-3 text-sm text-secondary">
-               <li><button onClick={() => window.dispatchEvent(new CustomEvent('smooth-scroll-to', { detail: { target: 'produkt' } }))} className="hover:text-accent-orange transition-colors">Features</button></li>
-               <li><button onClick={() => window.dispatchEvent(new CustomEvent('smooth-scroll-to', { detail: { target: 'preise' } }))} className="hover:text-accent-orange transition-colors">Preise</button></li>
-               <li><button className="hover:text-accent-orange transition-colors">Sicherheit</button></li>
-               <li><button className="hover:text-accent-orange transition-colors">Changelog</button></li>
-             </ul>
+           {/* Navigation Links (Matching Navbar) */}
+           <div className="col-span-1 md:col-span-2">
+             <h4 className="font-bold text-primary mb-6">Navigation</h4>
+             <div className="grid grid-cols-2 gap-4">
+                <ul className="space-y-3 text-sm text-secondary">
+                  <li><button onClick={() => handleNav('top')} className="hover:text-accent-orange transition-colors">Home</button></li>
+                  <li><button onClick={() => handleNav('loesungen')} className="hover:text-accent-orange transition-colors">Lösungen</button></li>
+                  <li><button onClick={() => handleNav('funktionsweise')} className="hover:text-accent-orange transition-colors">Funktionsweise</button></li>
+                  <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">ROI Rechner</button></li>
+                </ul>
+                <ul className="space-y-3 text-sm text-secondary">
+                  <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Preise & Pakete</button></li>
+                  <li><button onClick={() => handleNav('sicherheit')} className="hover:text-accent-orange transition-colors">Sicherheit</button></li>
+                  <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">FAQ</button></li>
+                </ul>
+             </div>
            </div>
 
-           <div>
-             <h4 className="font-bold text-primary mb-6">Unternehmen</h4>
-             <ul className="space-y-3 text-sm text-secondary">
-               <li><button className="hover:text-accent-orange transition-colors">Über uns</button></li>
-               <li><button className="hover:text-accent-orange transition-colors">Karriere</button></li>
-               <li><button className="hover:text-accent-orange transition-colors">Partner</button></li>
-               <li><button className="hover:text-accent-orange transition-colors">Kontakt</button></li>
-             </ul>
-           </div>
-
+           {/* Legal */}
            <div>
              <h4 className="font-bold text-primary mb-6">Rechtliches</h4>
              <ul className="space-y-3 text-sm text-secondary">
