@@ -73,9 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
            <div className="col-span-2 lg:col-span-4">
              <RevealOnScroll delay={200}>
                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-white/10 to-transparent border border-white/10 rounded-lg flex items-center justify-center">
-                     <span className="font-bold text-accent-orange text-xl">C</span>
-                  </div>
+                  {/* Logo removed */}
                   <span className="font-bold text-2xl tracking-tight">CoreMIS</span>
                </div>
                <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">

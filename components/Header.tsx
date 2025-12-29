@@ -45,9 +45,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateHome }) => {
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         
-        {/* Left: Desktop Nav (Logo removed) */}
-        <div className="flex items-center gap-8">
-           <nav className="hidden lg:flex items-center gap-6">
+        {/* Left: Nav (Logo removed) */}
+        <div className="flex items-center gap-12">
+           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <button 
                 key={item.id}

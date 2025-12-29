@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Hero } from './components/Hero';
 import { ProblemSolution } from './components/ProblemSolution';
-import { PositioningGraph } from './components/PositioningGraph';
+import { ImplementationTimeline } from './components/ImplementationTimeline';
 import { DataJourney } from './components/DataJourney';
 import { PricingPackages } from './components/PricingPackages';
 import { LicenseCalculator } from './components/LicenseCalculator';
 import { ROICalculator } from './components/ROICalculator';
 import { SecuritySection } from './components/SecuritySection';
 import { FAQ } from './components/FAQ';
+import { DemoCTA } from './components/DemoCTA';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { LegalPage } from './components/LegalPage';
@@ -40,14 +41,15 @@ const App: React.FC = () => {
         ) : (
           <>
             <Hero />
+            <ImplementationTimeline />
             <ProblemSolution />
-            <PositioningGraph />
             <DataJourney />
             <ROICalculator />
             <PricingPackages />
             <LicenseCalculator />
             <SecuritySection />
             <FAQ />
+            <DemoCTA />
           </>
         )}
       </main>
