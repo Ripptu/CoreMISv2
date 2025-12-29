@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-white">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-surface rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 pointer-events-none"></div>
       <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-accent-orange/5 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
