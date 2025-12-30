@@ -6,27 +6,27 @@ const features = [
   {
     icon: <BarChart3 size={32} />,
     title: 'Klare P&L-Transparenz.',
-    desc: 'Nach Geschäftseinheiten, Kundengruppen und Produktgruppen – bis zur konsolidierten Gesamtsicht.',
+    desc: 'Management Reporting mit Drilldown statt Excel-Insellösungen. GuV/Erfolgsrechnung, KPI und Kostenblock bis zur Buchungsebene. Standardisierte Reports und Rolling Views für schnelle Steuerungsentscheide.',
   },
   {
     icon: <Layers size={32} />,
     title: 'Automatisierte Konsolidierung.',
-    desc: 'IC-Eliminierungen inklusive – sauber, schnell und revisionssicher.',
+    desc: 'Intercompany-Logik für KMU-Gruppen – sauber und nachvollziehbar. Abbildung von Holdingstrukturen, IC-Umsätzen, Transferpreisen und Währungsumrechnung (falls nötig). Revisionssicher.',
   },
   {
     icon: <Target size={32} />,
     title: 'Integrierte Planung.',
-    desc: 'Budgets • Actuals • Forecasts – top-down und bottom-up, inklusive Personal- und Capex-Planung.',
+    desc: 'Budget, Forecast und Szenarien – integriert mit Ist-Daten. Top-down & Bottom-up Planung. Planung mit Treibern (Umsatz, Marge, Personal) und integrierter Abweichungsanalyse.',
   },
   {
     icon: <Zap size={32} />,
     title: 'SaaS Modell – produktiv in wenigen Wochen.',
-    desc: 'Kein aufwendiges IT-Projekt, keine unnötige Komplexität – Standardisierung als Schlüssel.',
+    desc: 'Schnelle Einführung ohne komplexes IT-Projekt. Fast Track in 3–4 Wochen. Standardisiert statt übercustomized. Rollen & Governance inklusive.',
   },
   {
     icon: <Database size={32} />,
     title: 'Daten aus jedem relevanten System.',
-    desc: 'ERP, Finanzbuchhaltung, Datenbanken oder Excel-Erfassungen – alles zentral zusammengeführt und verarbeitet.',
+    desc: 'Zentrale Datenbasis für ERP, Finanzbuchhaltung und Excel – als Single Source of Truth. Klar definierte Datenquellen und Mapping auf Dimensionen (Konten, Kostenstellen, Produkte).',
   },
 ];
 
@@ -46,7 +46,7 @@ export const ProblemSolution: React.FC = () => {
           </div>
         </RevealOnScroll>
 
-        {/* Flexible Grid that centers items nicely (3 top, 2 bottom on large screens) */}
+        {/* Flexible Grid that centers items nicely */}
         <div className="flex flex-wrap justify-center gap-6">
           {features.map((item, idx) => (
             <div key={idx} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex">

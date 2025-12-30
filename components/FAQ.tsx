@@ -12,16 +12,7 @@ const questions: Question[] = [
     q: "Für welche Unternehmen ist CoreMIS geeignet?",
     a: (
       <>
-        CoreMIS ist für KMU und Unternehmensgruppen im DACH-Raum, die Budget, Forecast und Management Reporting professionalisieren wollen – ohne ein grosses ERP- oder BI-Projekt.
-        <br/><br/>
-        Besonders passend für Unternehmen, die aus Excel herausgewachsen sind und mehr Transparenz benötigen:
-        <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
-          <li>Cashflow-Planung</li>
-          <li>Monatsreporting</li>
-          <li>Planung nach Dimensionen (z.B. Gesellschaften, Bereiche, Kostenstellen, Produkte, Kunden)</li>
-        </ul>
-        <br/>
-        Typischerweise ab ca. 2-3 Mio. Umsatz bis hin zu komplexen Holdingstrukturen.
+        CoreMIS ist für <strong>KMU und Unternehmensgruppen im DACH-Raum</strong> geeignet, die <strong>Budget, Forecast und Management Reporting (MIS)</strong> professionalisieren wollen. Ideal für Unternehmen, die <strong>aus Excel herausgewachsen</strong> sind und mehr <strong>CFO-Transparenz</strong> benötigen – z.B. nach Gesellschaften, Geschäftsfeldern, Bereichen, Kostenstellen, Produkten oder Kundengruppen. CoreMIS eignet sich typischerweise ab <strong>2 bis 3 Mio. Umsatz</strong> bis hin zu komplexen <strong>Holdingstrukturen</strong>.
       </>
     )
   },
@@ -29,14 +20,12 @@ const questions: Question[] = [
     q: "Welche Probleme löst CoreMIS im Vergleich zu Excel?",
     a: (
       <>
-        CoreMIS ersetzt nicht „Excel als Rechenblatt“, sondern die Excel-Insellösungen für Budgetierung, Forecast und MIS-Reporting. Statt manueller Versionen und Copy-Paste liefert CoreMIS:
+        CoreMIS ersetzt die typischen <strong>Excel-Insellösungen</strong> für <strong>Finanzplanung, Budgetierung, Forecast und MIS-Reporting</strong>. Statt Versionenchaos, Copy/Paste und manueller Abstimmung liefert CoreMIS eine <strong>zentrale Datenbasis</strong> und standardisierte Auswertungen mit Drilldown – für verlässliche Kennzahlen wie <strong>Nettoumsatz, COGS, Bruttomarge und EBITDA</strong>. Das reduziert Fehler, beschleunigt den Monatsabschluss und verbessert die Entscheidungsqualität.
         <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
-          <li>Eine zentrale Datenbasis (Actuals, Budget, Forecast).</li>
-          <li>Standardisierte Berichte und Drilldowns.</li>
-          <li>Klare Verantwortlichkeiten und Governance.</li>
+           <li>Weniger manuelle Abstimmungen und Fehlerquellen.</li>
+           <li>Eine „Single Source of Truth“ für Actuals, Budget, Forecast.</li>
+           <li>Klarer Audit-Trail durch Versionen und Regeln.</li>
         </ul>
-        <br/>
-        So entsteht CFO-Transparenz: verlässliche Zahlen, schneller betrieblicher Monatsabschluss, standardisiert und mehr Zeit für Steuerung.
       </>
     )
   },
@@ -44,56 +33,124 @@ const questions: Question[] = [
     q: "Wie schnell ist CoreMIS einsatzbereit?",
     a: (
       <>
-        CoreMIS ist als SaaS schnell einsatzbereit. Im Einführungspaket „Fast Track“ ist ein produktives Basis-MIS typischerweise in <strong>3–4 Wochen</strong> möglich – unter der Voraussetzung, dass Stammdaten konsistent sind und die Finanzbuchhaltung sauber geführt ist.
-        <br/><br/>
-        Für mehrere Gesellschaften oder zusätzliche Module (HR/Personal/Capex, Corporate MIS) sind <strong>6–12 Wochen</strong> realistisch.
+        CoreMIS ist als <strong>SaaS</strong> schnell produktiv. Im Paket <strong>Fast Track</strong> ist ein belastbares <strong>Basis-MIS</strong> inkl. Budget • Actuals • Forecast typischerweise in <strong>3–4 Wochen</strong> möglich – bei konsistenten Stammdaten und sauberer FiBu. Für mehrere Gesellschaften, Corporate MIS und zusätzliche Module sind <strong>6–12 Wochen</strong> realistisch.
       </>
     )
   },
   {
-    q: "Wie läuft die Einführung ab?",
+    q: "Wie läuft die Einführung von CoreMIS ab?",
     a: (
       <>
-        Die CoreMIS-Einführung folgt einer standardisierten Journey:
-        <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
-          <li>Reporting-Zielbild (Stakeholder-Anforderungen).</li>
-          <li>Businessmodell und Dimensionen (Struktur für MIS und Planung).</li>
-          <li>Datenquellen und Datenqualität (ERP/Finanzbuchhaltung/Excel).</li>
-          <li>Mapping und Logik (Konten, Dimensionen, Intercompany).</li>
-          <li>Datenimport und Validierung (Budget/Actuals/Forecast).</li>
-          <li>Schulung und Go-Live (Key User Enablement).</li>
-        </ul>
-        <br/>
-        So entsteht schnell ein belastbares Management Reporting System.
+        Die Einführung folgt einer standardisierten <strong>Journey</strong>: Reporting-Zielbild (Stakeholder-Anforderungen) {'->'} Strukturierung des Businessmodells (Dimensionen) {'->'} Festlegung der <strong>Datenquellen</strong> (ERP/FiBu/Excel) {'->'} <strong>Mapping und Logik</strong> (Konten, Dimensionen, Intercompany) {'->'} Datenimport und Validierung {'->'} Schulung und Go-Live. Ziel ist ein praxistaugliches <strong>Management Reporting System</strong> und eine verlässliche Basis für <strong>Budget und Forecast</strong>.
       </>
     )
   },
   {
-    q: "Welche Datenquellen kann CoreMIS anbinden?",
-    a: "CoreMIS verarbeitet Daten aus ERP-Systemen, Finanzbuchhaltung (FiBu), Vorsystemen und Excel-Templates. Je nach Setup erfolgt der Import automatisiert oder standardisiert via Upload. Entscheidend ist die Festlegung der Datenquelle je Datenblock (Actuals, Budget, Forecast) und eine klare Single-Source-of-Truth-Logik – damit das MIS-Reporting konsistent bleibt."
+    q: "Welche Datenquellen kann CoreMIS nutzen (ERP, FiBu, Excel)?",
+    a: (
+      <>
+        CoreMIS verarbeitet Daten aus <strong>ERP-Systemen, Finanzbuchhaltung (FiBu)</strong>, Datenbanken und standardisierten Excel-Imports. Entscheidend ist die klare Festlegung der <strong>Single Source of Truth</strong> je Datenblock (Actuals/Budget/Forecast) sowie ein sauberes <strong>Mapping</strong> auf Kontenplan und Dimensionen. So entstehen konsistente Auswertungen für <strong>MIS, Finanzplanung und Forecast</strong>.
+      </>
+    )
   },
   {
-    q: "Unterstützt CoreMIS Konsolidierung und Intercompany?",
-    a: "Ja. CoreMIS unterstützt Konsolidierung und Intercompany-Logik als Management-Sicht: Abbildung von Gruppenstrukturen, Währungslogik (falls relevant), IC-Umsätze und Eliminationsregeln. Damit eignet sich CoreMIS besonders für KMU mit mehreren Gesellschaften und für Holdingstrukturen, die monatlich ein konsistentes Corporate MIS benötigen."
+    q: "Gibt es Schnittstellen oder automatischen Datenimport?",
+    a: (
+      <>
+        Ja – je nach Setup kann CoreMIS Daten automatisiert übernehmen (z.B. über standardisierte Schnittstellen/Exports oder API-basierte Anbindungen). Wenn keine direkte Schnittstelle vorhanden ist, funktioniert der Import pragmatisch über standardisierte Templates mit klaren Mapping-Regeln. Ziel ist immer: <strong>Automatisierung dort, wo sie Nutzen bringt</strong>, ohne ein grosses IT-Projekt.
+        <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
+           <li>Priorität 1: ERP-/Vorsystem-Daten.</li>
+           <li>Priorität 2: FiBu-Daten.</li>
+           <li>Ergänzung: Templates für Planwerte / Strukturdaten.</li>
+        </ul>
+      </>
+    )
+  },
+  {
+    q: "Unterstützt CoreMIS Konsolidierung und Intercompany (IC)?",
+    a: (
+      <>
+        Ja. CoreMIS unterstützt <strong>Gruppenstrukturen, Intercompany-Logik</strong> und definierte Eliminationsregeln für ein belastbares <strong>Corporate MIS</strong>. Damit lassen sich konsolidierte P&L/GuV-Sichten, IC-Umsätze und IC-Kosten sowie gruppenweite Kennzahlen nachvollziehbar abbilden – besonders relevant für KMU mit mehreren Gesellschaften.
+      </>
+    )
+  },
+  {
+    q: "Unterstützt CoreMIS Transferpreise und interne Wertströme?",
+    a: (
+      <>
+        Ja. CoreMIS kann <strong>Transferpreis-Logiken</strong> und interne Wertströme als Management-Sicht abbilden, um die <strong>Leistungsfähigkeit von Beschaffung, Lager/Veredelung und Vertrieb</strong> zu analysieren. Das ist besonders hilfreich, wenn interne Leistungsbeiträge (z.B. Transferpreise, IC-Umsätze, Warenaufwand) transparent gemacht und im MIS steuerbar werden sollen.
+      </>
+    )
+  },
+  {
+    q: "Welche Reports liefert CoreMIS standardmässig (Basis-MIS)?",
+    a: (
+      <>
+        CoreMIS liefert ein praxiserprobtes <strong>Basis-MIS</strong> für CFO und Management: P&L/GuV, Kosten- und Ergebnisanalysen, Abweichungen (Ist vs. Budget/Forecast), Trends sowie Drilldowns nach Dimensionen (z.B. Gesellschaft, Bereich, Kostenstelle, Produktgruppe, Kundengruppe). Damit wird das <strong>Monatsreporting</strong> schneller, konsistenter und weniger manuell.
+      </>
+    )
+  },
+  {
+    q: "Unterstützt CoreMIS Budget, Forecast und Szenarien?",
+    a: (
+      <>
+        Ja. CoreMIS ist für <strong>integrierte Finanzplanung</strong> ausgelegt: Budget, Forecast (rolling) und Szenarien laufen in einer konsistenten Logik zusammen – inklusive Top-down und Bottom-up Planung. Dadurch werden Planungen nachvollziehbar, versioniert und direkt mit Ist-Daten im MIS vergleichbar.
+      </>
+    )
+  },
+  {
+    q: "Gibt es HR- und Capex-Planung?",
+    a: (
+      <>
+        Ja, optional. CoreMIS kann <strong>Personalplanung (HR)</strong> und <strong>Investitionsplanung (Capex)</strong> integrieren, damit CFO und Management die wichtigsten Treiber im Forecast und Budget abbilden können. Das ist besonders relevant, wenn Personalkosten, Headcount, Investitionsprogramme oder Abschreibungen wesentliche Ergebnis- und Cashflow-Treiber sind.
+      </>
+    )
   },
   {
     q: "Kann CoreMIS Cashflow-Planung und Liquiditätssteuerung?",
-    a: "Ja. CoreMIS unterstützt Cashflow-Planung und Liquiditätssteuerung auf Basis von Planwerten und Ist-Daten. Unternehmen nutzen CoreMIS, um Cashflow-Treiber (z.B. Umsatz, Personalkosten, Investitionen) in Forecast und Budget zu integrieren und daraus eine rollende Liquiditätsvorschau abzuleiten – nachvollziehbar und versioniert."
-  },
-  {
-    q: "Welche Module/Anwendungsfälle deckt CoreMIS ab?",
     a: (
       <>
-        CoreMIS deckt zentrale CFO-Anwendungsfälle ab:
-        <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
-          <li>Finanzplanung: Budget, Forecast, Szenarien.</li>
-          <li>Management Reporting (MIS): P&L/ER, Kosten, KPIs, Drilldowns.</li>
-          <li>Corporate MIS: mehrere Gesellschaften, Konsolidierung, IC-Logik.</li>
-          <li>Cashflow und Liquidität: Planung und Steuerung.</li>
-          <li>Optional: Personal- und Capex-Planung.</li>
-        </ul>
-        <br/>
-        Damit ist CoreMIS ein Werkzeug für CFO-Transparenz in KMU.
+        Ja. CoreMIS unterstützt <strong>Cashflow-Planung</strong> und eine rollierende Liquiditätssicht, indem Ist-Daten mit Budget- und Forecast-Werten verbunden werden. So lassen sich Cashflow-Treiber (Umsatz, Kosten, Capex) transparent machen und als Grundlage für Liquiditätssteuerung, Finanzierungsgespräche und CFO-Entscheide nutzen.
+      </>
+    )
+  },
+  {
+    q: "Was unterscheidet CoreMIS von BI-Tools wie Power BI?",
+    a: (
+      <>
+        BI-Tools visualisieren Daten; CoreMIS verbindet zusätzlich <strong>Finanzplanung (Budget/Forecast)</strong> und <strong>Management Reporting (MIS)</strong> in einer Governance: Dimensionen, Mapping, Versionierung und definierte Kennzahlenlogik. CoreMIS ist damit besonders geeignet, wenn nicht nur Dashboards, sondern ein integriertes <strong>CFO-System</strong> für Steuerung, Planung und Monatsreporting gesucht wird.
+      </>
+    )
+  },
+  {
+    q: "Ist CoreMIS ein ERP-Ersatz?",
+    a: (
+      <>
+        Nein. CoreMIS ersetzt kein ERP, sondern ergänzt es als <strong>CFO- und MIS-Lösung</strong> für Planung, Forecast, Konsolidierung und Management Reporting. Das ERP bleibt führend für operative Prozesse; CoreMIS sorgt für eine steuerungsorientierte Sicht auf die Zahlen – mit klarer Logik, Struktur und Transparenz.
+      </>
+    )
+  },
+  {
+    q: "Wie werden Datenqualität und Datenquellen abgesichert?",
+    a: (
+      <>
+        Zu Beginn werden Datenquellen je Datenblock festgelegt und die <strong>Datenqualität</strong> (Vollständigkeit, Konsistenz, Aktualität) eingeordnet. Mapping-Regeln, Kontrollsummen und Validierungen sorgen dafür, dass Reports nachvollziehbar sind. Das Ziel ist eine belastbare <strong>Single Source of Truth</strong> für CFO-Transparenz und MIS.
+      </>
+    )
+  },
+  {
+    q: "Wie sicher sind meine Daten (Datenschutz/Hosting)?",
+    a: (
+      <>
+        CoreMIS ist als SaaS auf sichere Datenverarbeitung ausgelegt (Zugriffskontrolle, Rollen/Berechtigungen, nachvollziehbare Datenstände). Je nach Setup werden Hosting, Datenstandort (z.B. Schweiz/EU) und Datenschutzanforderungen (z.B. DSGVO) transparent geklärt. Ziel ist ein professioneller Betrieb, der den Anforderungen von KMU, Management und VR gerecht wird.
+      </>
+    )
+  },
+  {
+    q: "Wie funktioniert Rollen- und Berechtigungsmanagement?",
+    a: (
+      <>
+        CoreMIS unterstützt eine klare Rollenlogik, damit CFO, Controller und Management genau die Sichten erhalten, die sie benötigen. Zugriffe können nach Verantwortlichkeiten strukturiert werden (z.B. Gesellschaften, Bereiche, Reports), sodass Governance und Vertraulichkeit im Management Reporting sichergestellt sind.
       </>
     )
   },
@@ -101,41 +158,15 @@ const questions: Question[] = [
     q: "Gibt es feste Preispakete und was ist enthalten?",
     a: (
       <>
-        Ja. CoreMIS bietet Einführungspakete (Fast Track / Professional / Enterprise) mit klaren Lieferergebnissen.
-        <br/><br/>
-        <strong>Fast Track:</strong> Setup, Abbildung Budget/Actuals/Forecast, Basis-MIS, Key User Schulung und Go-Live Support.
-        <br/><br/>
-        Für komplexere Strukturen werden Scope und Lieferergebnisse verbindlich definiert (z.B. Anzahl Gesellschaften, Integrationstiefe, Prioritäten, Schnittstellen).
+        Ja. CoreMIS bietet definierte <strong>Einführungspakete</strong> (Fast Track / Professional / Enterprise) mit klaren Lieferergebnissen wie Setup, Abbildung Budget/Actuals/Forecast, Basis-MIS, Schulung und Go-Live Support. Das schafft Planbarkeit und verhindert eine „Setup-Falle“, wie sie bei grossen IT-Projekten oft entsteht.
       </>
     )
   },
   {
-    q: "Welche Voraussetzungen braucht es für Fixpreis und schnelle Einführung?",
+    q: "Was kostet CoreMIS und gibt es langfristige Verträge?",
     a: (
       <>
-        Für Fixpreis und kurze Einführungszeit braucht es vor allem:
-        <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
-          <li>Standardisierte und konsistente Stammdaten.</li>
-          <li>Eine professionell geführte Finanzbuchhaltung (saubere Buchungslogik).</li>
-          <li>Klare Datenquellen (ERP/Finanzbuchhaltung).</li>
-        </ul>
-        <br/>
-        Wenn diese Voraussetzungen erfüllt sind, ist eine schnelle und pragmatische MIS- und Planungs-Einführung realistisch.
-      </>
-    )
-  },
-  {
-    q: "Wie unterscheidet sich CoreMIS von BI-Tools (Power BI, Tableau, u.a.m.)?",
-    a: (
-      <>
-        BI-Tools visualisieren Daten – CoreMIS ist zusätzlich ein Steuerungs- und Planungs-System. CoreMIS verbindet:
-        <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
-          <li>Actuals/Budget/Forecast in einer Logik.</li>
-          <li>Klare Planungs-Workflows.</li>
-          <li>Management Reporting mit Governance (Berechtigungen, Dimensionen, Versionen).</li>
-        </ul>
-        <br/>
-        Damit ist CoreMIS besonders stark dort, wo Unternehmen nicht nur Dashboards, sondern ein integriertes CFO-System für Planung und MIS benötigen.
+        CoreMIS wird als <strong>SaaS-Lizenzmodell</strong> betrieben; die Kosten hängen vom gewählten Umfang (Anzahl Gesellschaften und Umsatz) ab. Viele KMU schätzen, dass SaaS planbare Kosten und schnelle Skalierung ermöglicht. Typisch sind transparente Konditionen – inklusive klarer Einführungs-Pakete und einem Betrieb, der auf <strong>Monatsreporting, Budget und Forecast</strong> ausgelegt ist.
       </>
     )
   },
@@ -143,16 +174,7 @@ const questions: Question[] = [
     q: "Wie läuft eine Demo ab?",
     a: (
       <>
-        In einer Demo zeigen wir anhand einer standardisierten Struktur, wie CoreMIS Budget, Forecast und MIS-Reporting abbildet:
-        <ul className="list-disc pl-5 mt-2 space-y-1 text-secondary/90">
-          <li>Zielbild und wichtigste Reports (VR/GF/CFO).</li>
-          <li>Dimensionen (Produkte/Kunden/Bereiche/Gesellschaften).</li>
-          <li>Datenquellen (ERP/Finanzbuchhaltung, Excel) und Importlogik.</li>
-          <li>Auf Wunsch Personal- und Capex-Planung.</li>
-          <li>Beispiel-Report mit Drilldown und Forecast.</li>
-        </ul>
-        <br/>
-        Am Ende erhalten Sie eine klare Empfehlung, welches Einführungspaket passt und welchen Zeitrahmen (z. B. 3–4 Wochen Fast Track) realistisch ist.
+        In der Demo zeigen wir CoreMIS entlang Ihrer Anforderungen: Reporting-Zielbild (CFO/GL/VR), Dimensionen (Produkte/Kunden/Bereiche/Gesellschaften), Datenquellen (ERP/FiBu) sowie ein Beispiel für MIS-Reporting und Planung/Forecast. Danach erhalten Sie eine konkrete Empfehlung für das passende Paket (z.B. Fast Track) und einen realistischen Zeitplan bis zum Go-Live.
       </>
     )
   }

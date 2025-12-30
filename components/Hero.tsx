@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-10 pb-20 md:pt-24 md:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-white">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-surface rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 pointer-events-none"></div>
       <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-accent-orange/5 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
           <div className="w-full max-w-4xl text-center z-10">
             <RevealOnScroll>
               
-              {/* Large Logo - Adjusted to approx 3x original size */}
+              {/* Large Logo */}
               <div className="mb-12 flex justify-center">
                 <img 
                   src="https://i.postimg.cc/BnmkN7h0/logo-mit-text-PNG.png" 
@@ -33,19 +33,18 @@ export const Hero: React.FC = () => {
                 CFO-Transparenz <br/>
                 in <span className="relative inline-block px-2">
                   <span className="relative z-10 font-serif italic text-primary">4 Wochen.</span>
-                  {/* Bolder, organic marker background */}
+                  
+                  {/* Dynamic Brush Stroke: Precisely positioned behind text */}
                   <svg 
-                    className="absolute left-0 bottom-1 w-full h-[0.6em] -z-10 text-accent-orange" 
-                    viewBox="0 0 100 20" 
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[140%] -z-10 text-accent-orange overflow-visible" 
+                    viewBox="0 0 200 60" 
                     preserveAspectRatio="none"
                   >
+                    {/* Path: Starts thick (left), curves naturally, ends thin (right). Positioned to hit the visual center of text. */}
                     <path 
-                      d="M0 12C15 8 35 5 50 8C65 11 85 10 100 6" 
-                      stroke="currentColor" 
-                      strokeWidth="12" 
-                      fill="none" 
-                      strokeLinecap="round" 
-                      className="opacity-90"
+                      d="M5,45 Q90,25 190,35 L195,30 Q90,15 5,35 Z" 
+                      fill="currentColor"
+                      opacity="0.9"
                     />
                   </svg>
                 </span>

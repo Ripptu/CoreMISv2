@@ -1,35 +1,99 @@
 import React from 'react';
-import { Target, Database, Import, Rocket } from 'lucide-react';
+import { Target, Database, Import, Rocket, CheckCircle2 } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 const steps = [
   {
     week: 'Woche 1',
-    title: 'Zielbild & Struktur',
-    desc: 'Wir definieren Ihre Reporting-Anforderungen (VR, GF, CFO). Klärung der Dimensionen (Kst, Ktr, Sparten) und der gewünschten Detailtiefe.',
+    title: 'Zielbild und Struktur',
+    points: [
+      'Reportinganforderungen Stakeholder (VR/GF/CFO) klären.',
+      'Bestehendes MIS analysieren (Keep/Improve/Drop).',
+      'Businessmodell strukturieren (Dimensionen: Geschäftseinheiten, Kundengruppen, Produktgruppen).'
+    ],
     icon: <Target size={24} />,
-    color: 'bg-blue-50 text-blue-600 border-blue-100'
+    visualTitle: 'Stakeholder Map',
+    visualContent: (
+      <div className="space-y-2">
+         <div className="flex justify-between items-center bg-white p-2 rounded border border-slate-100">
+            <span className="text-xs font-bold text-primary">CFO</span>
+            <span className="text-[10px] text-slate-400">Cashflow & P&L</span>
+         </div>
+         <div className="flex justify-between items-center bg-white p-2 rounded border border-slate-100">
+            <span className="text-xs font-bold text-primary">Verwaltungsrat</span>
+            <span className="text-[10px] text-slate-400">High-Level KPI</span>
+         </div>
+      </div>
+    )
   },
   {
     week: 'Woche 2',
-    title: 'Daten & Logik',
-    desc: 'Validierung der Quellen (DATEV, SAP, ERP). Aufbau des Mappings Ihrer BWA/GuV-Struktur auf das CoreMIS Datenmodell.',
+    title: 'Daten und Logik',
+    points: [
+      'Datenquellen analysieren und validieren (ERP/FiBu/Excel).',
+      'Datenqualität einordnen (Vollständigkeit/Konsistenz/Aktualität).',
+      'Mapping auf Ihre BWA-Struktur.'
+    ],
     icon: <Database size={24} />,
-    color: 'bg-indigo-50 text-indigo-600 border-indigo-100'
+    visualTitle: 'Data Validation',
+    visualContent: (
+      <div className="space-y-2">
+         <div className="flex items-center gap-2 text-xs">
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+            <span className="text-slate-500">DATEV Export (CSV)</span>
+         </div>
+         <div className="flex items-center gap-2 text-xs">
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+            <span className="text-slate-500">SAP Business One</span>
+         </div>
+         <div className="h-1 w-full bg-slate-100 rounded-full mt-1">
+            <div className="h-full bg-accent-orange w-3/4 rounded-full"></div>
+         </div>
+      </div>
+    )
   },
   {
     week: 'Woche 3',
-    title: 'Import & Validierung',
-    desc: 'Initialer Import von Budget, Actuals und Forecast. Abgleich der Ergebnisse mit Ihren Vorsystemen (Reconciliation).',
+    title: 'Import und Validierung',
+    points: [
+      'Import Budget • Actuals • Forecast.',
+      'Plausibilisierung/Abstimmungen und Anpassungen.',
+      'Setup der Basis-Berichte.'
+    ],
     icon: <Import size={24} />,
-    color: 'bg-purple-50 text-purple-600 border-purple-100'
+    visualTitle: 'Reconciliation',
+    visualContent: (
+        <div className="flex justify-between items-end h-16 gap-1 px-2">
+           <div className="w-1/3 bg-slate-200 h-full rounded-t-sm relative">
+              <span className="absolute bottom-1 left-1 text-[8px]">IST</span>
+           </div>
+           <div className="w-1/3 bg-accent-orange h-[90%] rounded-t-sm relative">
+              <span className="absolute bottom-1 left-1 text-[8px] text-white">PLAN</span>
+           </div>
+           <div className="w-1/3 bg-slate-300 h-[95%] rounded-t-sm relative">
+              <span className="absolute bottom-1 left-1 text-[8px]">FC</span>
+           </div>
+        </div>
+    )
   },
   {
     week: 'Woche 4',
-    title: 'Enablement & Go-Live',
-    desc: 'Schulung der Key User. Übergabe der Dashboards. Sie sind produktiv und steuern Ihr Unternehmen datenbasiert.',
+    title: 'Enablement und Go-Live',
+    points: [
+      'Basis-MIS aufsetzen.',
+      'Go-Live inkl. Support für die ersten zwei Monatsabschlüsse.',
+      'Key-User Schulung (Betrieb, Pflege, Reporting).'
+    ],
     icon: <Rocket size={24} />,
-    color: 'bg-accent-orange/10 text-accent-orange border-accent-orange/20'
+    visualTitle: 'Go Live',
+    visualContent: (
+       <div className="flex flex-col items-center justify-center h-full py-2">
+          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-2">
+             <CheckCircle2 size={20} />
+          </div>
+          <span className="text-xs font-bold text-primary">System Active</span>
+       </div>
+    )
   }
 ];
 
@@ -42,8 +106,8 @@ export const ImplementationTimeline: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6">
               Die <span className="relative inline-block px-2">
-                  <span className="relative z-10 font-serif italic text-primary">CoreMIS Journey.</span>
-                  {/* Bolder, organic marker background */}
+                  <span className="relative z-10 font-serif italic text-primary">CoreMIS Journey</span>
+                  {/* Brush stroke */}
                   <svg 
                     className="absolute left-0 bottom-2 w-full h-[0.5em] -z-10 text-accent-orange" 
                     viewBox="0 0 100 20" 
@@ -58,36 +122,47 @@ export const ImplementationTimeline: React.FC = () => {
                       className="opacity-90"
                     />
                   </svg>
-                </span>
+                </span> (in 4 Wochen)
             </h2>
-            <p className="text-xl text-secondary">
-              Kein endloses IT-Projekt. Ein klarer Fahrplan zur Transparenz.
-            </p>
           </div>
         </RevealOnScroll>
 
-        <div className="relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 z-0"></div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+        <div className="relative max-w-5xl mx-auto">
+          {/* Vertical Line */}
+          <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-slate-200 -translate-x-1/2"></div>
+
+          <div className="space-y-16">
             {steps.map((step, idx) => (
               <RevealOnScroll key={idx} delay={idx * 150}>
-                <div className="group relative bg-white md:bg-transparent p-6 md:p-0 rounded-2xl border md:border-none border-border shadow-sm md:shadow-none hover:shadow-md md:hover:shadow-none transition-all">
+                <div className="relative flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0">
                   
-                  {/* Step Marker */}
-                  <div className={`w-16 h-16 rounded-2xl ${step.color} border flex items-center justify-center mb-6 relative z-10 mx-auto md:mx-0 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                    {step.icon}
-                    {/* Connector Dot for Line */}
-                    <div className="hidden md:block absolute top-1/2 -right-[calc(50%+2rem)] w-full h-1 bg-slate-100 -z-10"></div> 
+                  {/* Left Side: Content */}
+                  <div className="w-full md:w-1/2 pl-20 md:pl-0 md:pr-16 md:text-right order-2 md:order-1">
+                     <div className="text-sm font-bold text-accent-orange uppercase tracking-wider mb-2">{step.week}</div>
+                     <h3 className="text-2xl font-bold text-primary mb-4">{step.title}</h3>
+                     <ul className="space-y-2 inline-block text-left">
+                       {step.points.map((pt, i) => (
+                         <li key={i} className="text-secondary text-base leading-relaxed relative pl-4">
+                           <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-accent-orange/50 rounded-full"></span>
+                           {pt}
+                         </li>
+                       ))}
+                     </ul>
                   </div>
 
-                  <div className="text-center md:text-left">
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{step.week}</div>
-                    <h3 className="text-lg font-bold text-primary mb-3">{step.title}</h3>
-                    <p className="text-sm text-secondary leading-relaxed">
-                      {step.desc}
-                    </p>
+                  {/* Center Icon */}
+                  <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-14 h-14 bg-white border-4 border-slate-100 rounded-full flex items-center justify-center text-accent-orange shadow-sm z-10 order-1 md:order-2">
+                    {step.icon}
+                  </div>
+
+                  {/* Right Side: Visual */}
+                  <div className="w-full md:w-1/2 pl-20 md:pl-16 order-3">
+                     <div className="bg-surface border border-slate-200 rounded-xl p-4 max-w-[280px] shadow-sm rotate-1 hover:rotate-0 transition-transform duration-300">
+                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 border-b border-slate-200 pb-2">
+                          {step.visualTitle}
+                        </div>
+                        {step.visualContent}
+                     </div>
                   </div>
 
                 </div>
