@@ -64,7 +64,7 @@ export const SecuritySection: React.FC = () => {
               </h2>
               
               <p className="text-slate-400 text-lg leading-relaxed mb-10 max-w-lg">
-                Sicherheit ist kein Feature, sondern das Fundament von CoreMIS. Wir erfüllen die strengsten Anforderungen deutscher Datenschutzstandards und Banken-Compliance.
+                Sicherheit ist kein Feature, sondern das Fundament von CoreMIS. Wir erfüllen die strengsten Anforderungen des <strong>Schweizer Datenschutzgesetzes (DSG)</strong> sowie der <strong>EU-DSGVO</strong>. Die Auftragsverarbeitung (AVV) ist fester Bestandteil unserer Lizenz.
               </p>
               
               <div className="space-y-4 mb-12">
@@ -110,7 +110,7 @@ export const SecuritySection: React.FC = () => {
               </div>
               <h3 className="text-lg font-bold text-white mb-3">Server in Frankfurt</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Physische Datenspeicherung ausschließlich in zertifizierten Rechenzentren in Deutschland.
+                Physische Datenspeicherung ausschließlich in zertifizierten Rechenzentren in Deutschland (EU).
               </p>
             </TiltCard>
             

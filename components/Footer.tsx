@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
           <RevealOnScroll delay={100}>
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
-               <h3 className="text-xl font-bold mb-2">CFO Insights Newsletter</h3>
+               <h3 className="text-xl font-bold mb-2">CoreMIS Insights Newsletter</h3>
                <p className="text-slate-400 text-sm mb-6">Updates zu Finance-Tech, Benchmarks & Features.</p>
                
                <div className="flex flex-col sm:flex-row gap-3">
@@ -58,22 +58,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                    placeholder="ihre@email.com" 
                    className="flex-1 bg-black/30 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-accent-orange/50 transition-all"
                  />
-                 <button className="bg-accent-orange hover:bg-accent-hover text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-glow hover:scale-105 flex items-center justify-center gap-2 group">
+                 <a 
+                   href="mailto:info@coremis.ch?subject=Anmeldung%20CoreMIS%20Insights%20Newsletter"
+                   className="bg-accent-orange hover:bg-accent-hover text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-glow hover:scale-105 flex items-center justify-center gap-2 group text-center"
+                 >
                    Anmelden <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                 </button>
+                 </a>
                </div>
             </div>
           </RevealOnScroll>
         </div>
 
         {/* MIDDLE SECTION: NAVIGATION GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 md:gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-8 mb-20">
            
            {/* Column 1: Brand (4 cols) */}
-           <div className="col-span-2 lg:col-span-4">
+           <div className="lg:col-span-4">
              <RevealOnScroll delay={200}>
                <div className="flex items-center gap-3 mb-6">
-                  {/* Logo removed */}
+                  {/* Logo text */}
                   <span className="font-bold text-2xl tracking-tight">CoreMIS</span>
                </div>
                <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">
@@ -91,77 +94,75 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
              </RevealOnScroll>
            </div>
 
-           {/* Column 2: Product (2 cols) */}
-           <div className="col-span-1 lg:col-span-2">
+           {/* Column 2: SaaS Lösung (3 cols) */}
+           <div className="lg:col-span-3 lg:col-start-6">
              <RevealOnScroll delay={300}>
-               <h4 className="font-bold text-white mb-6">Produkt</h4>
+               <h4 className="font-bold text-white mb-6 text-lg">SaaS Lösung</h4>
                <ul className="space-y-4 text-sm text-slate-400">
-                 <li><button onClick={() => handleNav('loesungen')} className="hover:text-accent-orange transition-colors">Lösungen</button></li>
-                 <li><button onClick={() => handleNav('funktionsweise')} className="hover:text-accent-orange transition-colors">Funktionsweise</button></li>
-                 <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Preise & Pakete</button></li>
-                 <li><button onClick={() => handleNav('sicherheit')} className="hover:text-accent-orange transition-colors">Sicherheit</button></li>
-               </ul>
-             </RevealOnScroll>
-           </div>
-
-           {/* Column 3: Resources (2 cols) */}
-           <div className="col-span-1 lg:col-span-2">
-             <RevealOnScroll delay={400}>
-               <h4 className="font-bold text-white mb-6">Ressourcen</h4>
-               <ul className="space-y-4 text-sm text-slate-400">
+                 <li><button className="hover:text-accent-orange transition-colors">Release Updates</button></li>
+                 <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Preise und Pakete</button></li>
                  <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">ROI Rechner</button></li>
-                 <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">Häufige Fragen</button></li>
-                 <li><button className="hover:text-accent-orange transition-colors flex items-center gap-2">API Docs <span className="text-[9px] bg-white/10 px-1.5 py-0.5 rounded text-white">Soon</span></button></li>
-                 <li><button className="hover:text-accent-orange transition-colors">Changelog</button></li>
+                 <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">Häufige Fragen (FAQs)</button></li>
+                 <li><button onClick={() => onOpenLegal('agb')} className="hover:text-accent-orange transition-colors">Lizenz- und Nutzungsvereinbarung</button></li>
                </ul>
              </RevealOnScroll>
            </div>
 
-           {/* Column 4: Legal & Status (4 cols) */}
-           <div className="col-span-2 lg:col-span-4 lg:pl-12">
-             <RevealOnScroll delay={500}>
-               <div className="bg-[#131825] rounded-2xl p-6 border border-white/5">
-                 <div className="flex items-center gap-2 mb-4">
-                    <div className="relative flex h-2.5 w-2.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                    </div>
-                    <span className="text-xs font-bold text-emerald-500 uppercase tracking-wider">All Systems Operational</span>
-                 </div>
-                 
-                 <div className="space-y-3 text-sm text-slate-400 mb-6">
-                   <button onClick={() => onOpenLegal('datenschutz')} className="block hover:text-white transition-colors">Datenschutz (DPA)</button>
-                   <button onClick={() => onOpenLegal('agb')} className="block hover:text-white transition-colors">AGB & EULA</button>
-                   <button onClick={() => onOpenLegal('impressum')} className="block hover:text-white transition-colors">Impressum</button>
-                 </div>
-
-                 <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                    <ShieldCheck size={16} className="text-slate-500" />
-                    <span className="text-xs text-slate-500">ISO 27001 Certified Data Center</span>
-                 </div>
-               </div>
+           {/* Column 3: Impressum (3 cols) */}
+           <div className="lg:col-span-3">
+             <RevealOnScroll delay={400}>
+               <h4 className="font-bold text-white mb-6 text-lg">Impressum</h4>
+               <ul className="space-y-4 text-sm text-slate-400">
+                 <li className="font-bold text-white">COREMIS GmbH</li>
+                 <li>Geschäftsführer: <br/><span className="text-white">lic.oec. Erich Meyer HSG</span></li>
+                 <li>Geschäftsadresse: <br/><span className="text-white">Im Buck 3, CH-8196 Wil ZH</span></li>
+                 <li>eMail-Adresse: <br/><a href="mailto:info@coremis.ch" className="text-white hover:text-accent-orange">info@coremis.ch</a></li>
+                 {/* Placeholder for Telefonnummer if needed later */}
+                 {/* <li>Telefonnummer: <br/><span className="text-white">-</span></li> */}
+                 <li>CHE-Nummer: <br/><span className="text-white">CHE-291.947.911</span></li>
+               </ul>
              </RevealOnScroll>
            </div>
-
         </div>
 
-        {/* BOTTOM BAR */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/10 pt-8">
+        {/* BOTTOM BAR & STATUS */}
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           
-          <div className="text-sm text-slate-500 font-medium">
-            © {new Date().getFullYear()} CoreMIS GmbH.
+          <div className="flex flex-col gap-2">
+            <div className="text-sm text-slate-500 font-medium">
+              © {new Date().getFullYear()} CoreMIS GmbH.
+            </div>
+            
+            <div className="flex gap-4 text-xs text-slate-600">
+               <button onClick={() => onOpenLegal('datenschutz')} className="hover:text-slate-400 transition-colors">Datenschutz</button>
+               <button onClick={() => onOpenLegal('agb')} className="hover:text-slate-400 transition-colors">AGB</button>
+               <button onClick={() => onOpenLegal('impressum')} className="hover:text-slate-400 transition-colors">Impressum</button>
+            </div>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-6 w-full md:w-auto">
+             
+             {/* Status Box Compact */}
+             <div className="bg-[#131825] rounded-lg px-4 py-2 border border-white/5 flex items-center gap-3">
+                <div className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </div>
+                <div className="flex flex-col">
+                   <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-wider leading-none mb-0.5">Systems Operational</span>
+                   <span className="text-[9px] text-slate-500 flex items-center gap-1"><ShieldCheck size={8} /> ISO 27001 Certified</span>
+                </div>
+             </div>
+
              {/* Swiss Made Badge */}
-             <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded border border-white/5 hover:bg-white/10 transition-colors cursor-default">
+             <div className="hidden md:flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded border border-white/5 hover:bg-white/10 transition-colors cursor-default">
                 <span className="text-red-500 text-lg font-bold leading-none">+</span>
                 <span className="text-xs font-bold text-slate-300 tracking-wider uppercase">Swiss Quality</span>
              </div>
 
              <button 
                 onClick={scrollToTop}
-                className="w-10 h-10 rounded-full bg-accent-orange text-white flex items-center justify-center hover:bg-accent-hover hover:-translate-y-1 transition-all shadow-glow"
+                className="w-10 h-10 rounded-full bg-accent-orange text-white flex items-center justify-center hover:bg-accent-hover hover:-translate-y-1 transition-all shadow-glow ml-auto md:ml-0"
                 aria-label="Nach oben"
              >
                 <ArrowUp size={20} strokeWidth={2.5} />

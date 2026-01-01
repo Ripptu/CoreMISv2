@@ -3,8 +3,8 @@ import { Calculator, Building2, Banknote, CalendarCheck, CheckCircle2 } from 'lu
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const LicenseCalculator: React.FC = () => {
-  const [entities, setEntities] = useState(18); // Default from screenshot
-  const [revenue, setRevenue] = useState(300); // Default from screenshot (Mio)
+  const [entities, setEntities] = useState(5); // Default adjusted to 5
+  const [revenue, setRevenue] = useState(30); // Default adjusted to 30 Mio
   const [term, setTerm] = useState<12 | 24 | 36>(12);
 
   const calculations = useMemo(() => {
@@ -16,6 +16,7 @@ export const LicenseCalculator: React.FC = () => {
     const entityFeeMonthly = additionalEntitiesCount * 40;
 
     // 3. Revenue Fee (Monthly) - 80 CHF per additional 50 Mio
+    // Base includes up to 50M.
     const revenueOverhead = Math.max(0, revenue - 50);
     const revenueSteps = Math.ceil(revenueOverhead / 50);
     const revenueFeeMonthly = revenueSteps * 80;
@@ -26,21 +27,21 @@ export const LicenseCalculator: React.FC = () => {
     if (term === 24) discountPercent = 0.10; // 10%
     if (term === 36) discountPercent = 0.20; // 20%
 
-    // Discount applies ONLY to Add-ons (Entity & Revenue Fees), NOT to the Base Fee.
-    const addonsMonthly = entityFeeMonthly + revenueFeeMonthly;
-    const discountAmountMonthly = addonsMonthly * discountPercent;
+    // "Scaling Fee" (formerly Add-ons)
+    const scalingFeeMonthly = entityFeeMonthly + revenueFeeMonthly;
     
     // Total List Price (Monthly)
-    const totalListMonthly = baseMonthly + addonsMonthly;
+    const totalListMonthly = baseMonthly + scalingFeeMonthly;
+
+    // Discount applies to the TOTAL price now (as requested: "Rabatt auf den Gesamtpreis berechnen")
+    const discountAmountMonthly = totalListMonthly * discountPercent;
 
     // Final Price (Monthly)
     const finalMonthly = totalListMonthly - discountAmountMonthly;
     
     return {
       baseMonthly,
-      entityFeeMonthly,
-      revenueFeeMonthly,
-      addonsMonthly,
+      scalingFeeMonthly,
       totalListMonthly,
       discountPercent,
       discountAmountMonthly,
@@ -72,13 +73,13 @@ export const LicenseCalculator: React.FC = () => {
                    Lizenzmodell.
                  </h2>
                  <p className="text-lg text-secondary leading-relaxed max-w-sm">
-                   Unser Preismodell passt sich an. Zahlen Sie nur für die Komplexität, die Sie tatsächlich managen.
+                   Unser Preismodell passt sich an. Zahlen Sie nur für die Grösse und Komplexität, die Sie tatsächlich managen.
                  </p>
               </div>
 
               {/* Title above specs */}
               <h4 className="text-accent-orange font-bold text-sm uppercase tracking-widest mb-4">
-                Kalkulator auf Monatspreise aufbauen
+                KALKULATOR AUF MONATSPREISE AUFBAUEND
               </h4>
 
               {/* Specs Box - Increased Fonts */}
@@ -90,7 +91,7 @@ export const LicenseCalculator: React.FC = () => {
                     <strong className="text-primary block text-lg mb-1">Basisfee (CHF 800 / Monat)</strong>
                     {/* Increased to text-base */}
                     <span className="text-base text-secondary leading-snug block">
-                      Inkludiert 1 Gesellschaft & bis CHF 800 / Monat Umsatz.<br/>Abrechnung monatlich.
+                      Inkludiert 1 Gesellschaft und bis zu CHF 50 Mio. Umsatz.
                     </span>
                   </div>
                 </div>
@@ -98,7 +99,7 @@ export const LicenseCalculator: React.FC = () => {
                   <CheckCircle2 size={24} className="text-accent-orange shrink-0 mt-0.5" />
                   <div>
                     {/* Increased to text-lg */}
-                    <strong className="text-primary block text-lg mb-1">Fair Scaling</strong>
+                    <strong className="text-primary block text-lg mb-1">Scaling Fee</strong>
                     {/* Increased to text-base */}
                     <span className="text-base text-secondary leading-snug block">
                       + CHF 40 / weitere Gesellschaft<br/>
@@ -214,10 +215,10 @@ export const LicenseCalculator: React.FC = () => {
                        <span>Basisfee</span>
                        <span>{formatCHF(calculations.baseMonthly)}</span>
                     </div>
-                    {(calculations.addonsMonthly > 0) && (
+                    {(calculations.scalingFeeMonthly > 0) && (
                        <div className="flex justify-between text-base text-secondary">
-                          <span>Add-ons</span>
-                          <span>+ {formatCHF(calculations.addonsMonthly)}</span>
+                          <span>Scaling Fee</span>
+                          <span>+ {formatCHF(calculations.scalingFeeMonthly)}</span>
                        </div>
                     )}
                      <div className="flex justify-between text-base font-medium text-primary border-t border-slate-200 pt-3 mt-2">
@@ -227,14 +228,15 @@ export const LicenseCalculator: React.FC = () => {
 
                     {calculations.discountAmountMonthly > 0 && (
                       <div className="flex justify-between text-base text-green-600 font-medium pt-1">
-                        <span>Rabatt auf Add-ons (-{calculations.discountPercent * 100}%)</span>
+                        <span>Rabatt auf Gesamtpreis (-{calculations.discountPercent * 100}%)</span>
                         <span>- {formatCHF(calculations.discountAmountMonthly)}</span>
                       </div>
                     )}
                     
                     <div className="h-px bg-slate-200 my-2"></div>
 
-                    <div className="flex justify-between items-end pt-2">
+                    {/* Adjusted alignment to baseline and added gap */}
+                    <div className="flex justify-between items-baseline gap-8 pt-2">
                        <span className="font-bold text-xl text-primary mb-1">Monatlich</span>
                        <div className="text-right">
                           <span className="block font-bold text-5xl text-accent-orange leading-none">

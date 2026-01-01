@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ArrowRight, CalendarCheck } from 'lucide-react';
+import { Check, ArrowRight, CalendarCheck, AlertCircle } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 const packages = [
@@ -58,10 +58,16 @@ export const PricingPackages: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-6">
         
         <RevealOnScroll>
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-primary mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6">
               Pakete und Preise
             </h2>
+            
+            {/* Added Prerequisites Note */}
+            <div className="inline-block bg-orange-50 border border-orange-100 rounded-lg px-5 py-3 mt-2">
+               <span className="font-bold text-primary text-sm uppercase tracking-wide mr-2">Voraussetzungen:</span>
+               <span className="text-primary/80 text-sm font-medium">Saubere Stammdaten und eine professionell geführte Finanzbuchhaltung.</span>
+            </div>
           </div>
         </RevealOnScroll>
 
@@ -108,13 +114,16 @@ export const PricingPackages: React.FC = () => {
                      CFO-Transparenz {pkg.timeframe}
                    </div>
                    
-                   <button className={`w-full py-3 rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2 ${
+                   {/* Changed to mailto link */}
+                   <a 
+                     href={`mailto:info@coremis.ch?subject=Anfrage: ${pkg.title}`}
+                     className={`w-full py-3 rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2 ${
                      pkg.highlight 
                        ? 'bg-accent-orange text-white hover:bg-accent-hover shadow-lg shadow-orange-500/30' 
                        : 'bg-primary text-white hover:bg-black'
                    }`}>
                      Jetzt anfragen <ArrowRight size={16} />
-                   </button>
+                   </a>
                 </div>
 
               </div>
@@ -122,15 +131,22 @@ export const PricingPackages: React.FC = () => {
           ))}
         </div>
 
-        {/* Footer Text from Slide */}
+        {/* Footer Text Prominent */}
         <RevealOnScroll delay={400}>
-          <div className="text-center max-w-3xl mx-auto border-t border-border pt-12">
-            <h3 className="text-2xl font-bold text-primary mb-2">
-              Keine langfristigen Verträge.
-            </h3>
-            <p className="text-xl text-secondary">
-              Monatlich kündbar. Keine Setup-Falle.
-            </p>
+          <div className="max-w-4xl mx-auto mt-12">
+            <div className="bg-white border-2 border-accent-orange/20 shadow-xl shadow-orange-500/10 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden group hover:border-accent-orange/50 transition-colors">
+               
+               {/* Decorative background accent */}
+               <div className="absolute -top-24 -right-24 w-48 h-48 bg-accent-orange/5 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+               <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-accent-orange/5 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+               
+               <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                  Keine langfristigen Verträge.
+               </h3>
+               <p className="text-xl md:text-2xl text-secondary">
+                  Monatlich kündbar. <span className="text-accent-orange font-bold decoration-accent-orange/30 underline decoration-2 underline-offset-4">Keine Setup-Falle.</span>
+               </p>
+            </div>
           </div>
         </RevealOnScroll>
 

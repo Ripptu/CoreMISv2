@@ -73,8 +73,17 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
                   8196 Wil (ZH)<br/>
                   Schweiz
                 </p>
+                <p className="mb-4">
+                  <strong>Vertretungsberechtigter Geschäftsführer:</strong><br/>
+                  lic.oec. Erich Meyer HSG
+                </p>
+                <p className="mb-4">
+                  <strong>Handelsregister-Nummer:</strong><br/>
+                  CHE-291.947.911
+                </p>
                 <p>
-                  <strong>Web:</strong> www.coremis.ch
+                  <strong>Web:</strong> www.coremis.ch<br/>
+                  <strong>Email:</strong> info@coremis.ch
                 </p>
               </div>
 
