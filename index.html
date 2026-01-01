@@ -140,74 +140,77 @@
 
     <script type="module" src="index.tsx"></script>
     
-    <!-- GSAP CORE & PLUGINS -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
+    <!-- GSAP CORE & PLUGINS (Deferred) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js" defer></script>
 
     <!-- STANDARD SMOOTH SCROLL INIT (Desktop Only) -->
     <script>
       window.addEventListener("load", () => {
-        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-        
-        // Detect if it is a primary touch device (Mobile/Tablet)
-        const isTouch = ScrollTrigger.isTouch === 1;
-        let smoother;
-
-        if (!isTouch) {
-            // == DESKTOP MODE ==
-            document.body.style.overflow = "hidden";
-            
-            const wrapper = document.getElementById("smooth-wrapper");
-            wrapper.style.position = "fixed";
-            wrapper.style.inset = "0";
-            wrapper.style.height = "100%";
-            wrapper.style.overflow = "hidden";
-
-            smoother = ScrollSmoother.create({
-              wrapper: "#smooth-wrapper",
-              content: "#smooth-content",
-              smooth: 1, // Standard Smooth
-              effects: true,          
-              normalizeScroll: true,
-              ignoreMobileResize: true,
-              smoothTouch: false 
-            });
-        }
-
-        // Bridge for React Component Navigation
-        window.addEventListener('smooth-scroll-to', (e) => {
-          const targetId = e.detail.target;
+        // Ensure GSAP is loaded
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof ScrollSmoother !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
           
-          if (smoother) {
-             if (targetId === 'top') {
-               smoother.scrollTo(0, true);
-             } else {
-               const el = document.getElementById(targetId);
-               // Adjusted offset to 0px to minimize gap and let header sit on top of content (accounting for section padding)
-               if (el) smoother.scrollTo(el, true, "top 0px");
-             }
-          } else {
-             if (targetId === 'top') {
-                 window.scrollTo({ top: 0, behavior: 'smooth' });
-             } else {
-                 const el = document.getElementById(targetId);
-                 if (el) {
-                     // Adjusted offset to 0px for fallback
-                     const offset = 0;
-                     const bodyRect = document.body.getBoundingClientRect().top;
-                     const elementRect = el.getBoundingClientRect().top;
-                     const elementPosition = elementRect - bodyRect;
-                     const offsetPosition = elementPosition - offset;
-                     
-                     window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth"
-                     });
-                 }
-             }
+          // Detect if it is a primary touch device (Mobile/Tablet)
+          const isTouch = ScrollTrigger.isTouch === 1;
+          let smoother;
+
+          if (!isTouch) {
+              // == DESKTOP MODE ==
+              document.body.style.overflow = "hidden";
+              
+              const wrapper = document.getElementById("smooth-wrapper");
+              wrapper.style.position = "fixed";
+              wrapper.style.inset = "0";
+              wrapper.style.height = "100%";
+              wrapper.style.overflow = "hidden";
+
+              smoother = ScrollSmoother.create({
+                wrapper: "#smooth-wrapper",
+                content: "#smooth-content",
+                smooth: 1, // Standard Smooth
+                effects: true,          
+                normalizeScroll: true,
+                ignoreMobileResize: true,
+                smoothTouch: false 
+              });
           }
-        });
+
+          // Bridge for React Component Navigation
+          window.addEventListener('smooth-scroll-to', (e) => {
+            const targetId = e.detail.target;
+            
+            if (smoother) {
+               if (targetId === 'top') {
+                 smoother.scrollTo(0, true);
+               } else {
+                 const el = document.getElementById(targetId);
+                 // Adjusted offset to 0px to minimize gap and let header sit on top of content (accounting for section padding)
+                 if (el) smoother.scrollTo(el, true, "top 0px");
+               }
+            } else {
+               if (targetId === 'top') {
+                   window.scrollTo({ top: 0, behavior: 'smooth' });
+               } else {
+                   const el = document.getElementById(targetId);
+                   if (el) {
+                       // Adjusted offset to 0px for fallback
+                       const offset = 0;
+                       const bodyRect = document.body.getBoundingClientRect().top;
+                       const elementRect = el.getBoundingClientRect().top;
+                       const elementPosition = elementRect - bodyRect;
+                       const offsetPosition = elementPosition - offset;
+                       
+                       window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                       });
+                   }
+               }
+            }
+          });
+        }
       });
     </script>
   </body>
