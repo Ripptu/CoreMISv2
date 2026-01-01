@@ -1,32 +1,62 @@
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
-import { BarChart3, Layers, Target, Zap, Database, ArrowRight } from 'lucide-react';
+import { BarChart3, Layers, Target, Zap, Database } from 'lucide-react';
 
 const features = [
   {
     icon: <BarChart3 size={32} />,
-    title: 'Klare P&L-Transparenz.',
-    desc: 'Management Reporting mit Drilldown statt Excel-Insellösungen. GuV/Erfolgsrechnung, KPI und Kostenblock bis zur Buchungsebene. Standardisierte Reports und Rolling Views für schnelle Steuerungsentscheide.',
+    title: 'Klare P&L Transparenz',
+    intro: 'Management Reporting mit Drilldown statt Excel-Insellösungen. CoreMIS bringt P&L-Transparenz auf Knopfdruck.',
+    bullets: [
+      'Mehrdimensionale GuV/P&L nach Gesellschaft, Bereich & Kostenstelle.',
+      'Drilldown bis zur Ursache: Von KPI → Kostenblock → Buchungsebene.',
+      'Standardisierte Reports: Einheitliche Logik für EBITDA & Margen.',
+      'Rolling Views: Soll/Ist, Budget/Forecast & Vorjahresvergleiche.'
+    ]
   },
   {
     icon: <Layers size={32} />,
-    title: 'Automatisierte Konsolidierung.',
-    desc: 'Intercompany-Logik für KMU-Gruppen – sauber und nachvollziehbar. Abbildung von Holdingstrukturen, IC-Umsätzen, Transferpreisen und Währungsumrechnung (falls nötig). Revisionssicher.',
+    title: 'Automatisierte Konsolidierung',
+    intro: 'Konsolidierung und Intercompany-Logik für KMU-Gruppen – sauber, nachvollziehbar und revisionssicher.',
+    bullets: [
+      'Abbildung von Gruppenstrukturen (Holding, Subholdings).',
+      'IC-Umsätze, Kosten & Transferpreise sauber eliminiert.',
+      'Harmonisierung unterschiedlicher Kontenpläne ohne Excel-Monster.',
+      'Skalierbar von 2-3 Gesellschaften bis zur ganzen Gruppe.'
+    ]
   },
   {
     icon: <Target size={32} />,
-    title: 'Integrierte Planung.',
-    desc: 'Budget, Forecast und Szenarien – integriert mit Ist-Daten. Top-down & Bottom-up Planung. Planung mit Treibern (Umsatz, Marge, Personal) und integrierter Abweichungsanalyse.',
+    title: 'Integrierte Planung',
+    intro: 'Budget, Forecast und Szenarien – integriert mit Ist-Daten. Finanzplanung und Reporting in einer Logik.',
+    bullets: [
+      'Budget & Forecast in einem System (Rolling Forecasts, Versionen).',
+      'Top-down & Bottom-up Planung auf Gesamt- und Detailstufe.',
+      'Treiberbasierte Planung: Umsatz, Margen, Personalkosten.',
+      'Integrierte Abweichungsanalyse direkt im Monatsreporting.'
+    ]
   },
   {
     icon: <Zap size={32} />,
-    title: 'SaaS Modell – produktiv in wenigen Wochen.',
-    desc: 'Schnelle Einführung ohne komplexes IT-Projekt. Fast Track in 3–4 Wochen. Standardisiert statt übercustomized. Rollen & Governance inklusive.',
+    title: 'SaaS Modell – schnell produktiv',
+    intro: 'Schnelle Einführung ohne komplexes IT-Projekt. Standardisierte Pakete für sofortigen CFO-Impact.',
+    bullets: [
+      'Fast Track in 3–4 Wochen: Setup, Datenimport & Basis-MIS.',
+      'Standardisiert statt übercustomized: Weniger Projekt-Risiko.',
+      'Pragmatischer Data Journey Ansatz (Priorität auf ERP/FiBu).',
+      'Rollen & Governance: Key User Enablement inklusive.'
+    ]
   },
   {
     icon: <Database size={32} />,
-    title: 'Daten aus jedem relevanten System.',
-    desc: 'Zentrale Datenbasis für ERP, Finanzbuchhaltung und Excel – als Single Source of Truth. Klar definierte Datenquellen und Mapping auf Dimensionen (Konten, Kostenstellen, Produkte).',
+    title: 'Daten aus jedem System',
+    intro: 'Zentrale Datenbasis für ERP, Finanzbuchhaltung und Excel – als Single Source of Truth für alle Reports.',
+    bullets: [
+      'ERP & FiBu integriert: Actuals und Planwerte zentral.',
+      'Klar definierte Datenquellen pro Datenblock (Ist/Plan).',
+      'Sauberes Mapping auf Dimensionen (Kunden, Produkte).',
+      'Sichtbare Datenqualität: Vollständigkeit & Konsistenz-Checks.'
+    ]
   },
 ];
 
@@ -38,7 +68,7 @@ export const ProblemSolution: React.FC = () => {
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6 leading-tight">
               CFO-Transparenz, die KMU <br/>
-              <span className="text-accent-orange">sofort nutzen können.</span>
+              <span className="text-accent-orange">sofort nutzen</span> können.
             </h2>
             <p className="text-xl font-medium text-secondary">
               Das macht CoreMIS besser:
@@ -61,16 +91,24 @@ export const ProblemSolution: React.FC = () => {
                   <div className="mb-6 p-3 bg-slate-50 rounded-xl text-slate-400 group-hover:text-accent-orange group-hover:bg-orange-50 transition-colors duration-300 transform group-hover:scale-110 origin-left border border-slate-100 group-hover:border-orange-100">
                     {item.icon}
                   </div>
+                  
                   <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-accent-orange transition-colors leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-secondary text-base leading-relaxed mb-6">
-                    {item.desc}
+                  
+                  <p className="text-secondary text-base leading-relaxed mb-6 font-medium">
+                    {item.intro}
                   </p>
                   
-                  <div className="mt-auto flex items-center text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-accent-orange transition-colors">
-                    Feature Details <ArrowRight size={12} className="ml-1" />
-                  </div>
+                  <ul className="space-y-3 mt-auto w-full">
+                    {item.bullets.map((bullet, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-secondary/80 leading-snug">
+                         <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-orange/60 shrink-0"></div>
+                         <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
                 </div>
               </RevealOnScroll>
             </div>

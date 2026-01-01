@@ -1,19 +1,14 @@
 import React, { useState, useMemo } from 'react';
-import { Calculator, Zap, AlertTriangle, Settings2 } from 'lucide-react';
+import { Calculator } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const ROICalculator: React.FC = () => {
-  const [isAdvanced, setIsAdvanced] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   
   // Basic State
   const [excelFiles, setExcelFiles] = useState(15);
   const [hoursPerMonth, setHoursPerMonth] = useState(21);
   const [hourlyRate, setHourlyRate] = useState(125); // Slightly adjusted for Swiss context
-
-  // Advanced State
-  const [errorRate, setErrorRate] = useState(5); // % Risk of error
-  const [decisionDelay, setDecisionDelay] = useState(2); // Days delayed per month
 
   const calculations = useMemo(() => {
     // 1. Direct Personnel Cost (The Visible Work)
@@ -23,32 +18,16 @@ export const ROICalculator: React.FC = () => {
     const maintenanceOverheadPerFile = 0.5; 
     const excelMaintenanceCost = excelFiles * maintenanceOverheadPerFile * hourlyRate * 12;
 
-    const baseTotal = directPersonnelCost + excelMaintenanceCost;
-
-    if (!isAdvanced) {
-      return { total: baseTotal, breakdown: { direct: directPersonnelCost, maintenance: excelMaintenanceCost } };
-    }
-
-    // Advanced Logic
-    // 3. Rework Cost (Fehlerkorrektur)
-    const errorCorrectionCost = (baseTotal * (errorRate / 100)) * 2; 
-    
-    // 4. Opportunity Cost (Verzögerung)
-    const dailyValue = 8 * hourlyRate * 2; 
-    const opportunityCost = decisionDelay * dailyValue * 12;
-
-    const total = baseTotal + errorCorrectionCost + opportunityCost;
+    const total = directPersonnelCost + excelMaintenanceCost;
 
     return { 
       total, 
       breakdown: { 
         direct: directPersonnelCost, 
-        maintenance: excelMaintenanceCost,
-        error: errorCorrectionCost,
-        opportunity: opportunityCost
+        maintenance: excelMaintenanceCost
       } 
     };
-  }, [excelFiles, hoursPerMonth, hourlyRate, isAdvanced, errorRate, decisionDelay]);
+  }, [excelFiles, hoursPerMonth, hourlyRate]);
 
   // Focus Mode Handlers
   const handleInteractionStart = () => setIsFocused(true);
@@ -84,13 +63,17 @@ export const ROICalculator: React.FC = () => {
                  Was kostet Sie manuelles <br/>
                  <span className="relative inline-block px-1 z-10 mt-1">
                    <span className="font-serif italic font-bold relative z-10">Reporting?</span>
-                   {/* Marker Style */}
-                   <span className="absolute bottom-3 left-0 w-full h-[0.35em] bg-accent-orange/80 -z-10 -rotate-1 rounded-sm mix-blend-multiply"></span>
+                   {/* Image Brush Stroke */}
+                   <img 
+                     src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png"
+                     alt=""
+                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[150%] -z-10 object-contain opacity-90 mix-blend-multiply"
+                   />
                  </span>
                </h2>
 
                <p className="text-base md:text-lg text-secondary leading-relaxed mb-12 max-w-md">
-                 Excel skaliert linear mit Ihren Kosten. Je mehr Quellen und Komplexität, desto höher die versteckten Instandhaltungskosten ("Excel Tax").
+                 Excel generiert linear steigende Kosten. Je mehr Quellen und Komplexität, desto höher der wiederkehrende manuelle Aufwand („Excel Tax“).
                </p>
 
                {/* Result Box */}
@@ -100,7 +83,7 @@ export const ROICalculator: React.FC = () => {
                       {formatCHF(calculations.total)}
                     </div>
                     <div className="text-sm font-medium text-secondary mb-4">
-                       {isAdvanced ? 'Total Cost of Ownership (pro Jahr)' : 'Verschwendetes Budget pro Jahr (Personalkosten + Wartung)'}
+                       Verschwendetes Budget pro Jahr (Personalkosten + Wartung)
                     </div>
                     
                     {/* Small Breakdown for transparency */}
@@ -113,18 +96,6 @@ export const ROICalculator: React.FC = () => {
                          <span>Wartung Excel-Quellen:</span>
                          <span>{formatCHF(calculations.breakdown.maintenance)}</span>
                        </div>
-                       {isAdvanced && (
-                         <>
-                           <div className="flex justify-between text-amber-600/70">
-                             <span>Fehlerkorrektur (Rework):</span>
-                             <span>{formatCHF(calculations.breakdown.error || 0)}</span>
-                           </div>
-                           <div className="flex justify-between text-blue-600/70">
-                             <span>Verzögerungskosten:</span>
-                             <span>{formatCHF(calculations.breakdown.opportunity || 0)}</span>
-                           </div>
-                         </>
-                       )}
                     </div>
                   </div>
                   
@@ -143,33 +114,12 @@ export const ROICalculator: React.FC = () => {
                onTouchStart={handleInteractionStart}
                onTouchEnd={handleInteractionEnd}
             >
-               
-               {/* Advanced Toggle Header - Relative Positioning */}
-               <div className="flex justify-between items-center mb-8 pb-4 border-b border-slate-50">
-                 <div className="flex items-center gap-2 text-slate-400">
-                    <Settings2 size={16} />
-                    <span className="text-xs font-bold uppercase tracking-wider">Parameter</span>
-                 </div>
-
-                 <button 
-                   onClick={() => setIsAdvanced(!isAdvanced)}
-                   className="flex items-center gap-3 focus:outline-none group"
-                 >
-                   <span className={`text-xs font-bold tracking-wider uppercase transition-colors ${isAdvanced ? 'text-accent-orange' : 'text-slate-400 group-hover:text-primary'}`}>
-                     Profi-Modus
-                   </span>
-                   <div className={`w-10 h-6 rounded-full transition-colors relative ${isAdvanced ? 'bg-primary' : 'bg-slate-200 group-hover:bg-slate-300'}`}>
-                     <div className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow-sm transition-transform duration-300 ${isAdvanced ? 'translate-x-4' : 'translate-x-0'}`}></div>
-                   </div>
-                 </button>
-               </div>
-
-               <div className="space-y-8 md:space-y-10">
+               <div className="space-y-8 md:space-y-10 pt-4">
                  
                  {/* STANDARD INPUTS */}
                  <div className="space-y-2 group">
                    <div className="flex justify-between items-end mb-4">
-                     <label className="font-medium text-primary text-sm md:text-base">Anzahl Excel-Quellen</label>
+                     <label className="font-medium text-primary text-sm md:text-base">Anzahl Datenquellen</label>
                      <span className="font-mono bg-slate-50 border border-slate-100 px-3 py-1 rounded text-sm min-w-[3rem] text-center">{excelFiles}</span>
                    </div>
                    <input 
@@ -203,43 +153,6 @@ export const ROICalculator: React.FC = () => {
                       className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200"
                    />
                  </div>
-
-                 {/* ADVANCED INPUTS */}
-                 {isAdvanced && (
-                   <div className="pt-8 mt-8 border-t border-slate-100 animate-in fade-in slide-in-from-top-4 space-y-10">
-                     
-                     <div className="space-y-2 group">
-                       <div className="flex justify-between items-end mb-4">
-                         <div className="flex items-center gap-2">
-                           <AlertTriangle size={16} className="text-amber-500" />
-                           <label className="font-medium text-primary text-sm md:text-base">Fehlerquote & Rework</label>
-                         </div>
-                         <span className="font-mono bg-amber-50 border border-amber-100 text-amber-700 px-3 py-1 rounded text-sm min-w-[3rem] text-center">{errorRate}%</span>
-                       </div>
-                       <input 
-                          type="range" min="0" max="20" value={errorRate} onChange={(e) => setErrorRate(Number(e.target.value))}
-                          className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-amber-500"
-                       />
-                       <p className="text-xs text-secondary mt-2">Kostenfaktor: Fehlerbehebung dauert 2x so lange wie Erstellung.</p>
-                     </div>
-
-                     <div className="space-y-2 group">
-                       <div className="flex justify-between items-end mb-4">
-                         <div className="flex items-center gap-2">
-                           <Zap size={16} className="text-blue-500" />
-                           <label className="font-medium text-primary text-sm md:text-base">Entscheidungsverzögerung</label>
-                         </div>
-                         <span className="font-mono bg-blue-50 border border-blue-100 text-blue-700 px-3 py-1 rounded text-sm min-w-[3rem] text-center">{decisionDelay} T</span>
-                       </div>
-                       <input 
-                          type="range" min="0" max="10" value={decisionDelay} onChange={(e) => setDecisionDelay(Number(e.target.value))}
-                          className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-blue-500"
-                       />
-                       <p className="text-xs text-secondary mt-2">Opportunitätskosten basierend auf Tagessatz x Business-Impact (2.0).</p>
-                     </div>
-
-                   </div>
-                 )}
 
                </div>
             </div>

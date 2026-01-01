@@ -19,10 +19,16 @@ export const PositioningGraph: React.FC = () => {
                </div>
                <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6 leading-[1.1]">
                  Professionelle Finanzsteuerung – <br />
-                 <span className="relative inline-block px-1 z-10 mt-2">
-                   <span className="font-serif italic font-bold relative z-10 text-primary">schneller & pragmatischer.</span>
-                   {/* Marker Style */}
-                   <span className="absolute bottom-2 left-0 w-full h-[0.35em] bg-accent-orange/80 -z-10 -rotate-1 rounded-sm mix-blend-multiply"></span>
+                 <span className="relative inline-block px-2 z-10 mt-2">
+                   <span className="font-serif italic font-bold relative z-10 text-primary">
+                     schneller • pragmatischer • günstiger
+                   </span>
+                   {/* Image Brush Stroke */}
+                   <img 
+                     src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png"
+                     alt=""
+                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[160%] -z-10 object-fill opacity-90 mix-blend-multiply"
+                   />
                  </span>
                </h2>
                
@@ -66,22 +72,22 @@ export const PositioningGraph: React.FC = () => {
                   {/* Competitor: Enterprise (Top Right) */}
                   <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
                     <circle cx="340" cy="60" r="14" className="fill-slate-300" />
-                    <text x="340" y="95" textAnchor="middle" className="text-xs font-bold fill-slate-500">Enterprise Software</text>
-                    <text x="340" y="110" textAnchor="middle" className="text-[10px] fill-slate-400">(Teuer & Träge)</text>
+                    <text x="340" y="95" textAnchor="middle" className="text-base font-bold fill-slate-500">Enterprise Software</text>
+                    <text x="340" y="115" textAnchor="middle" className="text-sm font-medium fill-slate-400">(teuer und träge)</text>
                   </g>
 
                   {/* Competitor: Excel (Bottom Right) */}
                   <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
                     <circle cx="320" cy="340" r="14" className="fill-slate-300" />
-                    <text x="320" y="320" textAnchor="middle" className="text-xs font-bold fill-slate-500">Excel (Manuell)</text>
-                    <text x="320" y="335" textAnchor="middle" className="text-[10px] fill-slate-400">(Fehleranfällig)</text>
+                    <text x="320" y="305" textAnchor="middle" className="text-base font-bold fill-slate-500">Excel (manuell)</text>
+                    <text x="320" y="325" textAnchor="middle" className="text-sm font-medium fill-slate-400">(fehleranfällig)</text>
                   </g>
 
                   {/* Competitor: Simple Tools (Bottom Left) */}
                   <g className="opacity-60 hover:opacity-100 transition-opacity cursor-default">
                     <circle cx="100" cy="300" r="14" className="fill-slate-300" />
-                    <text x="100" y="330" textAnchor="middle" className="text-xs font-bold fill-slate-500">Reine Reporting Tools</text>
-                    <text x="100" y="345" textAnchor="middle" className="text-[10px] fill-slate-400">(Zu oberflächlich)</text>
+                    <text x="100" y="335" textAnchor="middle" className="text-base font-bold fill-slate-500">Reine Reporting Tools</text>
+                    <text x="100" y="355" textAnchor="middle" className="text-sm font-medium fill-slate-400">(zu eindimensional)</text>
                   </g>
 
                   {/* CoreMIS - Sweet Spot (Top Left) */}
@@ -110,8 +116,8 @@ export const PositioningGraph: React.FC = () => {
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     />
                     
-                    <text x="100" y="120" textAnchor="middle" className="text-base font-bold fill-primary">CoreMIS</text>
-                    <text x="100" y="138" textAnchor="middle" className="text-[10px] font-medium fill-accent-orange uppercase tracking-wide">The Sweet Spot</text>
+                    <text x="100" y="120" textAnchor="middle" className="text-lg font-bold fill-primary">CoreMIS</text>
+                    <text x="100" y="140" textAnchor="middle" className="text-sm font-medium fill-accent-orange uppercase tracking-wide">The Sweet Spot</text>
                   </g>
 
                   {/* Grid Lines (Subtle) */}
@@ -134,7 +140,7 @@ export const PositioningGraph: React.FC = () => {
                 <div>
                    <h4 className="font-bold text-primary text-lg">Belastbare Zahlen statt Interpretationen.</h4>
                    <p className="text-sm text-secondary leading-relaxed mt-1">
-                     Bruttoumsatz, EBITDA, EBIT bis zum Unternehmensergebnis – klar, standardisiert und entscheidungsrelevant für Management und Kapitalgeber.
+                     Umsatz, GP, EBITDA, EBIT bis zum Unternehmensergebnis – klar, standardisiert und entscheidungsrelevant für Management und Kapitalgeber.
                    </p>
                 </div>
               </div>

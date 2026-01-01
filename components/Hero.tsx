@@ -21,18 +21,12 @@ export const Hero: React.FC = () => {
                 für <span className="relative inline-block px-2">
                   <span className="relative z-10 font-serif italic text-primary">KMU</span>
                   
-                  {/* Dynamic Brush Stroke: Behind KMU */}
-                  <svg 
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[40%] w-[140%] h-[160%] -z-10 text-accent-orange overflow-visible" 
-                    viewBox="0 0 200 60" 
-                    preserveAspectRatio="none"
-                  >
-                    <path 
-                      d="M5,45 Q90,25 190,35 L195,30 Q90,15 5,35 Z" 
-                      fill="currentColor"
-                      opacity="0.9"
-                    />
-                  </svg>
+                  {/* Image Brush Stroke: Behind KMU */}
+                  <img 
+                    src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png" 
+                    alt=""
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[150%] -z-10 object-contain opacity-90 mix-blend-multiply"
+                  />
                 </span>
               </h1>
               
