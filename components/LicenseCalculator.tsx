@@ -5,7 +5,7 @@ import { RevealOnScroll } from './RevealOnScroll';
 export const LicenseCalculator: React.FC = () => {
   const [entities, setEntities] = useState(5); // Default adjusted to 5
   const [revenue, setRevenue] = useState(30); // Default adjusted to 30 Mio
-  const [term, setTerm] = useState<12 | 24 | 36>(12);
+  const [term, setTerm] = useState<1 | 12 | 24 | 36>(12);
 
   const calculations = useMemo(() => {
     // 1. Base Fee (Monthly)
@@ -23,9 +23,10 @@ export const LicenseCalculator: React.FC = () => {
 
     // 4. Discount Logic
     let discountPercent = 0;
-    if (term === 12) discountPercent = 0;    // 0%
-    if (term === 24) discountPercent = 0.10; // 10%
-    if (term === 36) discountPercent = 0.20; // 20%
+    if (term === 1) discountPercent = 0;     // Standard
+    if (term === 12) discountPercent = 0.10; // 10%
+    if (term === 24) discountPercent = 0.20; // 20%
+    if (term === 36) discountPercent = 0.30; // 30%
 
     // "Scaling Fee" (formerly Add-ons)
     const scalingFeeMonthly = entityFeeMonthly + revenueFeeMonthly;
@@ -182,26 +183,26 @@ export const LicenseCalculator: React.FC = () => {
                   {/* Vorauszahlungsrabatt Options */}
                   <div className="space-y-4">
                     <label className="font-bold text-primary text-xs uppercase tracking-wider text-accent-orange">Vorauszahlungsrabatt</label>
-                    <div className="grid grid-cols-3 gap-3">
-                      {[12, 24, 36].map((t) => {
-                         const discountMap = { 12: '0%', 24: '10%', 36: '20%' };
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {[1, 12, 24, 36].map((t) => {
+                         const discountMap = { 1: 'Standard', 12: '10 %', 24: '20 %', 36: '30 %' };
                          const isActive = term === t;
-                         const label = discountMap[t as 12|24|36];
-                         const hasDiscount = label !== '0%';
+                         const label = discountMap[t as 1|12|24|36];
+                         const hasDiscount = t > 1;
                          
                          return (
                            <button
                              key={t}
                              onClick={() => setTerm(t as any)}
-                             className={`py-4 rounded-xl border text-base transition-all flex flex-col items-center justify-center ${
+                             className={`py-3 px-1 rounded-xl border text-sm transition-all flex flex-col items-center justify-center ${
                                isActive 
                                  ? 'border-accent-orange bg-orange-50 text-primary font-bold shadow-md' 
                                  : 'border-slate-100 bg-white text-secondary hover:border-slate-300'
                              }`}
                            >
-                             <span>{t} Mon.</span>
-                             <span className={`text-xs ${isActive && hasDiscount ? 'text-accent-orange' : 'text-slate-400'}`}>
-                               {hasDiscount ? `-${label}` : 'Standard'}
+                             <span className="whitespace-nowrap">{t} Mt.</span>
+                             <span className={`text-[10px] md:text-xs font-bold mt-1 ${isActive && hasDiscount ? 'text-accent-orange' : 'text-slate-400'}`}>
+                               {hasDiscount ? `-${label}` : label}
                              </span>
                            </button>
                          )

@@ -14,11 +14,13 @@ const FAQ = lazy(() => import('./components/FAQ').then(module => ({ default: mod
 const DemoCTA = lazy(() => import('./components/DemoCTA').then(module => ({ default: module.DemoCTA })));
 const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
 const LegalPage = lazy(() => import('./components/LegalPage').then(module => ({ default: module.LegalPage })));
+const LegalModal = lazy(() => import('./components/LegalModal').then(module => ({ default: module.LegalModal })));
 const Impact = lazy(() => import('./components/Impact').then(module => ({ default: module.Impact })));
 const PositioningGraph = lazy(() => import('./components/PositioningGraph').then(module => ({ default: module.PositioningGraph })));
 
 const App: React.FC = () => {
   const [legalPage, setLegalPage] = useState<'impressum' | 'datenschutz' | 'agb' | null>(null);
+  const [modalPage, setModalPage] = useState<'haftung' | 'urheberrecht' | null>(null);
 
   const handleNavigateHome = (targetSection?: string) => {
     setLegalPage(null);
@@ -30,6 +32,14 @@ const App: React.FC = () => {
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }, 50);
+    }
+  };
+
+  const handleOpenLegal = (page: 'impressum' | 'datenschutz' | 'agb' | 'haftung' | 'urheberrecht') => {
+    if (page === 'haftung' || page === 'urheberrecht') {
+      setModalPage(page);
+    } else {
+      setLegalPage(page);
     }
   };
 
@@ -83,7 +93,8 @@ const App: React.FC = () => {
       <ScrollToTop />
       {/* 12. Finanzsteuerung neu gedacht (Footer) */}
       <Suspense fallback={null}>
-        <Footer onOpenLegal={setLegalPage} />
+        <Footer onOpenLegal={handleOpenLegal} />
+        <LegalModal page={modalPage} onClose={() => setModalPage(null)} />
       </Suspense>
     </div>
   );

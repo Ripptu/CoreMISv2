@@ -61,15 +61,7 @@ export const ROICalculator: React.FC = () => {
 
                <h2 className="text-4xl md:text-6xl font-serif text-primary mb-6 leading-[1.1]">
                  Was kostet Sie manuelles <br/>
-                 <span className="relative inline-block px-1 z-10 mt-1">
-                   <span className="font-serif italic font-bold relative z-10">Reporting?</span>
-                   {/* Image Brush Stroke */}
-                   <img 
-                     src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png"
-                     alt=""
-                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[150%] -z-10 object-contain opacity-90 mix-blend-multiply"
-                   />
-                 </span>
+                 <span className="font-serif italic font-bold text-primary">Reporting?</span>
                </h2>
 
                <p className="text-base md:text-lg text-secondary leading-relaxed mb-12 max-w-md">
@@ -83,19 +75,7 @@ export const ROICalculator: React.FC = () => {
                       {formatCHF(calculations.total)}
                     </div>
                     <div className="text-sm font-medium text-secondary mb-4">
-                       Verschwendetes Budget pro Jahr (Personalkosten + Wartung)
-                    </div>
-                    
-                    {/* Small Breakdown for transparency */}
-                    <div className="text-[10px] text-slate-400 space-y-1 border-t border-slate-100 pt-3">
-                       <div className="flex justify-between">
-                         <span>Manuelle Arbeit:</span>
-                         <span>{formatCHF(calculations.breakdown.direct)}</span>
-                       </div>
-                       <div className="flex justify-between">
-                         <span>Wartung Excel-Quellen:</span>
-                         <span>{formatCHF(calculations.breakdown.maintenance)}</span>
-                       </div>
+                       Verschwendetes Budget pro Jahr (Personalkosten + Lizenz)
                     </div>
                   </div>
                   
@@ -126,9 +106,6 @@ export const ROICalculator: React.FC = () => {
                       type="range" min="1" max="50" value={excelFiles} onChange={(e) => setExcelFiles(Number(e.target.value))}
                       className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200"
                    />
-                   <p className="text-[10px] text-slate-400 mt-1">
-                     Kalkuliert 30 Min. Wartungsaufwand (Links, Struktur, Versionierung) pro Datei/Monat.
-                   </p>
                  </div>
 
                  <div className="space-y-2 group">
@@ -140,7 +117,6 @@ export const ROICalculator: React.FC = () => {
                       type="range" min="1" max="100" value={hoursPerMonth} onChange={(e) => setHoursPerMonth(Number(e.target.value))}
                       className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-200"
                    />
-                   <p className="text-xs text-secondary mt-2">Reine Arbeitszeit für Export, Copy-Paste, Formatting.</p>
                  </div>
 
                  <div className="space-y-2 group">

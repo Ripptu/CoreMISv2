@@ -71,8 +71,8 @@ export const SecuritySection: React.FC = () => {
                 {[
                   'Zertifizierte Rechenzentren (ISO 27001)', 
                   'DSGVO Konformität garantiert', 
-                  'TLS 1.3 High-End Verschlüsselung', 
-                  'Regelmäßige Penetration Tests'
+                  'Verschlüsselung (TLS / AES-256)', 
+                  'Rollenbasierte Zugriffskontrolle'
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 group">
                      <CheckCircle2 size={20} className="text-emerald-500 shrink-0 group-hover:scale-110 transition-transform" />
@@ -108,9 +108,9 @@ export const SecuritySection: React.FC = () => {
               <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 transition-all duration-300 border border-white/5">
                 <Server size={24} strokeWidth={1.5} />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">Server in Frankfurt</h3>
+              <h3 className="text-lg font-bold text-white mb-3">Serverstandort Schweiz / EU</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Physische Datenspeicherung ausschließlich in zertifizierten Rechenzentren in Deutschland (EU).
+                Physische Datenspeicherung ausschließlich in zertifizierten Rechenzentren in der Schweiz oder der EU (ISO 27001).
               </p>
             </TiltCard>
             
@@ -119,9 +119,9 @@ export const SecuritySection: React.FC = () => {
               <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 transition-all duration-300 border border-white/5">
                 <Lock size={24} strokeWidth={1.5} />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">End-to-End</h3>
+              <h3 className="text-lg font-bold text-white mb-3">Verschlüsselung</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Vollständige Verschlüsselung aller Daten während der Übertragung und im Ruhezustand (AES-256).
+                Vollständige Verschlüsselung aller Daten während der Übertragung (TLS) und im Ruhezustand (AES-256).
               </p>
             </TiltCard>
             
@@ -133,10 +133,9 @@ export const SecuritySection: React.FC = () => {
                      <Database size={24} strokeWidth={1.5} />
                    </div>
                    <div>
-                     <h3 className="text-lg font-bold text-white mb-2">Backups & Recovery</h3>
+                     <h3 className="text-lg font-bold text-white mb-2">Backups & Zugriffsschutz</h3>
                      <p className="text-slate-400 text-sm leading-relaxed max-w-lg">
-                       Tägliche, automatisierte Backups und redundante Systeme garantieren 99.9% Verfügbarkeit. 
-                       Ihre Daten sind gegen Ausfälle mehrfach abgesichert.
+                       Tägliche Backups, rollenbasierte Zugriffsbeschränkungen und Protokollierung aller administrativen Zugriffe garantieren Sicherheit.
                      </p>
                    </div>
                 </div>

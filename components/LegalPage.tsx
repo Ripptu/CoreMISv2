@@ -65,7 +65,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
                 Angaben gemäß Informationspflichten.
               </p>
               
-              <div className="bg-surface p-8 rounded-2xl border border-border mb-8">
+              <div className="bg-surface p-8 rounded-2xl border border-border mb-12">
                 <h3 className="text-lg font-bold text-primary mb-4">Betreiber & Kontakt</h3>
                 <p className="mb-4">
                   <strong>COREMIS GmbH</strong><br/>
@@ -87,15 +87,23 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              {/* Disclaimer Section */}
+              <div className="space-y-8">
+                <h2 className="text-3xl font-bold text-primary mb-6">Disclaimer</h2>
+
                 <div>
-                  <h3 className="text-lg font-bold text-primary">Urheberrecht</h3>
-                  <p>
-                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem schweizerischen Urheberrecht. 
-                    Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen 
-                    der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+                  <h3 className="text-xl font-bold text-primary mb-3">Haftung für Links</h3>
+                  <p className="text-base leading-relaxed text-secondary">
+                    Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
                   </p>
-                  <p className="text-sm text-secondary mt-4">
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-3">Urheberrecht</h3>
+                  <p className="text-base leading-relaxed text-secondary">
+                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem schweizerischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+                  </p>
+                  <p className="text-sm text-secondary mt-6 font-medium">
                     © 2025 COREMIS GmbH. Alle Rechte vorbehalten.
                   </p>
                 </div>

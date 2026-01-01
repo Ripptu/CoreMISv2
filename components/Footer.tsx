@@ -1,9 +1,9 @@
 import React from 'react';
-import { ArrowUp, Mail, Linkedin, Twitter, ArrowRight, ShieldCheck, Activity } from 'lucide-react';
+import { ArrowUp, Mail, Linkedin, ArrowRight, ShieldCheck, Activity } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 interface FooterProps {
-  onOpenLegal: (page: 'impressum' | 'datenschutz' | 'agb') => void;
+  onOpenLegal: (page: 'impressum' | 'datenschutz' | 'agb' | 'haftung' | 'urheberrecht') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
@@ -49,8 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
           <RevealOnScroll delay={100}>
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
-               <h3 className="text-xl font-bold mb-2">CoreMIS Insights Newsletter</h3>
-               <p className="text-slate-400 text-sm mb-6">Updates zu Finance-Tech, Benchmarks & Features.</p>
+               <h3 className="text-xl font-bold mb-6">CoreMIS Insights</h3>
                
                <div className="flex flex-col sm:flex-row gap-3">
                  <input 
@@ -80,12 +79,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                   <span className="font-bold text-2xl tracking-tight">CoreMIS</span>
                </div>
                <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">
-                 Die intelligente Finanzsteuerung für den Mittelstand. Entwickelt in der Schweiz für höchste Ansprüche an Präzision und Sicherheit.
+                 Die cloudbasierte SaaS-Software für pragmatische CFO-Transparenz – Plan- und Istwerte plus MIS in einer betrieblichen Steuerungssicht.
                </p>
                
                {/* Socials */}
                <div className="flex gap-4">
-                  {[Linkedin, Twitter, Mail].map((Icon, i) => (
+                  {[Linkedin, Mail].map((Icon, i) => (
                     <button key={i} className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-accent-orange hover:border-accent-orange transition-all duration-300">
                       <Icon size={18} />
                     </button>
@@ -100,26 +99,56 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                <h4 className="font-bold text-white mb-6 text-lg">SaaS Lösung</h4>
                <ul className="space-y-4 text-sm text-slate-400">
                  <li><button className="hover:text-accent-orange transition-colors">Release Updates</button></li>
-                 <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Preise und Pakete</button></li>
+                 <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Lizenzkalkulator</button></li>
+                 <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">Einführungspakete</button></li>
                  <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">ROI Rechner</button></li>
                  <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">Häufige Fragen (FAQs)</button></li>
-                 <li><button onClick={() => onOpenLegal('agb')} className="hover:text-accent-orange transition-colors">Lizenz- und Nutzungsvereinbarung</button></li>
                </ul>
              </RevealOnScroll>
            </div>
 
-           {/* Column 3: Impressum (3 cols) */}
+           {/* Column 3: Disclaimer / Impressum (3 cols) */}
            <div className="lg:col-span-3">
              <RevealOnScroll delay={400}>
-               <h4 className="font-bold text-white mb-6 text-lg">Impressum</h4>
+               <h4 className="font-bold text-white mb-6 text-lg">Disclaimer</h4>
                <ul className="space-y-4 text-sm text-slate-400">
                  <li className="font-bold text-white">COREMIS GmbH</li>
-                 <li>Geschäftsführer: <br/><span className="text-white">lic.oec. Erich Meyer HSG</span></li>
+                 <li>Geschäftsführer: <br/><span className="text-white">lic.oec. Erich Meyer</span></li>
                  <li>Geschäftsadresse: <br/><span className="text-white">Im Buck 3, CH-8196 Wil ZH</span></li>
-                 <li>eMail-Adresse: <br/><a href="mailto:info@coremis.ch" className="text-white hover:text-accent-orange">info@coremis.ch</a></li>
-                 {/* Placeholder for Telefonnummer if needed later */}
-                 {/* <li>Telefonnummer: <br/><span className="text-white">-</span></li> */}
+                 <li>
+                   <a href="mailto:info@coremis.ch" className="text-white hover:text-accent-orange">info@coremis.ch</a>
+                 </li>
                  <li>CHE-Nummer: <br/><span className="text-white">CHE-291.947.911</span></li>
+                 
+                 {/* Disclaimer Links */}
+                 <li className="pt-4 flex flex-col gap-2">
+                   <button onClick={() => onOpenLegal('haftung')} className="text-left text-white hover:text-accent-orange transition-colors">
+                     Haftung für Links
+                   </button>
+                   <button onClick={() => onOpenLegal('urheberrecht')} className="text-left text-white hover:text-accent-orange transition-colors">
+                     Urheberrechte
+                   </button>
+                 </li>
+
+                 {/* PDF Links */}
+                 <li className="pt-4">
+                    <a 
+                      href="/Nutzungsbedingungen_CoreMIS.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block text-white hover:text-accent-orange transition-colors mb-2"
+                    >
+                      Endbenutzer Lizenzvereinbarung (EULA)
+                    </a>
+                    <a 
+                      href="/Nutzungsbedingungen_CoreMIS.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block text-white hover:text-accent-orange transition-colors"
+                    >
+                      Datenschutzerklärung (DSGVO)
+                    </a>
+                 </li>
                </ul>
              </RevealOnScroll>
            </div>

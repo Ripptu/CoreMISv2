@@ -7,9 +7,9 @@ const steps = [
     week: 'Woche 1',
     title: 'Zielbild und Struktur',
     points: [
-      'Reportinganforderungen Stakeholder (VR/GF/CFO) klären.',
+      'Anforderungen Stakeholder (VR/GF/CFO) klären.',
       'Bestehendes MIS analysieren (Keep/Improve/Drop).',
-      'Businessmodell strukturieren (Dimensionen: Geschäftseinheiten, Kundengruppen, Produktgruppen).'
+      'Businessmodell strukturieren (Geschäftseinheiten, Kundengruppen, Produktgruppen).'
     ],
     icon: <Target size={24} />,
     visualContent: (
@@ -59,7 +59,7 @@ const steps = [
     points: [
       'Datenquellen analysieren und validieren (ERP/FiBu/Excel).',
       'Datenqualität einordnen (Vollständigkeit/Konsistenz/Aktualität).',
-      'Mapping auf Ihre BWA-Struktur.'
+      'Daten strukturieren und priorisieren.'
     ],
     icon: <Database size={24} />,
     visualContent: (
@@ -111,7 +111,7 @@ const steps = [
     points: [
       'Import Budget • Actuals • Forecast.',
       'Plausibilisierung/Abstimmungen und Anpassungen.',
-      'Setup der Basis-Berichte.'
+      'Datenmapping auf CoreMIS.'
     ],
     icon: <Import size={24} />,
     visualContent: (
@@ -153,7 +153,7 @@ const steps = [
     title: 'Enablement und Go-Live',
     points: [
       'Basis-MIS aufsetzen.',
-      'Go-Live inkl. Support für die ersten zwei Monatsabschlüsse.',
+      'Go-Live inkl. Support für die ersten Monatsabschlüsse.',
       'Key-User Schulung (Betrieb, Pflege, Reporting).'
     ],
     icon: <Rocket size={24} />,
@@ -167,7 +167,7 @@ const steps = [
                </div>
                <div>
                   <div className="text-[9px] font-bold text-slate-400 uppercase">CoreMIS</div>
-                  <div className="text-[10px] font-bold text-primary">Executive Dashboard</div>
+                  <div className="text-[10px] font-bold text-primary">CoreMIS Dashboard</div>
                </div>
             </div>
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -203,7 +203,7 @@ export const ImplementationTimeline: React.FC = () => {
         
         <RevealOnScroll>
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-primary mb-6 leading-tight">
               Die <span className="relative inline-block px-2">
                   <span className="relative z-10 font-serif italic text-primary">CoreMIS Journey</span>
                   {/* Image Brush Stroke */}
@@ -212,7 +212,7 @@ export const ImplementationTimeline: React.FC = () => {
                     alt=""
                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[150%] -z-10 object-contain opacity-90 mix-blend-multiply"
                   />
-                </span> (in 4 Wochen)
+                </span> <br/>(in 4 Wochen)
             </h2>
           </div>
         </RevealOnScroll>
