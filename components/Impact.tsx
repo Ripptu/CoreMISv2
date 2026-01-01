@@ -16,7 +16,7 @@ export const Impact: React.FC = () => {
 
           <RevealOnScroll delay={100}>
             <div className="border-l-2 border-slate-200 pl-6">
-              <div className="text-5xl md:text-6xl font-serif text-primary mb-3">85%</div>
+              <div className="text-5xl md:text-6xl font-serif text-primary mb-3">95%</div>
               <div className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">Weniger Excel-Aufwand</div>
             </div>
           </RevealOnScroll>
@@ -31,7 +31,7 @@ export const Impact: React.FC = () => {
           <RevealOnScroll delay={300}>
             <div className="border-l-2 border-slate-200 pl-6">
               <div className="text-5xl md:text-6xl font-serif text-primary mb-3">360°</div>
-              <div className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">Finanzblick</div>
+              <div className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">Betriebliche Finanzsicht</div>
             </div>
           </RevealOnScroll>
 
