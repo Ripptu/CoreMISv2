@@ -144,7 +144,17 @@ export const PricingPackages: React.FC = () => {
                   Keine langfristigen Verträge.
                </h3>
                <p className="text-xl md:text-2xl text-secondary">
-                  Monatlich kündbar. <span className="text-accent-orange font-bold decoration-accent-orange/30 underline decoration-2 underline-offset-4">Keine Setup-Falle.</span>
+                  Monatlich kündbar. 
+                  <br className="block md:hidden" />
+                  <span className="relative inline-block px-2 z-10 md:ml-2 mt-1 md:mt-0">
+                    <span className="font-bold text-primary relative z-10">Keine Setup-Falle.</span>
+                    {/* Image Brush Stroke */}
+                    <img 
+                      src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png"
+                      alt=""
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[150%] -z-10 object-fill opacity-90 mix-blend-multiply"
+                    />
+                  </span>
                </p>
             </div>
           </div>

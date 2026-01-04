@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                   <span className="font-bold text-2xl tracking-tight">CoreMIS</span>
                </div>
                <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">
-                 Die cloudbasierte SaaS-Software für pragmatische CFO-Transparenz – Plan- und Istwerte plus MIS in einer betrieblichen Steuerungssicht.
+                 Die cloudbasierte SaaS-Lösung für pragmatische CFO-Transparenz – Plan- und Istwerte plus MIS in einer betrieblichen Steuerungssicht.
                </p>
                
                {/* Socials */}
@@ -98,11 +98,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
              <RevealOnScroll delay={300}>
                <h4 className="font-bold text-white mb-6 text-lg">SaaS Lösung</h4>
                <ul className="space-y-4 text-sm text-slate-400">
-                 <li><button className="hover:text-accent-orange transition-colors">Release Updates</button></li>
-                 <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Lizenzkalkulator</button></li>
-                 <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">Einführungspakete</button></li>
+                 <li><button onClick={() => handleNav('sweetspot')} className="hover:text-accent-orange transition-colors">Lösung</button></li>
                  <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">ROI Rechner</button></li>
-                 <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">Häufige Fragen (FAQs)</button></li>
+                 <li><button onClick={() => handleNav('lizenzrechner')} className="hover:text-accent-orange transition-colors">Lizenzpreise</button></li>
+                 <li><button onClick={() => handleNav('preise')} className="hover:text-accent-orange transition-colors">Einführungspreise</button></li>
+                 <li><button onClick={() => handleNav('sicherheit')} className="hover:text-accent-orange transition-colors">Sicherheit</button></li>
+                 <li><button onClick={() => handleNav('faq')} className="hover:text-accent-orange transition-colors">FAQ</button></li>
                </ul>
              </RevealOnScroll>
            </div>
@@ -167,18 +168,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
           <div className="flex flex-col md:flex-row items-center gap-6 w-full md:w-auto">
              
-             {/* Status Box Compact */}
-             <div className="bg-[#131825] rounded-lg px-4 py-2 border border-white/5 flex items-center gap-3">
-                <div className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </div>
-                <div className="flex flex-col">
-                   <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-wider leading-none mb-0.5">Systems Operational</span>
-                   <span className="text-[9px] text-slate-500 flex items-center gap-1"><ShieldCheck size={8} /> ISO 27001 Certified</span>
-                </div>
-             </div>
-
              {/* Swiss Made Badge */}
              <div className="hidden md:flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded border border-white/5 hover:bg-white/10 transition-colors cursor-default">
                 <span className="text-red-500 text-lg font-bold leading-none">+</span>

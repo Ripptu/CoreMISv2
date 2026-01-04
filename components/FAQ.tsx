@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
@@ -182,6 +182,14 @@ const questions: Question[] = [
 
 export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [displayQuestions, setDisplayQuestions] = useState<Question[]>(questions);
+
+  useEffect(() => {
+    // Randomize questions on mount so a different one is on top each time
+    const shuffled = [...questions].sort(() => Math.random() - 0.5);
+    setDisplayQuestions(shuffled);
+    setOpenIndex(0); // Open the first question of the new shuffled list
+  }, []);
 
   return (
     <section id="faq" className="py-24 bg-surface">
@@ -189,12 +197,12 @@ export const FAQ: React.FC = () => {
         <RevealOnScroll>
           <div className="text-center mb-16">
              <h2 className="text-3xl font-bold text-primary mb-4">Häufige Fragen (FAQ).</h2>
-             <p className="text-secondary">Details zu Inhalten, Prozessen und Voraussetzungen.</p>
+             <p className="text-secondary">Antworten auf die wichtigsten CoreMIS Fragen.</p>
           </div>
         </RevealOnScroll>
         
         <div className="space-y-4">
-          {questions.map((item, index) => (
+          {displayQuestions.map((item, index) => (
             <RevealOnScroll key={index} delay={Math.min(index * 50, 500)}>
               <div className="bg-white border border-border rounded-xl overflow-hidden transition-all duration-300 hover:border-slate-300 hover:shadow-sm">
                 <button 
