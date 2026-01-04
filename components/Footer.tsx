@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                   <span className="font-bold text-2xl tracking-tight">CoreMIS</span>
                </div>
                <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs">
-                 Die cloudbasierte SaaS-Lösung für pragmatische CFO-Transparenz – Plan- und Istwerte plus MIS in einer betrieblichen Steuerungssicht.
+                 Die cloudbasierte SaaS Lösung für pragmatische CFO-Transparenz – Plan- und Istwerte plus MIS in einer betrieblichen Steuerungssicht.
                </p>
                
                {/* Socials */}
@@ -93,10 +93,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
              </RevealOnScroll>
            </div>
 
-           {/* Column 2: SaaS Lösung (3 cols) */}
+           {/* Column 2: SaaS Lösungen (3 cols) */}
            <div className="lg:col-span-3 lg:col-start-6">
              <RevealOnScroll delay={300}>
-               <h4 className="font-bold text-white mb-6 text-lg">SaaS Lösung</h4>
+               <h4 className="font-bold text-white mb-6 text-lg">SaaS Lösungen</h4>
                <ul className="space-y-4 text-sm text-slate-400">
                  <li><button onClick={() => handleNav('sweetspot')} className="hover:text-accent-orange transition-colors">Lösung</button></li>
                  <li><button onClick={() => handleNav('roi')} className="hover:text-accent-orange transition-colors">ROI Rechner</button></li>
@@ -156,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           
           <div className="flex flex-col gap-2">
             <div className="text-sm text-slate-500 font-medium">
-              © {new Date().getFullYear()} CoreMIS GmbH.
+              © CoreMIS GmbH.
             </div>
             
             <div className="flex gap-4 text-xs text-slate-600">

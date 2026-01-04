@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { X } from 'lucide-react';
+import { X, Printer, Download } from 'lucide-react';
 
 interface LegalModalProps {
   page: 'impressum' | 'datenschutz' | 'agb' | 'haftung' | 'urheberrecht' | null;
@@ -38,23 +38,23 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
 
   // Use createPortal to render outside the root div (fixes positioning issues with GSAP/Lenis)
   return createPortal(
-    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 print:p-0">
       <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity print:hidden" 
         onClick={onClose}
       ></div>
       <div 
         ref={scrollContainerRef}
-        className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 shadow-2xl animate-in fade-in zoom-in-95 duration-300"
+        className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 shadow-2xl animate-in fade-in zoom-in-95 duration-300 print:max-h-none print:w-full print:shadow-none print:rounded-none"
       >
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors z-20"
+          className="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors z-20 print:hidden"
         >
           <X size={20} />
         </button>
         
-        <div className="p-8 md:p-12 prose prose-slate max-w-none text-primary">
+        <div className="p-8 md:p-12 prose prose-slate max-w-none text-primary print:p-0">
           {page === 'impressum' && (
             <>
               <h2 className="font-serif text-3xl mb-6">Impressum</h2>
@@ -103,8 +103,30 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
           )}
 
           {page === 'agb' && (
-            <>
-              <h2 className="font-serif text-3xl mb-2">Endbenutzer-Lizenzvereinbarung (EULA) für CoreMIS</h2>
+            <div className="print:p-8">
+              {/* Document Header with Logo */}
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b-2 border-primary pb-8">
+                <img 
+                  src="https://i.postimg.cc/BnmkN7h0/logo-mit-text-PNG.png" 
+                  alt="CoreMIS Logo" 
+                  className="h-12 w-auto object-contain print:h-16"
+                />
+                <div className="text-left md:text-right w-full md:w-auto flex flex-row md:flex-col justify-between items-center md:items-end">
+                  <div>
+                    <h2 className="font-serif text-xl md:text-2xl font-bold text-primary m-0 leading-none">Lizenzvereinbarung</h2>
+                    <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0">EULA</p>
+                  </div>
+                  <button 
+                    onClick={() => window.print()} 
+                    className="ml-4 md:ml-0 md:mt-2 text-primary hover:text-accent-orange transition-colors print:hidden flex items-center gap-2 text-sm font-bold bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg" 
+                    title="Drucken / Als PDF speichern"
+                  >
+                     <Download size={16} /> Als PDF speichern
+                  </button>
+                </div>
+              </div>
+
+              <h2 className="font-serif text-3xl mb-2 mt-0">Endbenutzer-Lizenzvereinbarung (EULA)</h2>
               <p className="text-sm text-secondary mb-8">Gültig ab 1. Dezember 2025</p>
 
               <p>
@@ -220,12 +242,34 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
               <p>Ausschliesslicher Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit dieser Vereinbarung inkl. ihrer Anhänge ist Zürich (8001), Schweiz.</p>
               <p>COREMIS GmbH – Wil (ZH), Schweiz<br/>
               © 2025 COREMIS GmbH. Alle Rechte vorbehalten.</p>
-            </>
+            </div>
           )}
 
           {page === 'datenschutz' && (
-            <>
-              <h2 className="font-serif text-3xl mb-2">Anhang – Datenverarbeitungsvertrag (DPA)</h2>
+            <div className="print:p-8">
+              {/* Document Header with Logo */}
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b-2 border-primary pb-8">
+                <img 
+                  src="https://i.postimg.cc/BnmkN7h0/logo-mit-text-PNG.png" 
+                  alt="CoreMIS Logo" 
+                  className="h-12 w-auto object-contain print:h-16"
+                />
+                <div className="text-left md:text-right w-full md:w-auto flex flex-row md:flex-col justify-between items-center md:items-end">
+                  <div>
+                    <h2 className="font-serif text-xl md:text-2xl font-bold text-primary m-0 leading-none">Datenschutz</h2>
+                    <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0">DPA (Data Processing Agreement)</p>
+                  </div>
+                  <button 
+                    onClick={() => window.print()} 
+                    className="ml-4 md:ml-0 md:mt-2 text-primary hover:text-accent-orange transition-colors print:hidden flex items-center gap-2 text-sm font-bold bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg"
+                    title="Drucken / Als PDF speichern"
+                  >
+                     <Download size={16} /> Als PDF speichern
+                  </button>
+                </div>
+              </div>
+
+              <h2 className="font-serif text-3xl mb-2 mt-0">Anhang – Datenverarbeitungsvertrag (DPA)</h2>
               <p className="text-sm text-secondary mb-8">Gemäss Art. 9 DSG / Art. 28 DSGVO</p>
 
               <p>
@@ -286,7 +330,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
                  <li>die Schlussbestimmungen des Hauptvertrags sowie,</li>
                  <li>das anwendbare Recht und der Gerichtsstand (Schweizer Recht, Gerichtsstand Zürich).</li>
               </ul>
-            </>
+            </div>
           )}
         </div>
       </div>

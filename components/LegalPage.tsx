@@ -13,31 +13,45 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
   }, [page]);
 
   const getTitle = () => {
+    const brushStrokeStyle = "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 object-fill opacity-90 mix-blend-multiply";
+
     switch(page) {
       case 'impressum': 
         return (
           <>
-            Unser <span className="relative inline-block px-1 z-10">
+            Unser <span className="relative inline-block px-2 z-10">
               <span className="font-handwriting italic font-normal text-primary z-10 relative">Impressum</span>
-              <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
+              <img 
+                src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png" 
+                alt="" 
+                className={`${brushStrokeStyle} w-[110%] h-[150%]`}
+              />
             </span>
           </>
         );
       case 'datenschutz':
         return (
           <>
-            Datenschutz & <span className="relative inline-block px-1 z-10">
+            Datenschutz & <span className="relative inline-block px-2 z-10">
               <span className="font-handwriting italic font-normal text-primary z-10 relative">DPA</span>
-              <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
+              <img 
+                src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png" 
+                alt="" 
+                className={`${brushStrokeStyle} w-[130%] h-[150%]`}
+              />
             </span>
           </>
         );
       case 'agb':
         return (
           <>
-            Endbenutzer <span className="relative inline-block px-1 z-10">
+            Endbenutzer <span className="relative inline-block px-2 z-10">
               <span className="font-handwriting italic font-normal text-primary z-10 relative">Lizenzvereinbarung</span>
-              <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
+              <img 
+                src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png" 
+                alt="" 
+                className={`${brushStrokeStyle} w-[105%] h-[150%]`}
+              />
             </span>
           </>
         );

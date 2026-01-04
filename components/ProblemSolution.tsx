@@ -61,7 +61,12 @@ const features = [
   },
 ];
 
-const FeatureCard = ({ item, idx }: { item: typeof features[0], idx: number }) => {
+interface FeatureCardProps {
+  item: typeof features[0];
+  idx: number;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ item, idx }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
