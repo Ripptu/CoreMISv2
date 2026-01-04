@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
-import { BarChart3, Layers, Target, Zap, Database } from 'lucide-react';
+import { BarChart3, Layers, Target, Zap, Database, ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const features = [
   {
@@ -60,6 +61,75 @@ const features = [
   },
 ];
 
+const FeatureCard = ({ item, idx }: { item: typeof features[0], idx: number }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex">
+      <RevealOnScroll delay={idx * 100} width="100%">
+        <div 
+          className={`group bg-white p-8 rounded-2xl border transition-all duration-300 h-full flex flex-col items-start relative overflow-hidden ${
+            isOpen 
+              ? 'border-accent-orange/30 shadow-hover' 
+              : 'border-border shadow-soft hover:shadow-hover hover:border-accent-orange/30'
+          }`}
+        >
+          
+          {/* Subtle Numbering */}
+          <div className="absolute top-4 right-4 text-6xl font-black text-slate-100/50 group-hover:text-orange-50 transition-colors pointer-events-none">
+            0{idx + 1}
+          </div>
+
+          <div className="mb-6 p-3 bg-slate-50 rounded-xl text-slate-400 group-hover:text-accent-orange group-hover:bg-orange-50 transition-colors duration-300 transform group-hover:scale-110 origin-left border border-slate-100 group-hover:border-orange-100">
+            {item.icon}
+          </div>
+          
+          <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-accent-orange transition-colors leading-tight">
+            {item.title}
+          </h3>
+          
+          <p className="text-secondary text-base leading-relaxed mb-4 font-medium">
+            {item.intro}
+          </p>
+          
+          {/* Toggle Button */}
+          <div className="mt-auto w-full pt-2">
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center gap-2 text-sm font-bold text-accent-orange hover:text-accent-hover transition-colors focus:outline-none"
+            >
+              {isOpen ? 'Einklappen' : 'Details anzeigen'}
+              {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+          </div>
+
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden w-full"
+              >
+                <ul className="space-y-3 pt-6 w-full border-t border-slate-100 mt-4">
+                  {item.bullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-secondary/80 leading-snug">
+                       <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-orange/60 shrink-0"></div>
+                       <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+        </div>
+      </RevealOnScroll>
+    </div>
+  );
+};
+
 export const ProblemSolution: React.FC = () => {
   return (
     <section id="loesungen" className="py-20 md:py-24 bg-surface border-y border-border overflow-hidden">
@@ -79,39 +149,7 @@ export const ProblemSolution: React.FC = () => {
         {/* Flexible Grid that centers items nicely */}
         <div className="flex flex-wrap justify-center gap-6">
           {features.map((item, idx) => (
-            <div key={idx} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex">
-              <RevealOnScroll delay={idx * 100} width="100%">
-                <div className="group bg-white p-8 rounded-2xl border border-border shadow-soft hover:shadow-hover hover:border-accent-orange/30 transition-all duration-300 h-full flex flex-col items-start relative overflow-hidden">
-                  
-                  {/* Subtle Numbering */}
-                  <div className="absolute top-4 right-4 text-6xl font-black text-slate-100/50 group-hover:text-orange-50 transition-colors pointer-events-none">
-                    0{idx + 1}
-                  </div>
-
-                  <div className="mb-6 p-3 bg-slate-50 rounded-xl text-slate-400 group-hover:text-accent-orange group-hover:bg-orange-50 transition-colors duration-300 transform group-hover:scale-110 origin-left border border-slate-100 group-hover:border-orange-100">
-                    {item.icon}
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-accent-orange transition-colors leading-tight">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="text-secondary text-base leading-relaxed mb-6 font-medium">
-                    {item.intro}
-                  </p>
-                  
-                  <ul className="space-y-3 mt-auto w-full">
-                    {item.bullets.map((bullet, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-secondary/80 leading-snug">
-                         <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-orange/60 shrink-0"></div>
-                         <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                </div>
-              </RevealOnScroll>
-            </div>
+            <FeatureCard key={idx} item={item} idx={idx} />
           ))}
         </div>
 

@@ -27,7 +27,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
         return (
           <>
             Datenschutz & <span className="relative inline-block px-1 z-10">
-              <span className="font-handwriting italic font-normal text-primary z-10 relative">Privatsphäre</span>
+              <span className="font-handwriting italic font-normal text-primary z-10 relative">DPA</span>
               <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
             </span>
           </>
@@ -35,8 +35,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
       case 'agb':
         return (
           <>
-            Nutzungsbedingungen & <span className="relative inline-block px-1 z-10">
-              <span className="font-handwriting italic font-normal text-primary z-10 relative">AGB</span>
+            Endbenutzer <span className="relative inline-block px-1 z-10">
+              <span className="font-handwriting italic font-normal text-primary z-10 relative">Lizenzvereinbarung</span>
               <span className="absolute bottom-2 left-0 w-full h-[0.3em] bg-accent-orange -z-10 -rotate-2 rounded-sm opacity-90"></span>
             </span>
           </>
@@ -136,215 +136,130 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
                 </div>
               </div>
 
-              {/* SECTION 1 & 2: Lizenz */}
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <div className="bg-white p-0">
-                  <h3 className="flex items-center gap-3 text-xl font-bold text-primary mb-4">
-                    <span className="bg-primary text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-mono">01</span>
-                    Gegenstand
-                  </h3>
+              {/* SECTION 1: Gegenstand */}
+              <div className="mb-8">
+                  <h3 className="text-xl font-bold text-primary mb-4">1 Gegenstand der Lizenz</h3>
                   <p className="text-sm leading-relaxed mb-4">
-                    COREMIS gewährt eine persönliche, nicht übertragbare Lizenz zur Eigennutzung der Software (SaaS). Inkludiert sind Updates, Service-Packs und Hotfixes.
+                    COREMIS gewährt dem Kunden für die vom Kunden gültig erworbene(n) Software(s) eine persönliche, nicht übertragbare, nicht abtretbare und nicht unterlizenzierbare Lizenz zur Eigennutzung der Software. Von der Lizenz erfasst sind auch vom Kunden gültig erworbene Aktualisierungen, Service-Packs und dringende Fehlerbehebungen der Software (sog. Hotfixes). Zum Nutzungsrecht zählen auch zur Software gehörende Dokumentationen und Installationsanweisungen, sofern COREMIS solche zur Verfügung stellt oder diese vom Kunden separat erworben wurden.
                   </p>
-                  <div className="bg-blue-50 text-blue-800 text-xs p-3 rounded-lg border border-blue-100 flex gap-2 items-start">
-                    <FileText size={14} className="mt-0.5 shrink-0" />
-                    Der Datenverarbeitungsvertrag (DPA) ist integraler Bestandteil.
-                  </div>
-                </div>
-
-                <div className="bg-white p-0">
-                  <h3 className="flex items-center gap-3 text-xl font-bold text-primary mb-4">
-                    <span className="bg-primary text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-mono">02</span>
-                    Umfang
-                  </h3>
-                  <ul className="text-sm space-y-2 list-none pl-0">
-                    <li className="flex gap-2"><CheckCircle2 size={16} className="text-green-500 shrink-0 mt-1" /> Nutzung für eigene betriebliche Zwecke.</li>
-                    <li className="flex gap-2"><CheckCircle2 size={16} className="text-green-500 shrink-0 mt-1" /> Zugriff für Mitarbeiter & Beauftragte.</li>
-                    <li className="flex gap-2"><Shield size={16} className="text-accent-orange shrink-0 mt-1" /> Rechte an Quellcode verbleiben bei COREMIS.</li>
-                  </ul>
-                </div>
+                  <p className="text-sm leading-relaxed">
+                    Der Datenverarbeitungsvertrag (DPA) gemäss Anhang ist integraler Bestandteil dieser Vereinbarung. Das DPA kann über das Benutzerkonto oder die Website von COREMIS jederzeit eingesehen und heruntergeladen werden.
+                  </p>
               </div>
 
-              <hr className="border-border mb-12" />
+              {/* SECTION 2: Umfang */}
+              <div className="mb-8">
+                  <h3 className="text-xl font-bold text-primary mb-4">2 Umfang der Lizenz</h3>
+                  <p className="text-sm leading-relaxed mb-2">Die Software ist urheberrechtlich geschützt. Alleinige Rechtsinhaberin sämtlicher Rechte ist COREMIS.</p>
+                  <p className="text-sm leading-relaxed mb-2">Dem Kunden wird ein einfaches, auf die Dauer der Lizenz beschränktes Nutzungsrecht für die von ihm lizenzierte Software für die eigenen betrieblichen Zwecke eingeräumt.</p>
+                  <p className="text-sm leading-relaxed mb-2">Die Lizenz der Software beinhaltet die Nutzung der Funktionalitäten, den Zugriff, die Verwendung und die Anzeige daraus generierter Daten.</p>
+                  <p className="text-sm leading-relaxed mb-2">Erwirbt und installiert der Kunde eine neuere Version der Software («Update»), verliert er, vorbehaltlich gegenteiliger Abreden, nach ihrer Installation, das Recht, die ältere Version weiter zu benutzen. COREMIS kann dies überprüfen und vom Kunden eine Bestätigung verlangen, dass die ältere Version nicht weiter genutzt wird.</p>
+                  <p className="text-sm leading-relaxed mb-2">Die Lizenz ist ausschliesslich für die eigene Nutzung des Kunden. Das heisst, nur der Kunde, seine Mitarbeitenden oder beauftragten Personen dürfen die Software nutzen. Das Zugänglichmachen und die Weitergabe der Software an Dritte ist untersagt, sofern die erworbene Lizenz nicht etwas anderes vorsieht. Alle Verwertungshandlungen, die nicht in dieser Vereinbarung vorgesehen sind und ausserhalb des jeweiligen Lizenzmodells liegen, sowie die Erteilung von Unterlizenzen oder der Verkauf der Software sind nicht erlaubt.</p>
+                  <p className="text-sm leading-relaxed mb-2">Der Kunde trägt die alleinige Verantwortung für eine unterbrechungsfreie und sichere Verbindung zum Internet bei Nutzung der Software.</p>
+                  <p className="text-sm leading-relaxed mb-2">Die von COREMIS mit der Software verwendeten Komponenten und Programme von Drittanbietern sind nur für die Verwendung mit der Software lizenziert und dürfen vom Kunden nicht in anderem Zusammenhang eingesetzt werden. Es gelten die Lizenzbestimmungen dieser Drittanbieter.</p>
+                  <p className="text-sm leading-relaxed">COREMIS behält sämtliche Rechte an der Software, dem Quellcode, Datenmodellen, Layouts etc., die in dieser Vereinbarung dem Kunden nicht ausdrücklich eingeräumt werden (Urheberrechte, Patentrechte, Markenrechte und alle sonstigen Schutzrechte, Rechte zur Bearbeitung und dergleichen). Feedback oder Verbesserungsvorschläge des Kunden darf COREMIS entschädigungslos nutzen und umsetzen.</p>
+              </div>
 
               {/* SECTION 3: Nutzungsbedingungen */}
-              <div className="mb-12">
-                <h3 className="flex items-center gap-3 text-xl font-bold text-primary mb-6">
-                  <span className="bg-primary text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-mono">03</span>
-                  Nutzungsbedingungen & Verbote
-                </h3>
-                <p className="text-sm mb-6">
-                  Die Software wird als SaaS bereitgestellt. Der Quellcode wird nicht ausgehändigt. Folgende Handlungen sind streng untersagt:
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-primary mb-4">3 Nutzungsbedingungen</h3>
+                <p className="text-sm mb-4">
+                  Die Software wird als Software-as-a-Service (SaaS) über das Internet bereitgestellt. Der Zugang erfolgt über Browser oder API-Schnittstellen. Die Nutzung erfolgt ausschliesslich über Online-Zugriff. Der Quellcode wird nicht ausgehändigt, ausgeliefert oder zugänglich gemacht. Vervielfältigungen, Veränderungen, Dekompilierungen (Reverse Engineering) der Software sind nicht erlaubt.
                 </p>
-                
-                <div className="grid md:grid-cols-3 gap-4 mb-6">
-                  <div className="bg-red-50 border border-red-100 p-4 rounded-xl text-sm text-red-900 flex flex-col items-center text-center gap-2">
-                    <AlertTriangle className="text-red-500" />
-                    <span>Einschleusen von Schadsoftware</span>
-                  </div>
-                  <div className="bg-red-50 border border-red-100 p-4 rounded-xl text-sm text-red-900 flex flex-col items-center text-center gap-2">
-                    <AlertTriangle className="text-red-500" />
-                    <span>Reverse Engineering & Dekompilierung</span>
-                  </div>
-                  <div className="bg-red-50 border border-red-100 p-4 rounded-xl text-sm text-red-900 flex flex-col items-center text-center gap-2">
-                    <AlertTriangle className="text-red-500" />
-                    <span>Datenmanipulation & Spam</span>
-                  </div>
-                </div>
-                
-                <p className="text-xs text-secondary italic">
-                  COREMIS hat das Recht, die Einhaltung durch Protokollierung und jährliche Audits zu prüfen.
+                <p className="text-sm mb-4">
+                   Der Kunde darf die Software nicht für rechtswidrige, diskriminierende, sicherheitsgefährdende oder den Betrieb störende Zwecke verwenden. Insbesondere sind untersagt:
+                </p>
+                <ul className="list-disc pl-5 mb-4 text-sm text-secondary">
+                  <li>das Einschleusen von Schadsoftware oder automatisierten Zugriffen,</li>
+                  <li>die Nutzung für Spam, Angriffe oder Datenmanipulation,</li>
+                  <li>der Versuch, Sicherheitsmechanismen zu umgehen oder fremde Daten auszulesen.</li>
+                </ul>
+                <p className="text-sm mb-4">
+                  Die Konfiguration der Software durch den Kunden oder Dritte erfolgen auf eigene Verantwortung des Kunden. Der Kunde darf die vereinbarten Beschränkungen des Umfangs der Lizenz nicht umgehen, auch nicht durch Integration eigener Programmbestandteile in die Software.
+                </p>
+                <p className="text-sm mb-4">
+                  Alle Unterlagen und Informationen, die COREMIS dem Kunden zugänglich macht, gelten als geistiges Eigentum oder als vertrauliche Geschäfts- und Betriebsgeheimnisse von COREMIS.
+                </p>
+                <p className="text-sm mb-4">
+                  COREMIS hat das Recht, die Einhaltung der Nutzungsbedingungen fortlaufend zu prüfen (Selbstauskunft des Kunden und Protokollierung der Aktivitäten). Einmal jährlich steht COREMIS das Recht zu, die Einhaltung im Rahmen eines Audits durch eine unabhängige, der Vertraulichkeit verpflichtete Prüfgesellschaft prüfen zu lassen.
                 </p>
               </div>
 
-              {/* SECTION 4 & 5: Service & Gewährleistung */}
-              <div className="bg-slate-50 rounded-3xl p-8 mb-12 border border-slate-100">
-                 <div className="grid md:grid-cols-2 gap-12">
-                    <div>
-                      <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                        <Clock size={18} className="text-accent-orange" /> SLA & Support (§4)
-                      </h3>
-                      <ul className="text-sm space-y-3">
-                        <li className="flex justify-between border-b border-slate-200 pb-2">
-                          <span>Verfügbarkeit (Monatsmittel)</span>
-                          <span className="font-bold">99.9%</span>
-                        </li>
-                        <li className="flex justify-between border-b border-slate-200 pb-2">
-                          <span>Support Zeiten</span>
-                          <span className="font-bold">Mo-Fr, 08:00 - 17:00</span>
-                        </li>
-                        <li className="flex justify-between border-b border-slate-200 pb-2">
-                          <span>Wartungsankündigung</span>
-                          <span className="font-bold">min. 24h voraus</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                        <Shield size={18} className="text-accent-orange" /> Gewährleistung (§5)
-                      </h3>
-                      <p className="text-sm text-secondary mb-4">
-                        Die Software weist die übliche Qualität auf. Fehlerfreiheit kann bei Software nie zu 100% garantiert werden.
-                      </p>
-                      <div className="text-xs bg-white p-3 rounded border border-slate-200 text-slate-500">
-                        <strong>Rechtsmangel:</strong> COREMIS garantiert, dass der Nutzung keine Rechte Dritter entgegenstehen und übernimmt die Abwehr solcher Ansprüche.
-                      </div>
-                    </div>
-                 </div>
+              {/* SECTION 4: Service Level */}
+              <div className="mb-8">
+                 <h3 className="text-xl font-bold text-primary mb-4">4 Service Level und Verfügbarkeit</h3>
+                 <p className="text-sm mb-2">Wartungen werden mindestens 24 Stunden im Voraus angekündigt.</p>
+                 <p className="text-sm mb-2">Supportanfragen, Störungsmeldungen und Funktionswünsche werden über das Ticketing-System von COREMIS (Service-Portal oder Support-eMail) entgegengenommen. Jedes Ticket wird nach Priorität (Critical, High, Medium, Low) klassifiziert und gemäss Dringlichkeit bearbeitet.</p>
+                 <p className="text-sm mb-2">Der Support steht von Montag bis Freitag, 08:00 – 17:00 Uhr (MEZ) zur Verfügung, ausgenommen an anerkannten Feiertagen am Sitz der COREMIS.</p>
+                 <p className="text-sm">COREMIS betreibt ein kontinuierliches System-Monitoring und leitet bei Störungen umgehend geeignete Massnahmen zur Wiederherstellung der Dienste ein.</p>
+              </div>
+
+              {/* SECTION 5: Gewährleistung */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-primary mb-4">5 Gewährleistung</h3>
+                <p className="text-sm mb-2">Die beschränkten Nutzungsrechte gemäss dieser Vereinbarung bestehen an der Software, im jeweils zur Verfügung gestellten Zustand.</p>
+                <p className="text-sm mb-2">Die Software weist die für eine solche Software übliche Qualität auf. Fehlerfreiheit wird hingegen nicht gewährleistet. Eine unerhebliche Minderung der Qualität der Software durch Fehler ist kein Mangel.</p>
+                <p className="text-sm mb-2">COREMIS gewährleistet eine Verfügbarkeit der Software von 99.9% im Monatsmittel, ausgenommen planmässige Wartungen, angekündigte Updates und Fälle höherer Gewalt.</p>
+                <p className="text-sm">COREMIS gewährleistet, dass der vereinbarungsgemässen Nutzung durch den Kunden, keine Rechte Dritter entgegenstehen (sog. Rechtsmangel). Mit Ausnahme der hier genannten Gewährleistungen wird jegliche Gewährleistung ausgeschlossen.</p>
               </div>
 
               {/* SECTION 6: Haftung */}
-              <div className="mb-12">
-                <h3 className="flex items-center gap-3 text-xl font-bold text-primary mb-4">
-                  <span className="bg-primary text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-mono">06</span>
-                  Haftung
-                </h3>
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-1 bg-white border-l-4 border-accent-orange pl-6 py-2">
-                    <strong className="block text-primary mb-1">Haftungsumfang</strong>
-                    <p className="text-sm text-secondary">
-                      Nur für direkte Schäden bei grober Fahrlässigkeit oder Vorsatz. Beschränkt auf den <strong>doppelten Wert der jährlichen Nutzungsgebühr</strong>.
-                    </p>
-                  </div>
-                  <div className="flex-1 bg-white border-l-4 border-slate-200 pl-6 py-2">
-                    <strong className="block text-slate-500 mb-1">Ausschluss</strong>
-                    <p className="text-sm text-secondary">
-                      Keine Haftung für entgangenen Gewinn, Datenverluste oder indirekte Folgeschäden (soweit gesetzlich zulässig).
-                    </p>
-                  </div>
-                </div>
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-primary mb-4">6 Haftung und Haftungsbeschränkung</h3>
+                <p className="text-sm mb-4">
+                  COREMIS haftet dem Kunden nur für direkte Schäden, insbesondere auch aus dem Gebrauch der Software, sofern diese auf grobe Fahrlässigkeit oder Vorsatz zurückzuführen sind. Eine Haftung von COREMIS für leichte oder mittlere Fahrlässigkeit ist ausgeschlossen. Soweit gesetzlich zulässig, ist auch jegliche Haftung für Hilfspersonen der COREMIS ausgeschlossen.
+                </p>
+                <p className="text-sm mb-4">
+                  Eine Haftung für mittelbare Schäden, Folgeschäden und entgangenen Gewinn (z.B. indirekte Folgeschäden wie Ausfallkosten, Mehrkosten, Einkommensverluste, Imageverlust, Rufschädigung, Datenverluste, Schäden durch Betriebsunterbrechungen, Folgekosten für Aufwendungen des Kunden, entgangene Einsparungen etc.) wird – soweit gesetzlich zulässig – ausgeschlossen.
+                </p>
+                <p className="text-sm mb-4">
+                  In jedem Fall ist die Haftung von COREMIS beschränkt auf den doppelten Wert der jährlichen Nutzungsgebühr im Zeitpunkt des Schadenseintritts.
+                </p>
+                <p className="text-sm">
+                  COREMIS haftet nicht für Ansprüche oder Schäden, die sich aus der Nutzung von Software oder Diensten von Drittanbietern ergeben, welche der Kunde selbst aktiviert oder angebunden hat.
+                </p>
               </div>
 
-              {/* SECTION 7: Zahlungsverzug */}
-              <div className="mb-12">
-                <h3 className="flex items-center gap-3 text-xl font-bold text-primary mb-6">
-                  <span className="bg-primary text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-mono">07</span>
-                  Zahlung & Verzug
-                </h3>
-                <div className="relative">
-                   {/* Timeline Line */}
-                   <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-slate-100"></div>
-                   
-                   <div className="space-y-6 relative">
-                      <div className="flex items-start gap-6">
-                         <div className="w-10 h-10 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center shrink-0 z-10 text-xs font-bold text-slate-400">10d</div>
-                         <div className="pt-2">
-                            <strong className="text-primary block text-sm">Zahlungserinnerung</strong>
-                            <span className="text-xs text-secondary">10 Tage nach Fälligkeit.</span>
-                         </div>
-                      </div>
-                      <div className="flex items-start gap-6">
-                         <div className="w-10 h-10 rounded-full bg-orange-50 border-2 border-orange-200 flex items-center justify-center shrink-0 z-10 text-xs font-bold text-accent-orange">20d</div>
-                         <div className="pt-2">
-                            <strong className="text-primary block text-sm">Mahnung</strong>
-                            <span className="text-xs text-secondary">20 Tage nach Fälligkeit (mit Verzugszins & Gebühr).</span>
-                         </div>
-                      </div>
-                      <div className="flex items-start gap-6">
-                         <div className="w-10 h-10 rounded-full bg-red-50 border-2 border-red-200 flex items-center justify-center shrink-0 z-10 text-xs font-bold text-red-600">30d</div>
-                         <div className="pt-2">
-                            <strong className="text-red-600 block text-sm">Deaktivierung</strong>
-                            <span className="text-xs text-secondary">Sperrung des Zugangs.</span>
-                         </div>
-                      </div>
-                      <div className="flex items-start gap-6">
-                         <div className="w-10 h-10 rounded-full bg-black border-2 border-black flex items-center justify-center shrink-0 z-10 text-xs font-bold text-white">90d</div>
-                         <div className="pt-2">
-                            <strong className="text-primary block text-sm">Löschung</strong>
-                            <span className="text-xs text-secondary">Unwiderrufliche Löschung aller Daten.</span>
-                         </div>
-                      </div>
-                   </div>
-                </div>
+              {/* SECTION 7: Zahlungsmodalitäten */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-primary mb-4">7 Vergütung und Zahlungsmodalitäten</h3>
+                <p className="text-sm mb-2">Die Nutzung der Software erfolgt gegen Zahlung der vereinbarten monatlichen Lizenzgebühr.</p>
+                <p className="text-sm mb-4">Die Zahlung erfolgt jeweils im Voraus zum 1. eines Monats (Verfalltag) per Kreditkarte oder Rechnung. Gerät der Kunde mit der Zahlung in Verzug, schuldet er den gesetzlichen Verzugszins von 5% p.a.. Im Falle des Verzugs geht COREMIS in der Regel wie folgt vor:</p>
+                <ul className="list-disc pl-5 mb-4 text-sm text-secondary">
+                  <li>10 Tage nach Fälligkeit: Zahlungserinnerung.</li>
+                  <li>20 Tage nach Fälligkeit: Mahnung mit Verzugszins und Mahngebühr.</li>
+                  <li>30 Tage nach Fälligkeit: Deaktivierung des Benutzer-Keys.</li>
+                  <li>90 Tage nach Fälligkeit: unwiderrufliche Löschung aller Kundendaten.</li>
+                </ul>
+                <p className="text-sm">Alle Preise verstehen sich exklusive gesetzlicher Mehrwertsteuer.</p>
               </div>
 
-              {/* SECTION 8 & 9: Kündigung & Daten */}
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                 <div>
-                    <h3 className="flex items-center gap-3 text-lg font-bold text-primary mb-3">
-                      <span className="text-accent-orange">§8</span> Laufzeit & Kündigung
-                    </h3>
-                    <div className="bg-surface p-4 rounded-xl text-sm space-y-2">
-                       <p><strong>Kunde:</strong> Jederzeit auf Monatsende (durch Einstellung der Zahlung).</p>
-                       <p><strong>COREMIS:</strong> 30 Tage Frist auf Monatsende.</p>
-                       <p className="text-xs text-secondary mt-2">Ausserordentliche Kündigung aus wichtigem Grund bleibt vorbehalten.</p>
-                    </div>
-                 </div>
-                 <div>
-                    <h3 className="flex items-center gap-3 text-lg font-bold text-primary mb-3">
-                      <span className="text-accent-orange">§9</span> Datensicherung am Ende
-                    </h3>
-                    <div className="bg-surface p-4 rounded-xl text-sm space-y-2">
-                       <p>Daten werden <strong>90 Tage</strong> nach Vertragsende gelöscht.</p>
-                       <p>Kunde kann vorher <strong>Datenexport</strong> anfordern (kostenpflichtig, Vorkasse).</p>
-                    </div>
-                 </div>
+              {/* SECTION 8: Dauer */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-primary mb-4">8 Dauer und Beendigung</h3>
+                <p className="text-sm mb-2">Die Lizenz tritt mit der Zustimmung durch den Kunden oder durch eine von ihm beauftragte Person (Click-Wrap) in Kraft und läuft auf unbestimmte Zeit.</p>
+                <p className="text-sm mb-2">Der Kunde kann die Vereinbarung jeweils ohne Einhaltung einer Kündigungsfrist auf das Ende eines jeden Monats beenden. Eine formelle Mitteilung der Kündigung seitens des Kunden ist nicht erforderlich; die Vereinbarung kann durch Einstellung der monatlichen Zahlungen beendet werden.</p>
+                <p className="text-sm mb-2">COREMIS kann die Vereinbarung ihrerseits ordentlich mit einer Frist von 30 Tagen jeweils auf ein Monatsende kündigen. Die Kündigung erfolgt schriftlich per eMail.</p>
+                <p className="text-sm">Eine ausserordentliche Kündigung aus wichtigem Grund, ohne Einhaltung der Kündigungsfrist und ohne Abmahnung bleibt beiden Parteien vorbehalten.</p>
               </div>
 
-              <hr className="border-border mb-12" />
-
-              {/* Remaining Sections Condensed */}
-              <div className="space-y-8 text-sm text-secondary">
-                 <div>
-                    <h4 className="text-primary font-bold text-base mb-2">10. Datenschutz</h4>
-                    <p>Einhaltung DSG (Schweiz) & DSGVO (EU). Verarbeitung nur zum Betrieb der Dienste. Kunde ist "Controller", COREMIS ist "Processor". Details im DPA.</p>
-                 </div>
-                 <div>
-                    <h4 className="text-primary font-bold text-base mb-2">11. Änderungen</h4>
-                    <p>Änderungen treten 30 Tage nach Mitteilung in Kraft. Zustimmung erfolgt durch aktive Weiternutzung (Click-Wrap).</p>
-                 </div>
-                 <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                       <h4 className="text-primary font-bold text-base mb-2">12. Schlussbestimmungen</h4>
-                       <p>Salvatorische Klausel gilt. Abtretung von Rechten nur mit Zustimmung. Höhere Gewalt schliesst Haftung aus.</p>
-                    </div>
-                    <div>
-                       <h4 className="text-primary font-bold text-base mb-2">13. Recht & Gerichtsstand</h4>
-                       <p>Schweizer Recht. Gerichtsstand: <strong>Zürich (8001), Schweiz</strong>.</p>
-                    </div>
-                 </div>
+              {/* SECTION 9: Datensicherung */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-primary mb-4">9 Datensicherung</h3>
+                <p className="text-sm mb-2">90 Tage nach Ende dieser Vereinbarung löscht COREMIS alle Daten des Kunden, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+                <p className="text-sm">Der Kunde kann bis dahin eine Datenexport-Anfrage stellen. Allfällige Kosten von COREMIS für den Datenexport hat der Kunde vor dem Datenexport zu begleichen.</p>
               </div>
 
+              {/* SECTION 10-13 Condensed */}
+              <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 space-y-4">
+                 <h3 className="text-lg font-bold text-primary">Weitere Bestimmungen</h3>
+                 <div className="text-sm space-y-4">
+                    <p><strong>10 Datenschutz:</strong> Einhaltung DSG (Schweiz) & DSGVO (EU). Verarbeitung nur zum Betrieb der Dienste. Details im DPA (Anhang).</p>
+                    <p><strong>11 Änderungen:</strong> COREMIS kann diese Vereinbarung jederzeit anpassen. Änderungen treten frühestens 30 Tage nach Mitteilung in Kraft. Bei Nichtzustimmung endet die Vereinbarung automatisch.</p>
+                    <p><strong>12 Schlussbestimmungen:</strong> Salvatorische Klausel gilt. Abtretung von Rechten nur mit Zustimmung. COREMIS haftet nicht für höhere Gewalt (Feuer, Streik, etc.).</p>
+                    <p><strong>13 Recht & Gerichtsstand:</strong> Diese Vereinbarung untersteht Schweizer Recht (unter Ausschluss des Wiener Kaufrechts). Ausschliesslicher Gerichtsstand ist Zürich (8001), Schweiz.</p>
+                 </div>
+              </div>
             </div>
           )}
 
@@ -355,58 +270,91 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
                 <span className="text-sm text-accent-orange font-bold uppercase tracking-wider">Anhang</span>
               </div>
               
-              <p className="text-sm text-secondary mb-4 italic">Gemäss Art. 9 DSG / Art. 28 DSGVO</p>
+              <p className="text-sm text-secondary mb-4 italic">ANHANG – DATENVERARBEITUNGSVERTRAG (DPA) GEMÄSS ART. 9 DSG / ART. 28 DSGVO</p>
 
               <div className="bg-surface p-6 rounded-2xl border border-border space-y-6">
                  
                  <div className="flex gap-4">
                     <div className="font-bold text-primary min-w-[30px]">14.</div>
                     <div>
-                       <h4 className="font-bold text-primary">Gegenstand</h4>
-                       <p className="text-sm text-secondary mt-1">Konkretisierung der datenschutzrechtlichen Regelungen für CoreMIS. Löschung der Daten nach 90 Tagen post-contract.</p>
+                       <h4 className="font-bold text-primary">Gegenstand und Dauer</h4>
+                       <p className="text-sm text-secondary mt-1">
+                         Dieses DPA konkretisiert die datenschutzrechtlichen Regelungen im Rahmen der Nutzung von CoreMIS als Software-as-a-Service.
+                         COREMIS verarbeitet personenbezogene Daten ausschliesslich zur Erfüllung des Hauptvertrags. Die Daten werden 90 Tage nach Ende der Vereinbarung gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.
+                       </p>
                     </div>
                  </div>
 
                  <div className="flex gap-4">
                     <div className="font-bold text-primary min-w-[30px]">15.</div>
                     <div>
-                       <h4 className="font-bold text-primary">Art & Zweck</h4>
-                       <p className="text-sm text-secondary mt-1">Bereitstellung und Wartung der Software. Verarbeitung von Kontakt-, Nutzungs- und Inhaltsdaten.</p>
+                       <h4 className="font-bold text-primary">Art, Umfang und Zweck der Verarbeitung</h4>
+                       <p className="text-sm text-secondary mt-1">
+                         Die Verarbeitung umfasst alle personenbezogenen Daten, die der Kunde im Zusammenhang mit der Nutzung der Software eingibt oder übermittelt.
+                         Zweck ist die Bereitstellung, Nutzung, Wartung, das Testen und die Weiterentwicklung der Software.
+                         <br/><strong>Datenarten:</strong> Identifikations-, Kontakt-, Zugriffs-, Nutzungs- und Inhaltsdaten sowie technische Metadaten.
+                         <br/><strong>Betroffene:</strong> Mitarbeitende, Benutzer oder Geschäftspartner des Kunden.
+                       </p>
                     </div>
                  </div>
 
                  <div className="flex gap-4">
                     <div className="font-bold text-primary min-w-[30px]">16.</div>
                     <div>
-                       <h4 className="font-bold text-primary">Rollen</h4>
-                       <p className="text-sm text-secondary mt-1">Kunde = Verantwortlicher (Controller). COREMIS = Auftragsverarbeiter (Processor).</p>
+                       <h4 className="font-bold text-primary">Rollen der Parteien</h4>
+                       <p className="text-sm text-secondary mt-1">Der Kunde ist datenschutzrechtlich Verantwortlicher („Controller“). COREMIS handelt als Auftragsverarbeiter („Processor“) im Sinne von Art. 9 DSG / Art. 28 DSGVO.</p>
+                    </div>
+                 </div>
+
+                 <div className="flex gap-4">
+                    <div className="font-bold text-primary min-w-[30px]">17.</div>
+                    <div>
+                       <h4 className="font-bold text-primary">Pflichten von COREMIS</h4>
+                       <ul className="text-sm text-secondary mt-1 list-disc pl-5">
+                          <li>Daten ausschliesslich gemäss den dokumentierten Weisungen des Kunden zu verarbeiten.</li>
+                          <li>Mitarbeitende zur Vertraulichkeit verpflichten.</li>
+                          <li>Angemessene technische und organisatorische Massnahmen (TOMs) umsetzen.</li>
+                          <li>Den Kunden unverzüglich über Datenschutzverletzungen informieren.</li>
+                          <li>Daten spätestens 90 Tage nach Vertragsende löschen oder zurückgeben.</li>
+                       </ul>
                     </div>
                  </div>
 
                  <div className="flex gap-4">
                     <div className="font-bold text-primary min-w-[30px]">18.</div>
                     <div>
-                       <h4 className="font-bold text-primary">Sicherheit & Ort</h4>
+                       <h4 className="font-bold text-primary">Speicherort, Datensicherheit und Backup</h4>
                        <p className="text-sm text-secondary mt-1">
-                         Serverstandort: <strong>Schweiz oder EU</strong>. <br/>
-                         Zertifizierung: ISO 27001. <br/>
-                         Verschlüsselung: TLS / AES-256.
+                         COREMIS stellt sicher, dass Daten ausschliesslich innerhalb der Schweiz oder der EU verarbeitet und auf Servern in zertifizierten Rechenzentren (mindestens ISO 27001) gespeichert werden.
+                         Es bestehen tägliche Backups, rollenbasierte Zugriffsbeschränkungen, Verschlüsselung (TLS / AES-256) sowie Protokollierung aller administrativen Zugriffe.
                        </p>
                     </div>
                  </div>
+                 
+                 <div className="flex gap-4">
+                    <div className="font-bold text-primary min-w-[30px]">19.</div>
+                    <div>
+                       <h4 className="font-bold text-primary">Unterauftragsverhältnisse</h4>
+                       <p className="text-sm text-secondary mt-1">COREMIS ist berechtigt, Unterauftragsbearbeiter beizuziehen. Der Kunde genehmigt hiermit sämtliche aktuellen und zukünftigen Unterauftragsbearbeiter. Eine aktuelle Liste wird auf Anfrage zur Verfügung gestellt.</p>
+                    </div>
+                 </div>
 
-              </div>
+                 <div className="flex gap-4">
+                    <div className="font-bold text-primary min-w-[30px]">22.</div>
+                    <div>
+                       <h4 className="font-bold text-primary">Kontrollrechte</h4>
+                       <p className="text-sm text-secondary mt-1">Der Kunde ist berechtigt, die Einhaltung dieses DPA und der TOMs durch COREMIS zu prüfen oder prüfen zu lassen (Audits).</p>
+                    </div>
+                 </div>
+                 
+                 <div className="flex gap-4">
+                    <div className="font-bold text-primary min-w-[30px]">24.</div>
+                    <div>
+                       <h4 className="font-bold text-primary">Schlussbestimmungen</h4>
+                       <p className="text-sm text-secondary mt-1">Es gelten die Bestimmungen des Hauptvertrags sowie das anwendbare Recht (Schweizer Recht, Gerichtsstand Zürich).</p>
+                    </div>
+                 </div>
 
-              <div className="mt-8 text-sm text-secondary">
-                 <p className="mb-4">
-                   <strong>Unterauftragsverhältnisse:</strong> Genehmigt, Liste auf Anfrage verfügbar.
-                 </p>
-                 <p className="mb-4">
-                   <strong>Kontrollrechte:</strong> Kunde darf Audits durchführen (Kosten trägt Kunde).
-                 </p>
-                 <p>
-                   <strong>Gerichtsstand:</strong> Zürich, Schweiz.
-                 </p>
               </div>
 
             </div>

@@ -27,10 +27,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateHome }) => {
   };
 
   const navItems = [
-    { label: 'Lösungen', id: 'loesungen' },
-    { label: 'Funktionsweise', id: 'funktionsweise' },
-    { label: 'ROI', id: 'roi' },
-    { label: 'Preise', id: 'preise' },
+    { label: 'Lösung', id: 'sweetspot' },
+    { label: 'ROI Rechner', id: 'roi' },
+    { label: 'Lizenzpreise', id: 'lizenzrechner' },
+    { label: 'Einführungspreise', id: 'preise' },
     { label: 'Sicherheit', id: 'sicherheit' },
     { label: 'FAQ', id: 'faq' },
   ];

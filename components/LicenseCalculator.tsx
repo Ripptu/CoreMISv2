@@ -5,7 +5,7 @@ import { RevealOnScroll } from './RevealOnScroll';
 export const LicenseCalculator: React.FC = () => {
   const [entities, setEntities] = useState(5); // Default adjusted to 5
   const [revenue, setRevenue] = useState(30); // Default adjusted to 30 Mio
-  const [term, setTerm] = useState<1 | 12 | 24 | 36>(12);
+  const [term, setTerm] = useState<1 | 12 | 24 | 36>(1); // Changed default to 1 as requested
 
   const calculations = useMemo(() => {
     // 1. Base Fee (Monthly)
@@ -58,8 +58,8 @@ export const LicenseCalculator: React.FC = () => {
   }).format(val);
 
   return (
-    <section className="py-16 md:py-24 bg-surface border-t border-border relative">
-      <div className="max-w-[1024px] mx-auto px-6">
+    <section id="lizenzrechner" className="py-16 md:py-24 bg-surface border-t border-border relative">
+      <div className="max-w-[1024px] mx-auto px-4 md:px-6">
         
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
           
@@ -134,7 +134,7 @@ export const LicenseCalculator: React.FC = () => {
               <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden transform transition-all hover:scale-[1.01]">
                 
                 {/* Header */}
-                <div className="bg-primary text-white p-6 flex justify-between items-center">
+                <div className="bg-primary text-white p-5 md:p-6 flex justify-between items-center">
                   <div>
                     <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Konfiguration</div>
                     <div className="font-serif text-2xl italic">Ihr Preis</div>
@@ -142,42 +142,46 @@ export const LicenseCalculator: React.FC = () => {
                   <CalendarCheck size={28} className="text-accent-orange opacity-80" />
                 </div>
 
-                <div className="p-8 space-y-8">
+                <div className="p-5 md:p-8 space-y-8">
                   
                   {/* Slider 1: Entities */}
                   <div className="space-y-4">
                      <div className="flex justify-between items-center">
                         {/* Label increased */}
-                        <label className="font-bold text-primary text-lg flex items-center gap-2">
+                        <label className="font-bold text-primary text-base md:text-lg flex items-center gap-2">
                            <Building2 size={20} className="text-accent-orange" /> Gesellschaften
                         </label>
-                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-3 py-1 rounded text-lg font-bold min-w-[3.5rem] text-center">
+                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-3 py-1 rounded text-base md:text-lg font-bold min-w-[3.5rem] text-center">
                           {entities}
                         </span>
                      </div>
-                     <input 
-                        type="range" min="1" max="50" step="1" 
-                        value={entities} onChange={(e) => setEntities(Number(e.target.value))}
-                        className="w-full h-3 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange"
-                     />
+                     <div className="py-2">
+                       <input 
+                          type="range" min="1" max="50" step="1" 
+                          value={entities} onChange={(e) => setEntities(Number(e.target.value))}
+                          className="w-full h-2 md:h-3 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange touch-action-manipulation"
+                       />
+                     </div>
                   </div>
 
                   {/* Slider 2: Revenue */}
                   <div className="space-y-4">
                      <div className="flex justify-between items-center">
                         {/* Label increased */}
-                        <label className="font-bold text-primary text-lg flex items-center gap-2">
+                        <label className="font-bold text-primary text-base md:text-lg flex items-center gap-2">
                           <Banknote size={20} className="text-accent-orange" /> Jahresumsatz
                         </label>
-                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-3 py-1 rounded text-lg font-bold min-w-[4rem] text-center">
+                        <span className="font-mono bg-slate-50 text-primary border border-slate-200 px-3 py-1 rounded text-base md:text-lg font-bold min-w-[4rem] text-center">
                           {revenue} M
                         </span>
                      </div>
-                     <input 
-                        type="range" min="10" max="500" step="10"
-                        value={revenue} onChange={(e) => setRevenue(Number(e.target.value))}
-                        className="w-full h-3 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange"
-                     />
+                     <div className="py-2">
+                       <input 
+                          type="range" min="10" max="500" step="10"
+                          value={revenue} onChange={(e) => setRevenue(Number(e.target.value))}
+                          className="w-full h-2 md:h-3 rounded-lg appearance-none cursor-pointer bg-slate-200 accent-accent-orange touch-action-manipulation"
+                       />
+                     </div>
                   </div>
 
                   {/* Vorauszahlungsrabatt Options */}
@@ -210,37 +214,37 @@ export const LicenseCalculator: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Result Box - Increased Fonts */}
-                  <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 space-y-4">
-                    <div className="flex justify-between text-base text-secondary">
+                  {/* Result Box - Adjusted padding and font sizes for mobile to prevent cutoff */}
+                  <div className="bg-slate-50 rounded-xl p-4 md:p-6 border border-slate-200 space-y-3 md:space-y-4">
+                    <div className="flex justify-between text-sm md:text-base text-secondary">
                        <span>Basisfee</span>
-                       <span>{formatCHF(calculations.baseMonthly)}</span>
+                       <span className="font-mono">{formatCHF(calculations.baseMonthly)}</span>
                     </div>
                     {(calculations.scalingFeeMonthly > 0) && (
-                       <div className="flex justify-between text-base text-secondary">
+                       <div className="flex justify-between text-sm md:text-base text-secondary">
                           <span>Scaling Fee</span>
-                          <span>+ {formatCHF(calculations.scalingFeeMonthly)}</span>
+                          <span className="font-mono">+ {formatCHF(calculations.scalingFeeMonthly)}</span>
                        </div>
                     )}
-                     <div className="flex justify-between text-base font-medium text-primary border-t border-slate-200 pt-3 mt-2">
+                     <div className="flex justify-between text-sm md:text-base font-medium text-primary border-t border-slate-200 pt-3 mt-2">
                        <span>Total Listenpreis</span>
-                       <span>{formatCHF(calculations.totalListMonthly)}</span>
+                       <span className="font-mono">{formatCHF(calculations.totalListMonthly)}</span>
                     </div>
 
                     {calculations.discountAmountMonthly > 0 && (
-                      <div className="flex justify-between text-base text-green-600 font-medium pt-1">
-                        <span>Rabatt auf Gesamtpreis (-{calculations.discountPercent * 100}%)</span>
-                        <span>- {formatCHF(calculations.discountAmountMonthly)}</span>
+                      <div className="flex justify-between text-sm md:text-base text-green-600 font-medium pt-1">
+                        <span className="mr-2">Rabatt ({calculations.discountPercent * 100}%)</span>
+                        <span className="font-mono whitespace-nowrap">- {formatCHF(calculations.discountAmountMonthly)}</span>
                       </div>
                     )}
                     
                     <div className="h-px bg-slate-200 my-2"></div>
 
                     {/* Adjusted alignment to baseline and added gap */}
-                    <div className="flex justify-between items-baseline gap-8 pt-2">
-                       <span className="font-bold text-xl text-primary mb-1">Monatlich</span>
+                    <div className="flex justify-between items-baseline gap-4 md:gap-8 pt-2">
+                       <span className="font-bold text-lg md:text-xl text-primary mb-1">Monatlich</span>
                        <div className="text-right">
-                          <span className="block font-bold text-5xl text-accent-orange leading-none">
+                          <span className="block font-bold text-4xl md:text-5xl text-accent-orange leading-none font-mono">
                             {formatCHF(calculations.finalMonthly)}
                           </span>
                        </div>

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const PositioningGraph: React.FC = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden border-t border-border">
+    <section id="sweetspot" className="py-24 bg-white overflow-hidden border-t border-border">
       <div className="max-w-[1280px] mx-auto px-6">
         
         {/* Top Row: Title & Graph */}

@@ -59,9 +59,17 @@ export const ROICalculator: React.FC = () => {
                  <span className="text-[10px] font-bold tracking-[0.15em] text-accent-orange uppercase">ROI Rechner</span>
                </div>
 
-               <h2 className="text-4xl md:text-6xl font-serif text-primary mb-6 leading-[1.1]">
+               <h2 className="text-4xl md:text-6xl font-bold text-primary mb-6 leading-[1.1]">
                  Was kostet Sie manuelles <br/>
-                 <span className="font-serif italic font-bold text-primary">Reporting?</span>
+                 <span className="relative inline-block px-2 z-10 mt-1">
+                   <span className="font-serif italic font-bold relative z-10 text-primary">Reporting?</span>
+                   {/* Image Brush Stroke */}
+                   <img 
+                     src="https://static.vecteezy.com/system/resources/thumbnails/049/161/109/small/orange-paint-brushstroke-with-transparent-background-perfect-for-designs-and-projects-png.png"
+                     alt=""
+                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[150%] -z-10 object-fill opacity-90 mix-blend-multiply"
+                   />
+                 </span>
                </h2>
 
                <p className="text-base md:text-lg text-secondary leading-relaxed mb-12 max-w-md">

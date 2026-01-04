@@ -20,7 +20,7 @@ const PositioningGraph = lazy(() => import('./components/PositioningGraph').then
 
 const App: React.FC = () => {
   const [legalPage, setLegalPage] = useState<'impressum' | 'datenschutz' | 'agb' | null>(null);
-  const [modalPage, setModalPage] = useState<'haftung' | 'urheberrecht' | null>(null);
+  const [modalPage, setModalPage] = useState<'haftung' | 'urheberrecht' | 'agb' | 'datenschutz' | null>(null);
 
   const handleNavigateHome = (targetSection?: string) => {
     setLegalPage(null);
@@ -36,10 +36,11 @@ const App: React.FC = () => {
   };
 
   const handleOpenLegal = (page: 'impressum' | 'datenschutz' | 'agb' | 'haftung' | 'urheberrecht') => {
-    if (page === 'haftung' || page === 'urheberrecht') {
-      setModalPage(page);
-    } else {
+    // Open everything in modal except Impressum which stays as a full page for now
+    if (page === 'impressum') {
       setLegalPage(page);
+    } else {
+      setModalPage(page);
     }
   };
 

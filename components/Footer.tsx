@@ -130,24 +130,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                    </button>
                  </li>
 
-                 {/* PDF Links */}
-                 <li className="pt-4">
-                    <a 
-                      href="/Nutzungsbedingungen_CoreMIS.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="block text-white hover:text-accent-orange transition-colors mb-2"
+                 {/* Legal Documents (Popups) */}
+                 <li className="pt-4 flex flex-col gap-2">
+                    <button 
+                      onClick={() => onOpenLegal('agb')}
+                      className="text-left text-white hover:text-accent-orange transition-colors"
                     >
                       Endbenutzer Lizenzvereinbarung (EULA)
-                    </a>
-                    <a 
-                      href="/Nutzungsbedingungen_CoreMIS.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="block text-white hover:text-accent-orange transition-colors"
+                    </button>
+                    <button 
+                      onClick={() => onOpenLegal('datenschutz')}
+                      className="text-left text-white hover:text-accent-orange transition-colors"
                     >
                       Datenschutzerklärung (DSGVO)
-                    </a>
+                    </button>
                  </li>
                </ul>
              </RevealOnScroll>
