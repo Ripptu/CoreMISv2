@@ -156,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           
           <div className="flex flex-col gap-2">
             <div className="text-sm text-slate-500 font-medium">
-              © CoreMIS GmbH.
+              © {new Date().getFullYear()} COREMIS GmbH.
             </div>
             
             <div className="flex gap-4 text-xs text-slate-600">
