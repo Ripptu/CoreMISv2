@@ -92,7 +92,7 @@ export const LicenseCalculator: React.FC = () => {
                     <strong className="text-primary block text-lg mb-1">Basisfee (CHF 800 / Monat)</strong>
                     {/* Increased to text-base */}
                     <span className="text-base text-secondary leading-snug block">
-                      Inkludiert 1 Gesellschaft und bis zu <br className="block sm:hidden" />CHF&nbsp;50&nbsp;Mio. Umsatz.
+                      Inkludiert 1 Gesellschaft und bis zu CHF&nbsp;50&nbsp;Mio. Umsatz.
                     </span>
                   </div>
                 </div>
