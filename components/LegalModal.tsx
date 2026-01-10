@@ -87,7 +87,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
           }
 
           /* Hide UI elements like close button and print button */
-          button { display: none !important; }
+          button, a[href*="drive.google.com"] { display: none !important; }
           
           /* Hide scrollbars */
           ::-webkit-scrollbar { display: none; }
@@ -188,13 +188,15 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
                     <h2 className="font-serif text-xl md:text-2xl font-bold text-primary m-0 leading-none">Lizenzvereinbarung</h2>
                     <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0 print:text-black">EULA</p>
                   </div>
-                  <button 
-                    onClick={() => window.print()} 
-                    className="ml-4 md:ml-0 md:mt-2 text-primary hover:text-accent-orange transition-colors print:hidden flex items-center gap-2 text-sm font-bold bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg" 
-                    title="Drucken / Als PDF speichern"
+                  <a 
+                    href="https://drive.google.com/file/d/1COQWvsjJ25gCz3rvCSSJo6vZbrwuSaH9/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-4 md:ml-0 md:mt-2 text-primary hover:text-accent-orange transition-colors print:hidden flex items-center gap-2 text-sm font-bold bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg no-underline" 
+                    title="Als PDF speichern"
                   >
                      <Download size={16} /> Als PDF speichern
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -331,13 +333,15 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
                     <h2 className="font-serif text-xl md:text-2xl font-bold text-primary m-0 leading-none">Datenschutz</h2>
                     <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0 print:text-black">DPA (Data Processing Agreement)</p>
                   </div>
-                  <button 
-                    onClick={() => window.print()} 
-                    className="ml-4 md:ml-0 md:mt-2 text-primary hover:text-accent-orange transition-colors print:hidden flex items-center gap-2 text-sm font-bold bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg"
-                    title="Drucken / Als PDF speichern"
+                  <a 
+                    href="https://drive.google.com/file/d/1COQWvsjJ25gCz3rvCSSJo6vZbrwuSaH9/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-4 md:ml-0 md:mt-2 text-primary hover:text-accent-orange transition-colors print:hidden flex items-center gap-2 text-sm font-bold bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg no-underline"
+                    title="Als PDF speichern"
                   >
                      <Download size={16} /> Als PDF speichern
-                  </button>
+                  </a>
                 </div>
               </div>
 
