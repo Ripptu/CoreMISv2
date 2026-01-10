@@ -33,7 +33,7 @@ export const Hero: React.FC = () => {
               
               <div className="opacity-0 animate-fade-up" style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}>
                 <p className="text-lg md:text-xl text-secondary leading-relaxed mb-6 max-w-xl font-medium">
-                  Automatisiertes Budgeting, Forecasting und Reporting – 
+                  Die cloudbasierte SaaS Lösung für automatisiertes Budgeting, Forecasting und Reporting – 
                   ohne Excel-Chaos und ohne Overkill-Ansätze – 
                   in wenigen Wochen eingeführt.
                 </p>

@@ -27,9 +27,81 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
         scrollContainerRef.current.scrollTo({ top: 0, behavior: 'instant' });
       }
 
-      // Cleanup: Restore the original overflow instead of forcing 'unset'
+      // Add specialized print styles dynamically to ensure only the modal prints correctly
+      const style = document.createElement('style');
+      style.id = 'legal-modal-print-style';
+      style.innerHTML = `
+        @media print {
+          /* Hide all body children except the modal portal */
+          body > *:not(.legal-modal-portal) {
+            display: none !important;
+          }
+          
+          /* Reset body overflow for printing to allow multiple pages */
+          body {
+            overflow: visible !important;
+            height: auto !important;
+            background: white !important;
+          }
+
+          /* Position the portal wrapper to take up the full page */
+          .legal-modal-portal {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: auto !important;
+            z-index: 99999 !important;
+            background: white !important;
+            display: block !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+
+          /* Reset content container styles for print */
+          .legal-modal-content {
+            box-shadow: none !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            max-height: none !important;
+            overflow: visible !important;
+            border-radius: 0 !important;
+            padding: 40px !important; /* Proper margin for print */
+            margin: 0 !important;
+            background: white !important;
+            color: black !important;
+            position: relative !important;
+          }
+
+          /* Force text color to black and ensure visibility for all text elements */
+          .legal-modal-content *, 
+          .legal-modal-content p, 
+          .legal-modal-content h2, 
+          .legal-modal-content h3, 
+          .legal-modal-content li,
+          .legal-modal-content span {
+            color: black !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            text-shadow: none !important;
+          }
+
+          /* Hide UI elements like close button and print button */
+          button { display: none !important; }
+          
+          /* Hide scrollbars */
+          ::-webkit-scrollbar { display: none; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Cleanup: Restore the original overflow and remove styles
       return () => {
         document.body.style.overflow = originalOverflow;
+        const existingStyle = document.getElementById('legal-modal-print-style');
+        if (existingStyle) {
+          existingStyle.remove();
+        }
       };
     }
   }, [page]);
@@ -38,14 +110,14 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
 
   // Use createPortal to render outside the root div (fixes positioning issues with GSAP/Lenis)
   return createPortal(
-    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 print:p-0">
+    <div className="legal-modal-portal fixed inset-0 z-[10000] flex items-center justify-center p-4 print:p-0">
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity print:hidden" 
         onClick={onClose}
       ></div>
       <div 
         ref={scrollContainerRef}
-        className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 shadow-2xl animate-in fade-in zoom-in-95 duration-300 print:max-h-none print:w-full print:shadow-none print:rounded-none"
+        className="legal-modal-content bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative z-10 shadow-2xl animate-in fade-in zoom-in-95 duration-300 print:max-h-none print:w-full print:shadow-none print:rounded-none"
       >
         <button 
           onClick={onClose}
@@ -114,7 +186,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
                 <div className="text-left md:text-right w-full md:w-auto flex flex-row md:flex-col justify-between items-center md:items-end">
                   <div>
                     <h2 className="font-serif text-xl md:text-2xl font-bold text-primary m-0 leading-none">Lizenzvereinbarung</h2>
-                    <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0">EULA</p>
+                    <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0 print:text-black">EULA</p>
                   </div>
                   <button 
                     onClick={() => window.print()} 
@@ -127,7 +199,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
               </div>
 
               <h2 className="font-serif text-3xl mb-2 mt-0">Endbenutzer-Lizenzvereinbarung (EULA)</h2>
-              <p className="text-sm text-secondary mb-8">Gültig ab 1. Dezember 2025</p>
+              <p className="text-sm text-secondary mb-8 print:text-black">Gültig ab 1. Dezember 2025</p>
 
               <p>
                 Diese Endbenutzer-Lizenzvereinbarung („Vereinbarung“) regelt die Nutzung der webbasierten Software- und 
@@ -257,7 +329,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
                 <div className="text-left md:text-right w-full md:w-auto flex flex-row md:flex-col justify-between items-center md:items-end">
                   <div>
                     <h2 className="font-serif text-xl md:text-2xl font-bold text-primary m-0 leading-none">Datenschutz</h2>
-                    <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0">DPA (Data Processing Agreement)</p>
+                    <p className="text-xs font-bold text-accent-orange uppercase tracking-widest mt-2 m-0 print:text-black">DPA (Data Processing Agreement)</p>
                   </div>
                   <button 
                     onClick={() => window.print()} 
@@ -270,7 +342,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ page, onClose }) => {
               </div>
 
               <h2 className="font-serif text-3xl mb-2 mt-0">Anhang – Datenverarbeitungsvertrag (DPA)</h2>
-              <p className="text-sm text-secondary mb-8">Gemäss Art. 9 DSG / Art. 28 DSGVO</p>
+              <p className="text-sm text-secondary mb-8 print:text-black">Gemäss Art. 9 DSG / Art. 28 DSGVO</p>
 
               <p>
                 zwischen COREMIS GmbH („COREMIS“) und dem jeweiligen Kunden („Kunde“) – gemeinsam die Parteien – der webbasierten Software- und Cloud-Applikation CoreMIS („Software“).
